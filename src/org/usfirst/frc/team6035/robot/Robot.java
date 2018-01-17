@@ -6,11 +6,7 @@ package org.usfirst.frc.team6035.robot;
 import edu.wpi.first.wpilibj.IterativeRobot;
 
 
-public class Robot extends IterativeRobot { 
-	
-	//ROBOT INITIALS
-	 
-	DriveBase driveBase = new DriveBase();
+public class Robot extends IterativeRobot {
      
 	/*
 	 * This function is run when the robot is first started up and should be
@@ -34,7 +30,6 @@ public class Robot extends IterativeRobot {
 	}
 	@Override
 	public void teleopPeriodic() {
-	driveBase.drive(0.1, 0);
 	
 }
 
