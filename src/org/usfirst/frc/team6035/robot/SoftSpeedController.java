@@ -19,7 +19,15 @@ public class SoftSpeedController implements SpeedController {
 
 	@Override
 	public void set(double speed) {
-		
+		double speedDiff = speed - target.get();
+		double responseTime = 500;
+		double cycles = responseTime/20;
+		if (speedDiff < 0.05) {
+			speed = target.get() + speedDiff;
+		}
+		else {
+			speed = speedDiff/cycles + target.get();
+		}
 	}
 
 	@Override
