@@ -5,22 +5,36 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.VictorSP;
 
+/**
+ * @author Gabriel Love
+ * Class for operating the drive base
+ */
+
 public class DriveBase  {
 	// Sparks
-	/*
-	Spark BackLeft = new Spark(0);
-	Spark FrontLeft = new Spark(1);
-	Spark BackRight = new Spark(2);
-	Spark FrontRight = new Spark(3);
+	
+	private Spark BackLeft = new Spark(0);
+	private Spark FrontLeft = new Spark(1);
+	private Spark BackRight = new Spark(2);
+	private Spark FrontRight = new Spark(3);
 	
 
 	// Speed Controller Groups
-	SpeedControllerGroup Left = new SpeedControllerGroup(BackLeft, FrontLeft);
-	SpeedControllerGroup Right = new SpeedControllerGroup(BackRight, FrontRight);
-	*/
 	
-	VictorSP Left = new VictorSP(0);
-	VictorSP Right = new VictorSP(1);
+
+	
+	/**
+	 * Motor group for left side
+	 */
+	
+	private SpeedControllerGroup Left = new SpeedControllerGroup(BackLeft, FrontLeft);
+	
+	/**
+	 * Motor group for right side 
+	 */
+	
+	private SpeedControllerGroup Right = new SpeedControllerGroup(BackRight, FrontRight);
+	
 	
 	public void drive(double speed, double direction) {
 	    if((speed != 0) && (direction == 0)){

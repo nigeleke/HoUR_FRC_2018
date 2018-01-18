@@ -2,7 +2,7 @@ package org.usfirst.frc.team6035.robot;
 
 import edu.wpi.first.wpilibj.VictorSP;
 
-public class DriveBaseOG {
+public class DriveBaseDepricated {
 	VictorSP Left = new VictorSP(0);
 	VictorSP Right = new VictorSP(1);
 
