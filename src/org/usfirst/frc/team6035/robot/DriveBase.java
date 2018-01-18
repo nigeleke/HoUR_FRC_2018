@@ -18,10 +18,6 @@ public class DriveBase  {
 	private Spark BackRight = new Spark(2);
 	private Spark FrontRight = new Spark(3);
 	
-
-	// Speed Controller Groups
-	
-
 	
 	/**
 	 * Motor group for left side
@@ -41,43 +37,43 @@ public class DriveBase  {
 	    	// Driving Straight Forward
 	        Left.set(speed);
 	        Right.set(speed);
-	        System.out.print("driving straight");
+	        System.out.print("Driving straight");
 	    }
 		if ((speed == 0) && (direction > 0)){
 			// Turning Right Stationary
 			Left.set(direction);
 			Right.set(-direction);
-			System.out.print("flag 1");
+			System.out.print("Turning right while stationary");
 		}
 		if ((speed == 0) && (direction < 0)) {
 			// Turning Left Stationary
 			Left.set(direction);
 			Right.set(-direction);
-			System.out.print("flag 2");
+			System.out.print("Turning left while stationary");
 		}
 		if ((speed > 0) && (direction > 0)) {
 			// Turning Right with Speed
 			Left.set(speed);
 			Right.set(-direction);
-			System.out.print("flag 3");
+			System.out.print("Turning right with speed");
 		}
 		if ((speed > 0) && (direction < 0)) {
 			// Turning Left with Speed
 			Left.set(direction);
 			Right.set(speed);
-			System.out.print("flag 4");
+			System.out.print("Turning left with speed");
 		}
 		if ((speed < 0) && (direction > 0)) {
 			// Turning Right in Reverse
 			Left.set(-direction);
 			Right.set(speed);
-			System.out.print("flag 5");
+			System.out.print("Turning right while reversing");
 		}
 		if ((speed < 0) && (direction < 0)) {
 			// Turning Left in Reverse
 			Left.set(speed);
 			Right.set(direction);
-			System.out.print("flag 6");
+			System.out.print("Turning left while reversing");
 		}
 		
 	}
