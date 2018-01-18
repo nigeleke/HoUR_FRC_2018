@@ -2,6 +2,11 @@ package org.usfirst.frc.team6035.robot;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 
 
+/**
+ * @author Gabriel Love
+ * Class for getting autonomous selections from smart dashboard
+ */
+
 public class SmartDashboardCall {
 
 	private static final String kDefaultAuto = "Default";
@@ -13,6 +18,10 @@ public class SmartDashboardCall {
 	Autonomous autonomous = new Autonomous();
 	DriveBase driveBase = new DriveBase();
 	
+/**
+ * Adding selector objects to the dashboard
+ */
+	
 public void smartDashboardInit() {
 	m_chooser.addDefault("Default Auto", kDefaultAuto);
 	m_chooser.addObject("Auto Choice A", AutoChoiceA);
@@ -22,12 +31,20 @@ public void smartDashboardInit() {
 
 	}
 
+/**
+ * Get autonomous selection values from dashboard 
+ */
+
 public void smartDashboardGet() {
 	m_autoSelected = m_chooser.getSelected();
 	//autoSelected = SmartDashboard.getString("Auto Selector",
 	//defaultAuto);
 	System.out.println("Auto selected: " + m_autoSelected);
 	}
+
+/**
+ *Add autonomous selections to dashboard 
+ */
 
 public void smartDashboardAuto() {
 	switch (m_autoSelected) {
