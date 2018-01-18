@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" output="build" path="src"/>
-	<classpathentry kind="var" path="JRE_LIB" rootpath="JRE_SRCROOT" sourcepath="JRE_SRC"/>
-	<classpathentry kind="lib" path="/Users/nigel/wpilib/java/current/lib/WPILib.jar"/>
-	<classpathentry kind="lib" path="/Users/nigel/wpilib/java/current/lib/ntcore.jar"/>
-	<classpathentry kind="lib" path="/Users/nigel/wpilib/java/current/lib/opencv.jar"/>
-	<classpathentry kind="lib" path="/Users/nigel/wpilib/java/current/lib/cscore.jar"/>
-	<classpathentry kind="lib" path="/Users/nigel/wpilib/java/current/lib/wpiutil.jar"/>
+	<classpathentry kind="var" path="JRE_LIB" sourcepath="JRE_SRC"/>
+	<classpathentry kind="lib" path="C:/Users/Jack/wpilib/java/current/lib/cscore.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Jack/wpilib/java/current/lib/cscore-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Jack/wpilib/java/current/lib/ntcore.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Jack/wpilib/java/current/lib/ntcore-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Jack/wpilib/java/current/lib/opencv.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Jack/wpilib/java/current/lib/opencv-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Jack/wpilib/java/current/lib/WPILib.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Jack/wpilib/java/current/lib/WPILib-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Jack/wpilib/java/current/lib/wpiutil.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Jack/wpilib/java/current/lib/wpiutil-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
