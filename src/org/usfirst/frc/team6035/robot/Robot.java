@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 /**
  * @author Jack Gumley
  * Integrated class to manage controllers and game components.
- *
  */
+
 public class Robot extends IterativeRobot { 
      
 	Controller controller = new Controller();
