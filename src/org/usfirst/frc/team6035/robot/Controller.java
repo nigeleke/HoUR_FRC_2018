@@ -25,5 +25,16 @@ public class Controller {
 		return stick.getRawAxis(1);
 	
 	}
+	
+	GrabberOperation getGrabberOperation() {
+		return GrabberOperation.STOP; // TODO: write this method
+		
+	}
+	GrabberArmOperation getGrabberArmOperation() {
+		return GrabberArmOperation.STOP; // TODO: write this method
+	}
+	LiftOperation getLiftOperation() {
+		return LiftOperation.STOP; // TODO: write this method
+	}
 
 }
