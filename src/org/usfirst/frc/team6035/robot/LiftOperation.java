@@ -5,6 +5,7 @@ package org.usfirst.frc.team6035.robot;
  * Describes operations that can be performed on the lift
  */
 
+
 public enum LiftOperation {
 
 	UP, DOWN, STOP
