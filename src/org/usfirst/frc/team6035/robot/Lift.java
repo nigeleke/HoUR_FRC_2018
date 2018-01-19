@@ -7,14 +7,14 @@ import edu.wpi.first.wpilibj.VictorSP;
  * Class for operating the lift
  */
 public class Lift {
-	VictorSP motor = new VictorSP(5);
+	VictorSP motor = new VictorSP(Config.LIFT_CHANNEL);
 	SoftSpeedController controller = new SoftSpeedController(motor);
 	
 	/**
 	 * sets the motor speed to operate the lift
 	 */
 	void up() {
-		controller.set(0.2); // set motor at a positive value to operate the lift
+		controller.set(Config.LIFT_UP_SPEED); // set motor at a positive value to operate the lift
 	}
 
 	/**
@@ -28,7 +28,7 @@ public class Lift {
 	 * drives the motor in reverse to operate the lift in reverse
 	 */
 	void down() {
-		controller.set(-0.2); // set motor in reverse to go down
+		controller.set(Config.LIFT_DOWN_SPEED); // set motor in reverse to go down
 	}
 
 }

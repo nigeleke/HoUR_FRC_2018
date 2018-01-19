@@ -7,14 +7,14 @@ import edu.wpi.first.wpilibj.VictorSP;
  * Class to operate the grabber arm
  */
 public class GrabberArm {
-	VictorSP motor = new VictorSP(4);
+	VictorSP motor = new VictorSP(Config.GRABBER_ARM_CHANNEL);
 	SoftSpeedController controller = new SoftSpeedController(motor);
 	
 	/**
 	 * sets the motor speed to operate the grabber arm
 	 */
 	void up() {
-		controller.set(0.2); // set motor at a positive value to operate the grabber arm
+		controller.set(Config.GRABBER_ARM_UP_SPEED); // set motor at a positive value to operate the grabber arm
 	}
 
 	/**
@@ -28,7 +28,7 @@ public class GrabberArm {
 	 * drives the motor in reverse to operate the grabber arm in reverse
 	 */
 	void down() {
-		controller.set(-0.2); // set motor in reverse to make the grabber arm go down
+		controller.set(Config.GRABBER_ARM_DOWN_SPEED); // set motor in reverse to make the grabber arm go down
 	}
 
 }

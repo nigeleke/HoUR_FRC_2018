@@ -7,14 +7,14 @@ import edu.wpi.first.wpilibj.VictorSP;
  * The grabber class is responsible for running the motor controlling the grabber.
  */
 public class Grabber {
-	VictorSP motor = new VictorSP(3);
+	VictorSP motor = new VictorSP(Config.GRABBER_CHANNEL);
 	SoftSpeedController controller = new SoftSpeedController(motor);
 
 	/**
 	 * is meant to grab the box by running the motor on a medium to fast speed.
 	 */
 	void grab() {
-		controller.set(0.2); // set motor at a lesser speed for robot to keep holding on to the box
+		controller.set(Config.GRABBER_GRAB_SPEED); // set motor at a lesser speed for robot to keep holding on to the box
 	}
 
 	/**
@@ -28,13 +28,13 @@ public class Grabber {
 	 * opens the grabber by reversing the motor.
 	 */
 	void letgo() {
-		controller.set(-0.2);
+		controller.set(Config.GRABBER_LET_GO_SPEED);
 	}
 
 	/**
 	 * helps the grabber hold onto the power-cube by running it at a low speed.
 	 */
 	void hold() {
-		controller.set(0.1);
+		controller.set(Config.GRABBER_HOLD_SPEED);
 	}
 }

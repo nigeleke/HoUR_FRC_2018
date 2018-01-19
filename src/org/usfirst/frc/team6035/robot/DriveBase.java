@@ -13,10 +13,10 @@ import edu.wpi.first.wpilibj.VictorSP;
 public class DriveBase  {
 	// Sparks
 	
-	private Spark BackLeft = new Spark(0);
-	private Spark FrontLeft = new Spark(1);
-	private Spark BackRight = new Spark(2);
-	private Spark FrontRight = new Spark(3);
+	private Spark BackLeft = new Spark(Config.DB_LEFT_BACK_CHANNEL);
+	private Spark FrontLeft = new Spark(Config.DB_LEFT_FRONT_CHANNEL);
+	private Spark BackRight = new Spark(Config.DB_RIGHT_BACK_CHANNEL);
+	private Spark FrontRight = new Spark(Config.DB_RIGHT_FRONT_CHANNEL);
 	
 	
 	/**
