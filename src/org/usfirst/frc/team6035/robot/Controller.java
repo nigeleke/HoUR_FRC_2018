@@ -8,7 +8,12 @@ public class Controller {
 	
 	double getDriveSpeed() {
 		
-		return stick.getRawAxis(0);
+		double SpeedY = stick.getRawAxis(1);
+		double Throttle = ((stick.getThrottle()) * -1 ) + 1;
+		double AltThrottle = (SpeedY) * (Throttle/2);
+		double FinThrottle = (AltThrottle);
+		
+		return FinThrottle;
 	
 	}
 	
