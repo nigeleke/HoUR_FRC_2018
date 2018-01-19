@@ -70,13 +70,13 @@ public class Robot extends IterativeRobot {
 		LiftOperation OP = controller.getLiftOperation();
 		switch (OP) {
 		case UP:
-			// TODO: write code
+			lift.up();
 			break;
 		case DOWN:
-			// TODO: write code
+			lift.down();
 			break;
 		case STOP:
-			// TODO: write code
+			lift.stop();
 			break;
 		}
 	}
@@ -90,13 +90,13 @@ public class Robot extends IterativeRobot {
 		GrabberArmOperation OP = controller.getGrabberArmOperation();
 		switch(OP) {
 		case UP:
-			// TODO: write code
+			grabberArm.up();
 			break;
 		case DOWN:
-			// TODO: write code
+			grabberArm.down();
 			break;
 		case STOP:
-			// TODO: write code
+			grabberArm.stop();
 			break;
 		}
 	}
@@ -110,16 +110,16 @@ public class Robot extends IterativeRobot {
 		GrabberOperation OP = controller.getGrabberOperation();
 		switch(OP) {
 		case GRAB:
-			// TODO: write code
+			grabber.grab();
 			break;
 		case HOLD:
-			// TODO: write code
+			grabber.hold();
 			break;
 		case LET_GO:
-			// TODO: write code
-			break;
+			grabber.letgo();
+			break; 
 		case STOP:
-			// TODO: write code
+			grabber.stop();
 			break;
 		}
 	}
