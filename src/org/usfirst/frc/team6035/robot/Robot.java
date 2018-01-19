@@ -67,6 +67,7 @@ public class Robot extends IterativeRobot {
 	
 	private void operateLift() {
 		
+		LiftOperation OP = controller.getLiftOperation();
 	}
 
 	/**
@@ -75,6 +76,7 @@ public class Robot extends IterativeRobot {
 	
 	private void operateGrabberArm() {
 		
+		GrabberArmOperation OP = controller.getGrabberArmOperation();
 	}
 	
 	/**
@@ -83,6 +85,7 @@ public class Robot extends IterativeRobot {
 	
 	private void operateGrabber() {
 		
+		GrabberOperation OP = controller.getGrabberOperation();
 	}
 
 	@Override
