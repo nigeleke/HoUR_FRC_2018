@@ -68,6 +68,17 @@ public class Robot extends IterativeRobot {
 	private void operateLift() {
 		
 		LiftOperation OP = controller.getLiftOperation();
+		switch (OP) {
+		case UP:
+			// TODO: write code
+			break;
+		case DOWN:
+			// TODO: write code
+			break;
+		case STOP:
+			// TODO: write code
+			break;
+		}
 	}
 
 	/**
@@ -77,6 +88,17 @@ public class Robot extends IterativeRobot {
 	private void operateGrabberArm() {
 		
 		GrabberArmOperation OP = controller.getGrabberArmOperation();
+		switch(OP) {
+		case UP:
+			// TODO: write code
+			break;
+		case DOWN:
+			// TODO: write code
+			break;
+		case STOP:
+			// TODO: write code
+			break;
+		}
 	}
 	
 	/**
@@ -86,6 +108,20 @@ public class Robot extends IterativeRobot {
 	private void operateGrabber() {
 		
 		GrabberOperation OP = controller.getGrabberOperation();
+		switch(OP) {
+		case GRAB:
+			// TODO: write code
+			break;
+		case HOLD:
+			// TODO: write code
+			break;
+		case LET_GO:
+			// TODO: write code
+			break;
+		case STOP:
+			// TODO: write code
+			break;
+		}
 	}
 
 	@Override
