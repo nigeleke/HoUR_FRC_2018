@@ -21,7 +21,7 @@ public class Lift {
 	 * stops the lift from moving by stopping the motor.
 	 */
 	void stop() {
-		controller.set(0); // set motor speed at 0 to stop
+		controller.stopMotor(); // set motor speed at 0 to stop
 	}
 
 	/**

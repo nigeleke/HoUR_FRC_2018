@@ -21,7 +21,7 @@ public class Grabber {
 	 * stops the grabber from moving by stopping the motor.
 	 */
 	void stop() {
-		controller.set(0);
+		controller.stopMotor();
 	}
 
 	/**
