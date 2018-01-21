@@ -10,66 +10,60 @@ import edu.wpi.first.wpilibj.*;
 public class DriveBase  {
 	// Sparks
 	
-	private Spark BackLeft = new Spark(Config.DB_LEFT_BACK_CHANNEL);
-	private Spark FrontLeft = new Spark(Config.DB_LEFT_FRONT_CHANNEL);
-	private Spark BackRight = new Spark(Config.DB_RIGHT_BACK_CHANNEL);
-	private Spark FrontRight = new Spark(Config.DB_RIGHT_FRONT_CHANNEL);
+	private Spark Backleft = new Spark(Config.DB_LEFT_BACK_CHANNEL);
+	private Spark Frontleft = new Spark(Config.DB_LEFT_FRONT_CHANNEL);
+	private Spark Backright = new Spark(Config.DB_RIGHT_BACK_CHANNEL);
+	private Spark Frontright = new Spark(Config.DB_RIGHT_FRONT_CHANNEL);
 	
 	
 	/**
 	 * Motor group for left side
 	 */
 	
-	private SpeedControllerGroup Left = new SpeedControllerGroup(BackLeft, FrontLeft);
+	private SpeedController left = new SpeedControllerGroup(Backleft, Frontleft);
 	
 	/**
 	 * Motor group for right side 
 	 */
 	
-	private SpeedControllerGroup Right = new SpeedControllerGroup(BackRight, FrontRight);
+	private SpeedController right = new SpeedControllerGroup(Backright, Frontright);
 	
 	
 	public void drive(double speed, double direction) {
 	    if((speed != 0) && (direction == 0)){
-	    	// Driving Straight Forward
-	        Left.set(speed);
-	        Right.set(speed);
+	    	// Driving straight forward
+	        left.set(speed);
+	        right.set(speed);
 	        System.out.print("Driving straight");
 	    }
 		if ((speed == 0) && (direction > 0)){
-			// Turning Right Stationary
-			Left.set(direction);
-			Right.set(-direction);
-			System.out.print("Turning right while stationary");
-		}
-		if ((speed == 0) && (direction < 0)) {
-			// Turning Left Stationary
-			Left.set(direction);
-			Right.set(-direction);
-			System.out.print("Turning left while stationary");
+			// Turning right stationary
+			left.set(direction);
+			right.set(-direction);
+			System.out.print("Turning while stationary");
 		}
 		if ((speed > 0) && (direction > 0)) {
-			// Turning Right with Speed
-			Left.set(speed);
-			Right.set(-direction);
+			// Turning right with speed
+			left.set(speed);
+			right.set(-direction);
 			System.out.print("Turning right with speed");
 		}
 		if ((speed > 0) && (direction < 0)) {
-			// Turning Left with Speed
-			Left.set(direction);
-			Right.set(speed);
+			// Turning left with speed
+			left.set(direction);
+			right.set(speed);
 			System.out.print("Turning left with speed");
 		}
 		if ((speed < 0) && (direction > 0)) {
-			// Turning Right in Reverse
-			Left.set(-direction);
-			Right.set(speed);
+			// Turning right in reverse
+			left.set(-direction);
+			right.set(speed);
 			System.out.print("Turning right while reversing");
 		}
 		if ((speed < 0) && (direction < 0)) {
-			// Turning Left in Reverse
-			Left.set(speed);
-			Right.set(direction);
+			// Turning left in reverse
+			left.set(speed);
+			right.set(direction);
 			System.out.print("Turning left while reversing");
 		}
 		
