@@ -85,6 +85,11 @@ public class Controller {
 		}
 		return LiftOperation.STOP; 
 	}
+	
+	/**
+	 * Return operation for climber based off controller input
+	 */
+	
 	ClimberOperation getClimberOperation() {
 		int dpadVal = xbox.getPOV();
 		boolean goUP = (135 <= dpadVal && dpadVal < 225);
