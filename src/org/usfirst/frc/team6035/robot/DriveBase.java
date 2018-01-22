@@ -29,48 +29,22 @@ public class DriveBase  {
 	private SpeedController right = new SoftSpeedController(new SpeedControllerGroup(Backright, Frontright));
 	
 	
+	/**
+	 * @author Gabriel Love
+	 * @param speed = the the value returned by the y axis on the joystick
+	 * @param direction = the value returned by the x axis on the joystick
+	 */
 	public void drive(double speed, double direction) {
-		System.out.println(speed+" "+direction);
-		right.set(speed);
-		return;
-		/*
-	    if((speed != 0) && (direction == 0)){
-	    	// Driving straight forward
-	        left.set(speed);
-	        right.set(speed);
-	        System.out.println("Driving straight");
-	    }
-		if ((speed == 0) && (direction > 0)){
-			// Turning right stationary
-			left.set(direction);
-			right.set(-direction);
-			System.out.println("Turning while stationary");
-		}
-		if ((speed > 0) && (direction > 0)) {
-			// Turning right with speed
-			left.set(speed);
-			right.set(-direction);
-			System.out.println("Turning right with speed");
-		}
-		if ((speed > 0) && (direction < 0)) {
-			// Turning left with speed
-			left.set(direction);
-			right.set(speed);
-			System.out.println("Turning left with speed");
-		}
-		if ((speed < 0) && (direction > 0)) {
-			// Turning right in reverse
-			left.set(-direction);
-			right.set(speed);
-			System.out.println("Turning right while reversing");
-		}
-		if ((speed < 0) && (direction < 0)) {
-			// Turning left in reverse
-			left.set(speed);
-			right.set(direction);
-			System.out.println("Turning left while reversing");
-		}
-		*/
+
+		double deltaSpeed = (speed >= 0.0 ? (Math.atan(speed/direction)*2)-1:(Math.atan(speed/direction)*2)+1);
+	    double newLeftSpeed = (speed >= 0.0 ? speed*deltaSpeed:speed*-deltaSpeed);
+	    double newRightSpeed = (speed >= 0.0 ? speed*-deltaSpeed:speed*deltaSpeed);
+	    
+	    left.set(newLeftSpeed);
+	    right.set(newRightSpeed);
+	    
+	    System.out.println("Speed Left: " + newLeftSpeed + " Speed Right " + newRightSpeed);
+		
 	}
 
 }

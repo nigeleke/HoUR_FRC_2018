@@ -16,16 +16,22 @@ public class Controller {
 	DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL);
 	
 	
-	double getDriveSpeed() {
-		
-		double SpeedY = stick.getY();
-		double Throttle = ((stick.getThrottle()) * -1 ) + 1;
-		double AltThrottle = (SpeedY) * (Throttle/2);
-		double FinThrottle = (AltThrottle);
-		System.out.println("Speed "+SpeedY+" Throttle "+Throttle+" AltThrottle "+AltThrottle+" FinThrottle "+FinThrottle);
-		return FinThrottle;
-	
-	}
+	  double getDriveSpeed() {
+
+		    double speedY = stick.getY() * -1;
+		    double throttle = ((stick.getThrottle()) * -1 );
+		    double normalisedThrottle =  ((throttle + 1.0) / 2.0);
+		    double throttledSpped = speedY * normalisedThrottle;
+
+		    System.out.println("speedY " + speedY +
+		        " throttle " + throttle +
+		        " normalisedThrottle " + normalisedThrottle +
+		        " throttledSpeed " + throttledSpped);
+
+		    return throttledSpped;
+
+		  }
+
 	
 	double getDriveDirection() {
 		
