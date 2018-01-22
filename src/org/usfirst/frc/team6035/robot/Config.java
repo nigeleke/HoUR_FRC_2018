@@ -31,8 +31,7 @@ public class Config {
 	static double GRABBER_GRAB_SPEED = 0.2;
 	static double GRABBER_LET_GO_SPEED = -0.2;
 	static double GRABBER_HOLD_SPEED = 0.1;
-	static double CLIMBER_UP_SPEED = 0.2;
-	static double CLIMBER_DOWN_SPEED = -0.2;
+	static double CLIMBER_UP_SPEED = 0.615;
 	static double LIFT_COMPENSATE_SPEED = -0.2;
 	
 	// Times

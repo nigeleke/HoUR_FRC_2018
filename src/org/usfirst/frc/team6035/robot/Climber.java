@@ -24,12 +24,4 @@ public class Climber {
 	void stop() {
 		controller.stopMotor(); // set motor speed at 0 to stop
 	}
-
-	/**
-	 * drives the motor in reverse to operate the climber in reverse
-	 */
-	void down() {
-		controller.set(Config.CLIMBER_DOWN_SPEED); // set motor in reverse to go down
-	}
-
 }
