@@ -71,12 +71,12 @@ public class Robot extends IterativeRobot {
 		};
 
 		cmd.start();
+		endGameCountdown.start();
+		endGameCountdown.reset();
 	}
 
 	@Override
 	public void teleopPeriodic() {
-		endGameCountdown.start();
-		endGameCountdown.reset();
 		driveDriveBase();
 		operateLift();
 		operateGrabberArm();
