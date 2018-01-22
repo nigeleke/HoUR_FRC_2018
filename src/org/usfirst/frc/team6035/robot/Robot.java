@@ -77,6 +77,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopPeriodic() {
+		System.out.println("TeleOp Periodic");
 		driveDriveBase();
 		operateLift();
 		operateGrabberArm();
@@ -91,9 +92,10 @@ public class Robot extends IterativeRobot {
 	 */
 
 	private void driveDriveBase() {
-
+		System.out.println("driveDriveBase");
 		double speed = controller.getDriveSpeed();
 		double direction = controller.getDriveDirection();
+		System.out.println(speed+"  "+direction);
 		driveBase.drive(speed, direction);
 
 	}
