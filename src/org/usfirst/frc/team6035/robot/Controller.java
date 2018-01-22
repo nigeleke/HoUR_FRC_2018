@@ -18,18 +18,18 @@ public class Controller {
 	
 	double getDriveSpeed() {
 		
-		double SpeedY = stick.getRawAxis(1);
+		double SpeedY = stick.getY();
 		double Throttle = ((stick.getThrottle()) * -1 ) + 1;
 		double AltThrottle = (SpeedY) * (Throttle/2);
 		double FinThrottle = (AltThrottle);
-		
+		System.out.println("Speed "+SpeedY+" Throttle "+Throttle+" AltThrottle "+AltThrottle+" FinThrottle "+FinThrottle);
 		return FinThrottle;
 	
 	}
 	
 	double getDriveDirection() {
 		
-		return stick.getRawAxis(1);
+		return stick.getX();
 	
 	}
 	
