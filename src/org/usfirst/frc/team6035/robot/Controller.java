@@ -1,6 +1,8 @@
 package org.usfirst.frc.team6035.robot;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 
@@ -14,6 +16,7 @@ public class Controller {
 	Joystick stick = new Joystick(Config.JOYSTICK_PORT);
 	XboxController xbox = new XboxController(Config.XBOX_PORT);
 	DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL);
+	
 	
 	
 	  double getDriveSpeed() {
@@ -48,7 +51,7 @@ public class Controller {
 		boolean grabberMicroSwitchClosed = grabberLimitSwitch.get();
 		
 		if ((leftButtonPressed) && (!rightButtonPressed)) {
-			if (grabberMicroSwitchClosed = false) {
+			if (grabberMicroSwitchClosed == false) {
 				return GrabberOperation.GRAB;
 			}
 			else {
@@ -97,12 +100,13 @@ public class Controller {
 	 */
 	
 	ClimberOperation getClimberOperation() {
-		int dpadVal = xbox.getPOV();
-		boolean goUP = (135 <= dpadVal && dpadVal < 225);
-		if (goUP) {
+		boolean leftBumperPressed = xbox.getBumper(GenericHID.Hand.kLeft);
+		boolean rightBumperPressed = xbox.getBumper(GenericHID.Hand.kRight);
+		boolean bothBumpersPressed = leftBumperPressed && rightBumperPressed;
+		if(bothBumpersPressed) {
 			return ClimberOperation.UP;
 		}
-			return ClimberOperation.STOP;
+		return ClimberOperation.STOP;
 	}
 
 }
