@@ -41,5 +41,8 @@ public class Controller {
 	LiftOperation getLiftOperation() {
 		return LiftOperation.STOP; // TODO: write this method
 	}
+	ClimberOperation getClimberOperation() {
+		return ClimberOperation.STOP; // TODO: write this method
+	}
 
 }

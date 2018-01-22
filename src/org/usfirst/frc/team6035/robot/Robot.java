@@ -9,14 +9,13 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.*;
 
-
 /**
- * @author Jack Gumley
- * Integrated class to manage controllers and game components.
+ * @author Jack Gumley Integrated class to manage controllers and game
+ *         components.
  */
 
-public class Robot extends IterativeRobot { 
-    
+public class Robot extends IterativeRobot {
+
 	DriverStation driverStation = DriverStation.getInstance();
 
 	Controller controller = new Controller();
@@ -24,8 +23,8 @@ public class Robot extends IterativeRobot {
 	Grabber grabber = new Grabber();
 	GrabberArm grabberArm = new GrabberArm();
 	DriveBase driveBase = new DriveBase();
-	
-	
+	Climber climber = new Climber();
+
 	@Override
 	public void robotInit() {
 		System.out.println(">>> robotInit");
@@ -34,7 +33,7 @@ public class Robot extends IterativeRobot {
 		System.out.println("    driveStation::location " + driverStation.getLocation());
 		System.out.println("<<< robotInit");
 	}
-	
+
 	@Override
 	public void autonomousInit() {
 		System.out.println(">>> autonomousInit");
@@ -47,14 +46,14 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 
-		}
-	
+	}
+
 	@Override
 	public void teleopInit() {
 		Command cmd = new Command() {
-			
+
 			private int i = 0;
-			
+
 			@Override
 			protected void execute() {
 				i++;
@@ -67,40 +66,43 @@ public class Robot extends IterativeRobot {
 				System.out.println("execute::isFinished: " + finished);
 				return finished;
 			}
-			
+
 		};
-		
+
 		cmd.start();
 	}
 
 	@Override
 	public void teleopPeriodic() {
-	
+
 		driveDriveBase();
 		operateLift();
 		operateGrabberArm();
 		operateGrabber();
-		
+		operateClimber();
+
 	}
-	
+
 	/**
-	 * Asking the controller which speed and direction to go, telling the drive base to drive.
+	 * Asking the controller which speed and direction to go, telling the drive base
+	 * to drive.
 	 */
-	
+
 	private void driveDriveBase() {
-		
-	double speed = controller.getDriveSpeed();
-	double direction = controller.getDriveDirection();
-	driveBase.drive(speed, direction);
-	
+
+		double speed = controller.getDriveSpeed();
+		double direction = controller.getDriveDirection();
+		driveBase.drive(speed, direction);
+
 	}
-	
+
 	/**
-	 * Getting instructions from controller as to which direction to operate the lift
+	 * Getting instructions from controller as to which direction to operate the
+	 * lift
 	 */
-	
+
 	private void operateLift() {
-		
+
 		LiftOperation OP = controller.getLiftOperation();
 		switch (OP) {
 		case UP:
@@ -112,17 +114,21 @@ public class Robot extends IterativeRobot {
 		case STOP:
 			lift.stop();
 			break;
+		default:
+			System.out.println("Error in operateLift Switch");
+			break;
 		}
 	}
 
 	/**
-	 * Get instructions from controller to as which direction to operate the grabber arm.
+	 * Get instructions from controller to as which direction to operate the grabber
+	 * arm.
 	 */
-	
+
 	private void operateGrabberArm() {
-		
+
 		GrabberArmOperation OP = controller.getGrabberArmOperation();
-		switch(OP) {
+		switch (OP) {
 		case UP:
 			grabberArm.up();
 			break;
@@ -132,17 +138,21 @@ public class Robot extends IterativeRobot {
 		case STOP:
 			grabberArm.stop();
 			break;
+		default:
+			System.out.println("Error in operateGrabberArm Switch");
+			break;
 		}
 	}
-	
+
 	/**
-	 * Get instructions from controller to as which direction to operate the grabber.
+	 * Get instructions from controller to as which direction to operate the
+	 * grabber.
 	 */
-	
+
 	private void operateGrabber() {
-		
+
 		GrabberOperation OP = controller.getGrabberOperation();
-		switch(OP) {
+		switch (OP) {
 		case GRAB:
 			grabber.grab();
 			break;
@@ -151,15 +161,35 @@ public class Robot extends IterativeRobot {
 			break;
 		case LET_GO:
 			grabber.letgo();
-			break; 
+			break;
 		case STOP:
 			grabber.stop();
+			break;
+		default:
+			System.out.println("Error in operateGrabber Switch");
+			break;
+		}
+	}
+	
+	private void operateClimber() {
+		ClimberOperation OP = controller.getClimberOperation();
+		switch (OP) {
+		case UP:
+			climber.up();
+			break;
+		case DOWN:
+			climber.down();
+			break;
+		case STOP:
+			climber.stop();
+		default:
+			System.out.println("Error in operateClimber Switch");
 			break;
 		}
 	}
 
 	@Override
 	public void testPeriodic() {
-		//probably not going to be used but may be usefull...
+		// probably not going to be used but may be useful...
 	}
 }
