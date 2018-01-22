@@ -36,7 +36,7 @@ public class DriveBase  {
 	 */
 	public void drive(double speed, double direction) {
 
-		double deltaSpeed = (speed >= 0.0 ? (Math.atan(speed/direction)*2)-1:(Math.atan(speed/direction)*2)+1);
+		double deltaSpeed = (speed >= 0.0 ? ((Math.atan(speed/direction)/90)*2)-1:(Math.atan(speed/direction)*2)+1);
 	    double newLeftSpeed = (speed >= 0.0 ? speed*deltaSpeed:speed*-deltaSpeed);
 	    double newRightSpeed = (speed >= 0.0 ? speed*-deltaSpeed:speed*deltaSpeed);
 	    
