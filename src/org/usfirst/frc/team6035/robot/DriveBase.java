@@ -31,8 +31,8 @@ public class DriveBase  {
 	
 	/**
 	 * @author Gabriel Love
-	 * @param speed = the the value returned by the y axis on the joystick
-	 * @param direction = the value returned by the x axis on the joystick
+	 * @param speed = the the value we use to set the speed of the robot in the backwards/forwards direction
+	 * @param direction = the value we assign the amount we differ from a straight path
 	 */
 	public void drive(double speed, double direction) {
 
