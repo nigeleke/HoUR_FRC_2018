@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.XboxController;
 
 public class Controller {
 
-	Joystick stick = new Joystick(0);
-	XboxController xbox = new XboxController(1);
-	DigitalInput grabberLimitSwitch = new DigitalInput(1);
+	Joystick stick = new Joystick(Config.JOYSTICK_PORT);
+	XboxController xbox = new XboxController(Config.XBOX_PORT);
+	DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL);
 	
 	
 	double getDriveSpeed() {
@@ -86,7 +86,12 @@ public class Controller {
 		return LiftOperation.STOP; 
 	}
 	ClimberOperation getClimberOperation() {
-		return ClimberOperation.STOP; // TODO: write this method
+		int dpadVal = xbox.getPOV();
+		boolean goUP = (135 <= dpadVal && dpadVal < 225);
+		if (goUP) {
+			return ClimberOperation.UP;
+		}
+			return ClimberOperation.STOP;
 	}
 
 }

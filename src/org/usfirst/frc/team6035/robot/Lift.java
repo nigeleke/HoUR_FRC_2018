@@ -30,5 +30,8 @@ public class Lift {
 	void down() {
 		controller.set(Config.LIFT_DOWN_SPEED); // set motor in reverse to go down
 	}
-
+	
+	void compensate() {
+		controller.set(Config.LIFT_COMPENSATE_SPEED);
+	}
 }

@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.*;
 public class Robot extends IterativeRobot {
 
 	DriverStation driverStation = DriverStation.getInstance();
+	Timer endGameCountdown = new Timer();
 
 	Controller controller = new Controller();
 	Lift lift = new Lift();
@@ -74,7 +75,8 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopPeriodic() {
-
+		endGameCountdown.start();
+		endGameCountdown.reset();
 		driveDriveBase();
 		operateLift();
 		operateGrabberArm();
@@ -173,18 +175,20 @@ public class Robot extends IterativeRobot {
 	
 	private void operateClimber() {
 		ClimberOperation OP = controller.getClimberOperation();
+		if(endGameCountdown.get() >= 105)
 		switch (OP) {
 		case UP:
 			climber.up();
-			break;
-		case DOWN:
-			climber.down();
+			lift.compensate();
 			break;
 		case STOP:
 			climber.stop();
 		default:
 			System.out.println("Error in operateClimber Switch");
 			break;
+		}
+		else {
+			climber.stop();
 		}
 	}
 

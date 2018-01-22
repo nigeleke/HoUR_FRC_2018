@@ -5,5 +5,5 @@ package org.usfirst.frc.team6035.robot;
  * Describes all operations available to the Climber Class
  */
 public enum ClimberOperation {
-		UP, DOWN, STOP
+		UP, STOP
 }
