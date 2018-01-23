@@ -50,7 +50,6 @@ public class Controller {
 		boolean rightButtonPressed = xbox.getBButton();
 		boolean grabberMicroSwitchClosed = grabberLimitSwitch.get();
 		
-		System.out.println("Controller getGrabberOperation "+leftButtonPressed+" "+rightButtonPressed);
 		if ((leftButtonPressed) && (!rightButtonPressed)) {
 			/*
 			if (!grabberMicroSwitchClosed) {

@@ -42,7 +42,6 @@ public class DriveBase  {
 	 */
 	public void manualDrive(double speed, double direction) {
 		drive.arcadeDrive(speed, direction);
-		System.out.println("Left: " + this.left + "Right: " + this.right);
 	}
 	
 	public void autonomousDrive(double leftSpeed, double rightSpeed) {

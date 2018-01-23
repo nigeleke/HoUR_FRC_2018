@@ -29,21 +29,11 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void robotInit() {
-		System.out.println(">>> robotInit");
-		System.out.println("    driveStation::alliance " + driverStation.getAlliance());
-		System.out.println("    driveStation::gameSpecificMessage " + driverStation.getGameSpecificMessage());
-		System.out.println("    driveStation::location " + driverStation.getLocation());
-		System.out.println("<<< robotInit");
 		dashboard.dashboardInit();
 	}
 
 	@Override
 	public void autonomousInit() {
-		System.out.println(">>> autonomousInit");
-		System.out.println("    driveStation::alliance " + driverStation.getAlliance());
-		System.out.println("    driveStation::gameSpecificMessage " + driverStation.getGameSpecificMessage());
-		System.out.println("    driveStation::location " + driverStation.getLocation());
-		System.out.println("<<< autonomousInit");
 		dashboard.dashboardGetAutoSelection();
 		
 	}
@@ -55,39 +45,17 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-		Command cmd = new Command() {
-
-			private int i = 0;
-
-			@Override
-			protected void execute() {
-				i++;
-				System.out.println("execute::iteration: " + i);
-			}
-
-			@Override
-			protected boolean isFinished() {
-				boolean finished = i >= 10;
-				System.out.println("execute::isFinished: " + finished);
-				return finished;
-			}
-
-		};
-
-		cmd.start();
 		endGameCountdown.start();
 		endGameCountdown.reset();
 	}
 
 	@Override
 	public void teleopPeriodic() {
-		System.out.println("TeleOp Periodic");
 		driveDriveBase();
 		operateLift();
 		operateGrabberArm();
 		operateGrabber();
 		operateClimber();
-
 	}
 
 	/**
@@ -96,10 +64,8 @@ public class Robot extends IterativeRobot {
 	 */
 
 	private void driveDriveBase() {
-		System.out.println("driveDriveBase");
 		double speed = controller.getDriveSpeed();
 		double direction = controller.getDriveDirection();
-		System.out.println(speed+"  "+direction);
 		driveBase.manualDrive(speed, direction);
 
 	}
@@ -158,7 +124,6 @@ public class Robot extends IterativeRobot {
 	 */
 
 	private void operateGrabber() {
-		System.out.println("Robot operateGrabber");
 		GrabberOperation OP = controller.getGrabberOperation();
 		switch (OP) {
 		case GRAB:
@@ -189,6 +154,7 @@ public class Robot extends IterativeRobot {
 			break;
 		case STOP:
 			climber.stop();
+			break;
 		default:
 			System.out.println("Error in operateClimber Switch");
 			break;
