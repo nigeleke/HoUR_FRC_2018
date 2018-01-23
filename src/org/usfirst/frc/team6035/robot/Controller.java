@@ -24,21 +24,21 @@ public class Controller {
 		    double speedY = stick.getY() * -1;
 		    double throttle = ((stick.getThrottle()) * -1 );
 		    double normalisedThrottle =  ((throttle + 1.0) / 2.0);
-		    double throttledSpped = speedY * normalisedThrottle;
-		    /*
-		    System.out.println("speedY " + speedY +
-		        " throttle " + throttle +
-		        " normalisedThrottle " + normalisedThrottle +
-		        " throttledSpeed " + throttledSpped);
-			*/
-		    return throttledSpped;
+		    normalisedThrottle = (normalisedThrottle < 0.25? 0.25 : normalisedThrottle);
+		    double throttledSpeed = speedY * normalisedThrottle;
+		    return throttledSpeed;
 
 		  }
 
 	
 	double getDriveDirection() {
 		
-		return stick.getX();
+		double twist = stick.getZ();
+		double tilt = stick.getX();
+		boolean twistOrTilt = stick.getRawButton(2);
+		double direction = (twistOrTilt? twist : tilt);
+		
+		return direction;
 	
 	}
 	
