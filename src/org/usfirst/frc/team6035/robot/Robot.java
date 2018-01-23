@@ -25,6 +25,7 @@ public class Robot extends IterativeRobot {
 	GrabberArm grabberArm = new GrabberArm();
 	DriveBase driveBase = new DriveBase();
 	Climber climber = new Climber();
+	Dashboard dashboard = new Dashboard();
 
 	@Override
 	public void robotInit() {
@@ -33,6 +34,7 @@ public class Robot extends IterativeRobot {
 		System.out.println("    driveStation::gameSpecificMessage " + driverStation.getGameSpecificMessage());
 		System.out.println("    driveStation::location " + driverStation.getLocation());
 		System.out.println("<<< robotInit");
+		dashboard.dashboardInit();
 	}
 
 	@Override
@@ -42,11 +44,13 @@ public class Robot extends IterativeRobot {
 		System.out.println("    driveStation::gameSpecificMessage " + driverStation.getGameSpecificMessage());
 		System.out.println("    driveStation::location " + driverStation.getLocation());
 		System.out.println("<<< autonomousInit");
+		dashboard.dashboardGetAutoSelection();
+		
 	}
 
 	@Override
 	public void autonomousPeriodic() {
-
+		dashboard.dashboardAutoCase();
 	}
 
 	@Override

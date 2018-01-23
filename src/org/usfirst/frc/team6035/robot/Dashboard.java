@@ -9,11 +9,12 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
 
 public class Dashboard {
 	
+	
 	private int mode = 1; // initialize default mode
-	private SendableChooser autoCommand;
+	private SendableChooser<Integer> autoCommand;
 	
 	public void dashboardInit() {
-		autoCommand = new SendableChooser();
+		autoCommand = new SendableChooser<Integer>();
 		autoCommand.addDefault("DriveStraight", 1);
 		autoCommand.addObject("LeftToLeftBlue", 2);
 		autoCommand.addObject("LeftToRightBlue", 3);
@@ -30,7 +31,7 @@ public class Dashboard {
 		SmartDashboard.putData("Autonomous Selecter", autoCommand);
 	}
 	
-	public void dashboardAutoInit() {
+	public void dashboardGetAutoSelection() {
 		mode = (int) autoCommand.getSelected();
 	}
 	
