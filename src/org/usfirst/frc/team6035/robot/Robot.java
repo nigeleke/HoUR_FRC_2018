@@ -158,7 +158,7 @@ public class Robot extends IterativeRobot {
 	 */
 
 	private void operateGrabber() {
-
+		System.out.println("Robot operateGrabber");
 		GrabberOperation OP = controller.getGrabberOperation();
 		switch (OP) {
 		case GRAB:
