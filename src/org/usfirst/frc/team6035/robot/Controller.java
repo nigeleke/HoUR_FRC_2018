@@ -25,12 +25,12 @@ public class Controller {
 		    double throttle = ((stick.getThrottle()) * -1 );
 		    double normalisedThrottle =  ((throttle + 1.0) / 2.0);
 		    double throttledSpped = speedY * normalisedThrottle;
-
+		    /*
 		    System.out.println("speedY " + speedY +
 		        " throttle " + throttle +
 		        " normalisedThrottle " + normalisedThrottle +
 		        " throttledSpeed " + throttledSpped);
-
+			*/
 		    return throttledSpped;
 
 		  }
@@ -46,17 +46,21 @@ public class Controller {
 	 * Return operation for the grabber based off controller input
 	 */
 	GrabberOperation getGrabberOperation() {
-		boolean leftButtonPressed = xbox.getXButtonPressed();
-		boolean rightButtonPressed = xbox.getBButtonPressed();
+		boolean leftButtonPressed = xbox.getXButton();
+		boolean rightButtonPressed = xbox.getBButton();
 		boolean grabberMicroSwitchClosed = grabberLimitSwitch.get();
 		
+		System.out.println("Controller getGrabberOperation "+leftButtonPressed+" "+rightButtonPressed);
 		if ((leftButtonPressed) && (!rightButtonPressed)) {
-			if (grabberMicroSwitchClosed == false) {
+			/*
+			if (!grabberMicroSwitchClosed) {
 				return GrabberOperation.GRAB;
 			}
 			else {
 				return GrabberOperation.HOLD;
 			}
+			*/
+			return GrabberOperation.GRAB;
 		}
 		if ((rightButtonPressed) && (!leftButtonPressed)) {
 		return GrabberOperation.LET_GO;
@@ -67,8 +71,8 @@ public class Controller {
 	 * Return operation for grabber arm based off controller input
 	 */
 	GrabberArmOperation getGrabberArmOperation() {
-		boolean topButtonPressed = xbox.getYButtonPressed();
-		boolean bottomButtonPressed = xbox.getAButtonPressed();
+		boolean topButtonPressed = xbox.getYButton();
+		boolean bottomButtonPressed = xbox.getAButton();
 		
 		if ((topButtonPressed) && (!bottomButtonPressed)) {
 			return GrabberArmOperation.UP;
