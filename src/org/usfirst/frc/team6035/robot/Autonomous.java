@@ -14,6 +14,7 @@ public class Autonomous extends IterativeRobot {
 	public void LeftToLeft() {
 		for (int i = 0; i < leftToLeft.nSteps(); i++) {
 			driveBase.autonomousDrive(leftToLeft.LeftSpeed(i)/9, leftToLeft.RightSpeed(i)/9);
+			System.out.println(leftToLeft.LeftSpeed(i)/9);
 		}
 	}
 	public void LeftToRight() {

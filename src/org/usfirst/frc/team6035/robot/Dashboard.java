@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
 
 public class Dashboard {
 	
-	
+	Autonomous auto;
 	private int mode = 1; // initialize default mode
 	private SendableChooser<Integer> autoCommand;
 	
@@ -38,43 +38,43 @@ public class Dashboard {
 	public void dashboardAutoCase() {
 		switch(mode) {
 		case 1: 
-		//TODO: add auto code for driving straight
+		auto.Straight();
 		break;
 		case 2: 
-		//TODO: add auto code for LeftToLeftBlue
+		auto.LeftToLeft();
 		break;
 		case 3: 
-		//TODO: add auto code for LeftToRightBlue
+		auto.LeftToRight();
 		break;
 		case 4: 
-		//TODO: add auto code for MiddleToLeftBlue
+		auto.MiddleToLeft();
 		break;
 		case 5: 
-		//TODO: add auto code MiddleToRightBlue
+		auto.MiddleToRight();
 		break;
 		case 6: 
-		//TODO: add auto code RightToLeftBlue
+		auto.RightToLeft();
 		break;
 		case 7: 
-		//TODO: add auto code RightToRightBlue
+		auto.RightToRight();
 		break;
 		case 8: 
-		//TODO: add auto code LeftToLeftRed
+		auto.RightToRight();
 		break;
 		case 9: 
-		//TODO: add auto code LeftToRightRed
+		auto.RightToLeft();
 		break;
 		case 10: 
-		//TODO: add auto code MiddleToLeftRed
+		auto.MiddleToRight();
 		break;
 		case 11: 
-		//TODO: add auto code MiddleToRightRed
+		auto.MiddleToLeft();
 		break;
 		case 12: 
-		//TODO: add auto code RightToLeftRed
+		auto.LeftToRight();
 		break;
 		case 13: 
-		//TODO: add auto code RightToRightRed
+		auto.LeftToLeft();
 		break;
 		
 		}
