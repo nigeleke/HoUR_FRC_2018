@@ -96,7 +96,7 @@ public class Robot extends IterativeRobot {
 		double speed = controller.getDriveSpeed();
 		double direction = controller.getDriveDirection();
 		System.out.println(speed+"  "+direction);
-		driveBase.drive(speed, direction);
+		driveBase.manualDrive(speed, direction);
 
 	}
 

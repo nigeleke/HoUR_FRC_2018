@@ -1,6 +1,7 @@
 package org.usfirst.frc.team6035.robot;
 
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
  * @author Gabriel Love
@@ -28,23 +29,23 @@ public class DriveBase  {
 	
 	private SpeedController right = new SoftSpeedController(new SpeedControllerGroup(Backright, Frontright));
 	
+	/**
+	 * Calling the differential drive from this method
+	 */
+	
+	private DifferentialDrive drive = new DifferentialDrive(left,right);
 	
 	/**
 	 * @author Gabriel Love
 	 * @param speed = the the value we use to set the speed of the robot in the backwards/forwards direction
 	 * @param direction = the value we assign the amount we differ from a straight path
 	 */
-	public void drive(double speed, double direction) {
-
-		double deltaSpeed = (speed >= 0.0 ? ((Math.atan(speed/direction)/90)*2)-1:(Math.atan(speed/direction)*2)+1);
-	    double newLeftSpeed = (speed >= 0.0 ? speed*deltaSpeed:speed*-deltaSpeed);
-	    double newRightSpeed = (speed >= 0.0 ? speed*-deltaSpeed:speed*deltaSpeed);
-	    
-	    left.set(newLeftSpeed);
-	    right.set(newRightSpeed);
-	    
-	    System.out.println("Speed Left: " + newLeftSpeed + " Speed Right " + newRightSpeed);
-		
+	public void manualDrive(double speed, double direction) {
+		drive.arcadeDrive(speed, direction);
+	}
+	
+	public void autonomousDrive(double leftSpeed, double rightSpeed) {
+	drive.tankDrive(leftSpeed, rightSpeed);
 	}
 
 }
