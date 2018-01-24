@@ -86,7 +86,7 @@ public class Controller {
 	 */
 	LiftOperation getLiftOperation() {
 		int dpadVal = xbox.getPOV();
-		boolean goUp = (325 <= dpadVal && dpadVal < 360) || (0 <= dpadVal && dpadVal < 45);
+		boolean goUp = (325 <= dpadVal && dpadVal < 360) || (0 <= dpadVal && dpadVal <= 45);
 		boolean goDown = (135 <= dpadVal && dpadVal < 225);
 		
 		if ((goUp) && (!goDown)) {
