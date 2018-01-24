@@ -5,7 +5,6 @@ package org.usfirst.frc.team6035.robot;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.*;
 import org.usfirst.frc.team6035.robot.gamecomponents.*;
 import org.usfirst.frc.team6035.robot.auto.*;
@@ -27,6 +26,7 @@ public class Robot extends IterativeRobot {
 	DriveBase driveBase = new DriveBase();
 	Climber climber = new Climber();
 	Dashboard dashboard = new Dashboard();
+	Autonomous auto = new Autonomous(driveBase);
 
 	@Override
 	public void robotInit() {
@@ -35,13 +35,13 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void autonomousInit() {
-		dashboard.dashboardGetAutoSelection();
 		
 	}
 
 	@Override
 	public void autonomousPeriodic() {
-		dashboard.dashboardAutoCase();
+		AutoDirection direction = dashboard.dashboardAutoCase();
+		auto.drive(direction);
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class Robot extends IterativeRobot {
 	 * Asking the controller which speed and direction to go, telling the drive base
 	 * to drive.
 	 */
-
+	
 	private void driveDriveBase() {
 		double speed = controller.getDriveSpeed();
 		double direction = controller.getDriveDirection();

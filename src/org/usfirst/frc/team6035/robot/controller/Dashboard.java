@@ -10,7 +10,6 @@ import org.usfirst.frc.team6035.robot.auto.*;
 
 public class Dashboard {
 	
-	private AutoDirection mode = new DriveStraight(); // initialize default mode
 	private SendableChooser<AutoDirection> autoCommand = new SendableChooser<>();
 	
 	public void dashboardInit() {
@@ -30,12 +29,8 @@ public class Dashboard {
 		SmartDashboard.putData("Autonomous Selecter", autoCommand);
 	}
 	
-	public void dashboardGetAutoSelection() {
-		mode = (AutoDirection) autoCommand.getSelected();
-	}
 	
 	public AutoDirection dashboardAutoCase() {
-		
-		return mode;
+		return (AutoDirection) autoCommand.getSelected();
 	}
 }
