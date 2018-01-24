@@ -10,73 +10,32 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
 public class Dashboard {
 	
 	Autonomous auto;
-	private int mode = 1; // initialize default mode
-	private SendableChooser<Integer> autoCommand;
+	private AutoDirection mode = new DriveStraight(); // initialize default mode
+	private SendableChooser<AutoDirection> autoCommand = new SendableChooser<>();
 	
 	public void dashboardInit() {
-		autoCommand = new SendableChooser<Integer>();
-		autoCommand.addDefault("DriveStraight", 1);
-		autoCommand.addObject("LeftToLeftBlue", 2);
-		autoCommand.addObject("LeftToRightBlue", 3);
-		autoCommand.addObject("MiddleToLeftBlue", 4);
-		autoCommand.addObject("MiddleToRightBlue", 5);
-		autoCommand.addObject("RightToLeftBlue", 6);
-		autoCommand.addObject("RightToRightBlue", 7);
-		autoCommand.addObject("LeftToLeftRed", 8);
-		autoCommand.addObject("LeftToRightRed", 9);
-		autoCommand.addObject("MiddleToLeftRed", 10);
-		autoCommand.addObject("MiddleToRightRed", 11);
-		autoCommand.addObject("RightToLeftRed", 12);
-		autoCommand.addObject("RightToRightRed", 13);
+		autoCommand.addDefault("DriveStraight", new DriveStraight());
+		autoCommand.addObject("LeftToLeftBlue", new LeftToLeft());
+		autoCommand.addObject("LeftToRightBlue", new LeftToRight());
+		autoCommand.addObject("MiddleToLeftBlue", new MiddleToLeft());
+		autoCommand.addObject("MiddleToRightBlue", new MiddleToRight());
+		autoCommand.addObject("RightToLeftBlue", new RightToLeft());
+		autoCommand.addObject("RightToRightBlue", new RightToRight());
+		autoCommand.addObject("LeftToLeftRed", new RightToRight());
+		autoCommand.addObject("LeftToRightRed", new RightToLeft());
+		autoCommand.addObject("MiddleToLeftRed", new MiddleToRight());
+		autoCommand.addObject("MiddleToRightRed", new MiddleToLeft());
+		autoCommand.addObject("RightToLeftRed", new LeftToRight());
+		autoCommand.addObject("RightToRightRed", new LeftToLeft());
 		SmartDashboard.putData("Autonomous Selecter", autoCommand);
 	}
 	
 	public void dashboardGetAutoSelection() {
-		mode = (int) autoCommand.getSelected();
+		mode = (AutoDirection) autoCommand.getSelected();
 	}
 	
-	public void dashboardAutoCase() {
-		switch(mode) {
-		case 1: 
-		auto.Straight();
-		break;
-		case 2: 
-		auto.LeftToLeft();
-		break;
-		case 3: 
-		auto.LeftToRight();
-		break;
-		case 4: 
-		auto.MiddleToLeft();
-		break;
-		case 5: 
-		auto.MiddleToRight();
-		break;
-		case 6: 
-		auto.RightToLeft();
-		break;
-		case 7: 
-		auto.RightToRight();
-		break;
-		case 8: 
-		auto.RightToRight();
-		break;
-		case 9: 
-		auto.RightToLeft();
-		break;
-		case 10: 
-		auto.MiddleToRight();
-		break;
-		case 11: 
-		auto.MiddleToLeft();
-		break;
-		case 12: 
-		auto.LeftToRight();
-		break;
-		case 13: 
-		auto.LeftToLeft();
-		break;
+	public AutoDirection dashboardAutoCase() {
 		
-		}
+		return mode;
 	}
 }

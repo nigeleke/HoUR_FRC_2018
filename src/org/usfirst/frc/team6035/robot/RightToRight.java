@@ -1,6 +1,6 @@
 package org.usfirst.frc.team6035.robot;
 
-public class RightToRight {
+public class RightToRight implements AutoDirection{
 
 	double[] LeftMotorSpeeds = {
 			0.0,
