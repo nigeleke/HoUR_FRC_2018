@@ -23,7 +23,7 @@ public class Controller {
 	
 	  public double getDriveSpeed() {
 
-		    double speedY = stick.getY() * -1;
+		    double speedY = stick.getY();
 		    double throttle = ((stick.getThrottle()) * -1 );
 		    double normalisedThrottle =  ((throttle + 1.0) / 2.0);
 		    normalisedThrottle = (normalisedThrottle < 0.25? 0.25 : normalisedThrottle);
