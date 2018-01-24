@@ -24,9 +24,9 @@ public class Config {
 	public static int GRABBER_SWITCH_CHANNEL = 8;
 	
 	// Speeds
-<<<<<<< HEAD
-	public static double LIFT_UP_SPEED = 0.2;
-	public static double LIFT_DOWN_SPEED = -0.2;
+
+	public static double LIFT_UP_SPEED = 0.5;
+	public static double LIFT_DOWN_SPEED = -0.5;
 	public static double GRABBER_ARM_UP_SPEED = 0.2;
 	public static double GRABBER_ARM_DOWN_SPEED = 0.2;
 	public static double GRABBER_GRAB_SPEED = 0.75;
@@ -34,17 +34,7 @@ public class Config {
 	public static double GRABBER_HOLD_SPEED = 0.1;
 	public static double CLIMBER_UP_SPEED = 0.615;
 	public static double LIFT_COMPENSATE_SPEED = -0.2;
-=======
-	static double LIFT_UP_SPEED = 0.5;
-	static double LIFT_DOWN_SPEED = -0.5;
-	static double GRABBER_ARM_UP_SPEED = 0.2;
-	static double GRABBER_ARM_DOWN_SPEED = 0.2;
-	static double GRABBER_GRAB_SPEED = 0.75;
-	static double GRABBER_LET_GO_SPEED = -0.75;
-	static double GRABBER_HOLD_SPEED = 0.1;
-	static double CLIMBER_UP_SPEED = 0.615;
-	static double LIFT_COMPENSATE_SPEED = -0.2;
->>>>>>> e1242ee14811ebd7744461428d6074df3ab2ab0e
+
 	
 	// Times
 	public static int RAMP_UP_TIME_MS = 500;
