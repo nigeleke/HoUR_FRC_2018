@@ -1,5 +1,7 @@
+.idea/
 .project
 .classpath
+*.iml
 bin/
 build/
 dist/
