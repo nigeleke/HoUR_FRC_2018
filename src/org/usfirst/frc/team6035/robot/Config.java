@@ -37,5 +37,16 @@ public class Config {
 
 	
 	// Times
+	
 	public static int RAMP_UP_TIME_MS = 500;
+	
+	// Autonomous Speed Compensation
+	
+	public static double LEFT_TO_LEFT_COMPENSATION = 3.5;
+	public static double LEFT_TO_RIGHT_COMPENSATION = 1.0;
+	public static double MIDDLE_TO_LEFT_COMPENSATION = 2.8;
+	public static double MIDDLE_TO_RIGHT_COMPENSATION = 2.8;
+	public static double RIGHT_TO_RIGHT_COMPENSATION = 4.0;
+	public static double RIGHT_TO_LEFT_COMPENSATION = 1.5;
+	public static double DRIVE_STRAIGHT_COMPENSATION = 5;
 }

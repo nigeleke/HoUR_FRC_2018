@@ -1,6 +1,12 @@
 package org.usfirst.frc.team6035.robot.auto;
 
-public class LeftToRight implements AutoDirection{
+import org.usfirst.frc.team6035.robot.Config;
+
+public class LeftToRight extends AutoDirection{
+
+	public LeftToRight() {
+		super(Config.LEFT_TO_RIGHT_COMPENSATION);	
+		}
 
 	double[] LeftMotorSpeeds = {
 			0.0, 
@@ -858,7 +864,7 @@ public class LeftToRight implements AutoDirection{
 		return LeftMotorSpeeds[i];
 	}
 	public double RightSpeed(int i) {
-		return LeftMotorSpeeds[i];
+		return RightMotorSpeeds[i];
 	}
 
 

@@ -12,7 +12,7 @@ public class Autonomous extends IterativeRobot {
 	
 	public void drive(AutoDirection direction) {
 		for (int i = 0; i < direction.nSteps(); i++) {
-			driveBase.autonomousDrive(direction.LeftSpeed(i), direction.RightSpeed(i));
+			driveBase.autonomousDrive(direction.LeftSpeed(i)*direction.Compensation(), direction.RightSpeed(i)*direction.Compensation());
 		}
 	}
 }

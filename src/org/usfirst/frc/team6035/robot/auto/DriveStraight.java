@@ -1,23 +1,27 @@
 package org.usfirst.frc.team6035.robot.auto;
 
-public class DriveStraight implements AutoDirection{
+import org.usfirst.frc.team6035.robot.Config;
 
+public class DriveStraight extends AutoDirection{
+	
+	public DriveStraight() {
+		super(Config.DRIVE_STRAIGHT_COMPENSATION);	
+		}
+
+	
 	@Override
 	public int nSteps() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 217;
 	}
 
 	@Override
 	public double LeftSpeed(int i) {
-		// TODO Auto-generated method stub
-		return 0;
+		return 0.164;
 	}
 
 	@Override
 	public double RightSpeed(int i) {
-		// TODO Auto-generated method stub
-		return 0;
+		return 0.164;
 	}
 	
 }
