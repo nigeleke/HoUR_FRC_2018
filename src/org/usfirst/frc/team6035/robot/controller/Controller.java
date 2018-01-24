@@ -1,6 +1,8 @@
-package org.usfirst.frc.team6035.robot;
+package org.usfirst.frc.team6035.robot.controller;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import org.usfirst.frc.team6035.robot.gamecomponents.*;
+import org.usfirst.frc.team6035.robot.*;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
@@ -13,13 +15,13 @@ import edu.wpi.first.wpilibj.XboxController;
 
 public class Controller {
 
-	Joystick stick = new Joystick(Config.JOYSTICK_PORT);
-	XboxController xbox = new XboxController(Config.XBOX_PORT);
-	DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL);
+	private Joystick stick = new Joystick(Config.JOYSTICK_PORT);
+	private XboxController xbox = new XboxController(Config.XBOX_PORT);
+	private DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL);
 	
 	
 	
-	  double getDriveSpeed() {
+	  public double getDriveSpeed() {
 
 		    double speedY = stick.getY() * -1;
 		    double throttle = ((stick.getThrottle()) * -1 );
@@ -31,7 +33,7 @@ public class Controller {
 		  }
 
 	
-	double getDriveDirection() {
+	public double getDriveDirection() {
 		
 		double twist = stick.getZ();
 		double tilt = stick.getX();
@@ -45,7 +47,7 @@ public class Controller {
 	/**
 	 * Return operation for the grabber based off controller input
 	 */
-	GrabberOperation getGrabberOperation() {
+	public GrabberOperation getGrabberOperation() {
 		boolean leftButtonPressed = xbox.getXButton();
 		boolean rightButtonPressed = xbox.getBButton();
 		boolean grabberMicroSwitchClosed = grabberLimitSwitch.get();
@@ -69,7 +71,7 @@ public class Controller {
 	/**
 	 * Return operation for grabber arm based off controller input
 	 */
-	GrabberArmOperation getGrabberArmOperation() {
+	public GrabberArmOperation getGrabberArmOperation() {
 		boolean topButtonPressed = xbox.getYButton();
 		boolean bottomButtonPressed = xbox.getAButton();
 		
@@ -84,7 +86,7 @@ public class Controller {
 	/**
 	 * Return operation for lift based off controller input
 	 */
-	LiftOperation getLiftOperation() {
+	public LiftOperation getLiftOperation() {
 		int dpadVal = xbox.getPOV();
 		boolean goUp = (325 <= dpadVal && dpadVal < 360) || (0 <= dpadVal && dpadVal < 45);
 		boolean goDown = (135 <= dpadVal && dpadVal < 225);
@@ -102,7 +104,7 @@ public class Controller {
 	 * Return operation for climber based off controller input
 	 */
 	
-	ClimberOperation getClimberOperation() {
+	public ClimberOperation getClimberOperation() {
 		boolean leftBumperPressed = xbox.getBumper(GenericHID.Hand.kLeft);
 		boolean rightBumperPressed = xbox.getBumper(GenericHID.Hand.kRight);
 		boolean bothBumpersPressed = leftBumperPressed && rightBumperPressed;

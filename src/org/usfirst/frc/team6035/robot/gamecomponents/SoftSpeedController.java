@@ -1,13 +1,15 @@
-package org.usfirst.frc.team6035.robot;
+package org.usfirst.frc.team6035.robot.gamecomponents;
+import org.usfirst.frc.team6035.robot.*;
+
 
 import edu.wpi.first.wpilibj.*;
 
 /**
  * @author Ethan Sigler Gradual acceleration of motors
  */
-public class SoftSpeedController implements SpeedController {
+ class SoftSpeedController implements SpeedController {
 
-	SpeedController target;
+	private SpeedController target;
 
 	public SoftSpeedController(SpeedController target) {
 		this.target = target;

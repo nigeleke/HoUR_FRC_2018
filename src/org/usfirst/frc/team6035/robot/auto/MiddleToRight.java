@@ -1,4 +1,4 @@
-package org.usfirst.frc.team6035.robot;
+package org.usfirst.frc.team6035.robot.auto;
 
 public class MiddleToRight implements AutoDirection{
 	

@@ -1,5 +1,6 @@
-package org.usfirst.frc.team6035.robot;
+package org.usfirst.frc.team6035.robot.controller;
 import edu.wpi.first.wpilibj.smartdashboard.*;
+import org.usfirst.frc.team6035.robot.auto.*;
 
 
 /**
@@ -9,7 +10,6 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
 
 public class Dashboard {
 	
-	Autonomous auto;
 	private AutoDirection mode = new DriveStraight(); // initialize default mode
 	private SendableChooser<AutoDirection> autoCommand = new SendableChooser<>();
 	

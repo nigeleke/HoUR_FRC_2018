@@ -1,6 +1,7 @@
-package org.usfirst.frc.team6035.robot;
+package org.usfirst.frc.team6035.robot.gamecomponents;
 
 import edu.wpi.first.wpilibj.*;
+import org.usfirst.frc.team6035.robot.*;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**

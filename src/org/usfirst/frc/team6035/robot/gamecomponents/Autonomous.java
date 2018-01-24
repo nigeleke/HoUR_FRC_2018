@@ -1,6 +1,7 @@
-package org.usfirst.frc.team6035.robot;
+package org.usfirst.frc.team6035.robot.gamecomponents;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import org.usfirst.frc.team6035.robot.auto.*;
 
 public class Autonomous extends IterativeRobot {
 	DriveBase driveBase = new DriveBase();

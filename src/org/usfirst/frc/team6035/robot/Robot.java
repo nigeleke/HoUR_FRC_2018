@@ -1,14 +1,15 @@
 // 2018 6035 
 package org.usfirst.frc.team6035.robot;
 
-import edu.wpi.first.wpilibj.DriverStation;
-
 //Imports 
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.*;
-
+import org.usfirst.frc.team6035.robot.gamecomponents.*;
+import org.usfirst.frc.team6035.robot.auto.*;
+import org.usfirst.frc.team6035.robot.controller.*;
 /**
  * @author Jack Gumley Integrated class to manage controllers and game
  *         components.

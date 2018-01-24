@@ -1,37 +1,38 @@
-package org.usfirst.frc.team6035.robot;
+package org.usfirst.frc.team6035.robot.gamecomponents;
 
 import edu.wpi.first.wpilibj.VictorSP;
+import org.usfirst.frc.team6035.robot.*;
 
 /**
  * @author Harrison King
  * Class for operating the lift
  */
 public class Lift {
-	VictorSP motor = new VictorSP(Config.LIFT_CHANNEL);
-	SoftSpeedController controller = new SoftSpeedController(motor);
+	private VictorSP motor = new VictorSP(Config.LIFT_CHANNEL);
+	private SoftSpeedController controller = new SoftSpeedController(motor);
 	
 	/**
 	 * sets the motor speed to operate the lift
 	 */
-	void up() {
+	public void up() {
 		controller.set(Config.LIFT_UP_SPEED); // set motor at a positive value to operate the lift
 	}
 
 	/**
 	 * stops the lift from moving by stopping the motor.
 	 */
-	void stop() {
+	public void stop() {
 		controller.stopMotor(); // set motor speed at 0 to stop
 	}
 
 	/**
 	 * drives the motor in reverse to operate the lift in reverse
 	 */
-	void down() {
+	public void down() {
 		controller.set(Config.LIFT_DOWN_SPEED); // set motor in reverse to go down
 	}
 	
-	void compensate() {
+	public void compensate() {
 		controller.set(Config.LIFT_COMPENSATE_SPEED);
 	}
 }
