@@ -2,10 +2,6 @@
 package org.usfirst.frc.team6035.robot;
 
 //Imports 
-
-import edu.wpi.first.wpilibj.DriverStation;
-
-import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.*;
 import org.usfirst.frc.team6035.robot.gamecomponents.tele.*;
 import org.usfirst.frc.team6035.robot.gamecomponents.auto.*;
@@ -19,7 +15,6 @@ import org.usfirst.frc.team6035.robot.controller.*;
 public class Robot extends IterativeRobot {
 
 	private DriverStation driverStation = DriverStation.getInstance();
-	private Timer endGameCountdown = new Timer();
 
 	private Controller controller = new Controller();
 	private Lift lift = new Lift();
@@ -46,9 +41,8 @@ public class Robot extends IterativeRobot {
 	}
 
 	@Override
-	public void teleopInit() {
-		endGameCountdown.start();
-		endGameCountdown.reset();
+	public void teleopInit() {		
+		
 	}
 
 	@Override
@@ -148,7 +142,6 @@ public class Robot extends IterativeRobot {
 	
 	private void operateClimber() {
 		ClimberOperation OP = controller.getClimberOperation();
-		if(endGameCountdown.get() >= 105)
 		switch (OP) {
 		case UP:
 			climber.up();
@@ -160,9 +153,6 @@ public class Robot extends IterativeRobot {
 		default:
 			System.out.println("Error in operateClimber Switch");
 			break;
-		}
-		else {
-			climber.stop();
 		}
 	}
 
