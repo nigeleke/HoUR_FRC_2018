@@ -25,7 +25,7 @@ public class Autonomous {
 
 		commandSequence.add(new LowerGrabberArm(grabberArm));
 		commandSequence.add(new GrabCube(grabber));
-		commandSequence.add(new RaiseGrabberArmToDrivePosition());
+		commandSequence.add(new RaiseGrabberArmToDrivePosition(grabberArm));
 		commandSequence.add(new AutonomousDrive(driveBase, direction));
 		commandSequence.add(new LiftToSwitchPosition(lift));
 		commandSequence.add(new LowerGrabberArmToDropPosition(grabberArm));
