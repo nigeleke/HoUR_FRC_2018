@@ -1,6 +1,6 @@
 package org.usfirst.frc.team6035.robot.gamecomponents.auto;
 
-public class LowerGrabberArm implements AutoCommand{
+public class DropCube implements AutoCommand{
 
 	@Override
 	public void init() {
