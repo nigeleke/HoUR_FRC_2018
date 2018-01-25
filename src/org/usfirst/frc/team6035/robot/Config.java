@@ -58,4 +58,5 @@ public class Config {
 	public static int LIFT_TO_SWITCH_POSITION_STEPS = 1;
 	public static int LOWER_GRABBER_ARM_STEPS = 1;
 	public static int LOWER_GRABBER_ARM_TO_DROP_POSITION_STEPS = 1;
+	public static int RAISE_GRABBER_ARM_TO_DRIVE_POSITION = 1;
 }

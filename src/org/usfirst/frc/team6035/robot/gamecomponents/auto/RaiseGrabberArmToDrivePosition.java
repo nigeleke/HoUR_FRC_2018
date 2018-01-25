@@ -1,23 +1,33 @@
 package org.usfirst.frc.team6035.robot.gamecomponents.auto;
 
-public class RaiseGrabberArmToDrivePosition implements AutoCommand{
+import org.usfirst.frc.team6035.robot.Config;
+import org.usfirst.frc.team6035.robot.gamecomponents.tele.GrabberArm;
 
+public class RaiseGrabberArmToDrivePosition implements AutoCommand{
+	private GrabberArm grabberArm;
+	private int stepNumber;
+	
+	public RaiseGrabberArmToDrivePosition(GrabberArm grabberArm) {
+		this.grabberArm = grabberArm;
+	}
 	@Override
 	public void init() {
-		// TODO Auto-generated method stub
+		
+		stepNumber = 0;
 		
 	}
 
 	@Override
 	public void doNextAction() {
-		// TODO Auto-generated method stub
+		grabberArm.up();
 		
 	}
 
 	@Override
 	public boolean isFinished() {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return (stepNumber == Config.RAISE_GRABBER_ARM_TO_DRIVE_POSITION);
+	
 	}
 
 }
