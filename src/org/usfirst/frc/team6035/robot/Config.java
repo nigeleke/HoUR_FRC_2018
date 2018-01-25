@@ -7,6 +7,10 @@ package org.usfirst.frc.team6035.robot;
  */
 public class Config {
 
+	//Game Parameters
+	public static int GAME_TIME_S = 150;
+	public static int CLIMB_ENABLED_TIME_S = GAME_TIME_S - 30;
+	
 	// Ports 
 	public static int JOYSTICK_PORT = 0;
 	public static int XBOX_PORT = 1;
@@ -17,10 +21,10 @@ public class Config {
 	public static int DB_LEFT_FRONT_CHANNEL = 1;
 	public static int DB_RIGHT_BACK_CHANNEL = 2;
 	public static int DB_RIGHT_FRONT_CHANNEL = 3;
-	public static int GRABBER_CHANNEL = 4;
+	public static int GRABBER_CHANNEL = 7;
 	public static int GRABBER_ARM_CHANNEL = 5;
 	public static int LIFT_CHANNEL = 6;
-	public static int CLIMBER_CHANNEL = 7;
+	public static int CLIMBER_CHANNEL = 4;
 	public static int GRABBER_SWITCH_CHANNEL_DIO = 0;
 	
 	// Speeds
