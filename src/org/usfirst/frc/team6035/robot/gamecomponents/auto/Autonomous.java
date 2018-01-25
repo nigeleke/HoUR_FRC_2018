@@ -15,5 +15,8 @@ public class Autonomous {
 		this.grabber = grabber;
 		this.lift = lift;
 	}
+	public void doNextAction(int autoCount) {
+		
+	}
 
 }
