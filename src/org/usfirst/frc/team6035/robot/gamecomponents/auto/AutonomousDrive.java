@@ -26,7 +26,7 @@ public class AutonomousDrive implements AutoCommand {
 
 	@Override
 	public boolean isFinished() {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return (stepNumber == direction.nSteps());
 	}
 }

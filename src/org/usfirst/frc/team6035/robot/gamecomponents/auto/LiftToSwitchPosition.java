@@ -1,23 +1,30 @@
 package org.usfirst.frc.team6035.robot.gamecomponents.auto;
 
+import org.usfirst.frc.team6035.robot.Config;
+import org.usfirst.frc.team6035.robot.gamecomponents.tele.*;
+
 public class LiftToSwitchPosition implements AutoCommand{
 
+	private Lift lift;
+	private int stepNumber;
+	
+	public LiftToSwitchPosition(Lift lift) {
+		this.lift = lift;
+	}
+	
 	@Override
 	public void init() {
-		// TODO Auto-generated method stub
-		
+		stepNumber = 0;
 	}
 
 	@Override
 	public void doNextAction() {
-		// TODO Auto-generated method stub
-		
+		lift.up();
 	}
 
 	@Override
 	public boolean isFinished() {
-		// TODO Auto-generated method stub
-		return false;
+		return (stepNumber == Config.LIFT_TO_SWITCH_POSITION_STEPS);
 	}
 
 }

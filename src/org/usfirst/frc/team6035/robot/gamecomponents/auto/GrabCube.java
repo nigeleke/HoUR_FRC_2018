@@ -1,23 +1,29 @@
 package org.usfirst.frc.team6035.robot.gamecomponents.auto;
 
-public class GrabCube implements AutoCommand{
+import org.usfirst.frc.team6035.robot.Config;
+import org.usfirst.frc.team6035.robot.gamecomponents.tele.*;
 
+public class GrabCube implements AutoCommand{
+	
+	private int stepNumber;
+	private Grabber grabber;
+	
+	public GrabCube(Grabber grabber) {
+		this.grabber = grabber;
+	}
 	@Override
 	public void init() {
-		// TODO Auto-generated method stub
-		
+		stepNumber = 0;
 	}
 
 	@Override
 	public void doNextAction() {
-		// TODO Auto-generated method stub
-		
+		grabber.grab();
 	}
 
 	@Override
 	public boolean isFinished() {
-		// TODO Auto-generated method stub
-		return false;
+		return (stepNumber == Config.GRAB_CUBE_STEPS);
 	}
 
 }

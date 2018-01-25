@@ -28,13 +28,13 @@ public class Autonomous {
 		this.lift = lift;
 		
 		
-		this.lowerGrabberArm = new LowerGrabberArm();
-		this.grabCube = new GrabCube();
+		this.lowerGrabberArm = new LowerGrabberArm(grabberArm);
+		this.grabCube = new GrabCube(grabber);
 		this.raiseGrabberArmToDrivePosition = new RaiseGrabberArmToDrivePosition();
 		this.autoDrive = new AutonomousDrive(driveBase, direction);
-		this.liftToSwitchPosition = new LiftToSwitchPosition();
-		this.lowerGrabberArmToDropPosition = new LowerGrabberArmToDropPosition();
-		this.dropCube = new DropCube();
+		this.liftToSwitchPosition = new LiftToSwitchPosition(lift);
+		this.lowerGrabberArmToDropPosition = new LowerGrabberArmToDropPosition(grabberArm);
+		this.dropCube = new DropCube(grabber);
 	}
 	public void doNextAction(int autoCount) {
 		

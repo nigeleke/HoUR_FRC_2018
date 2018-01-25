@@ -47,4 +47,11 @@ public class Config {
 	public static double RIGHT_TO_RIGHT_COMPENSATION = 4.0;
 	public static double RIGHT_TO_LEFT_COMPENSATION = 1.5;
 	public static double DRIVE_STRAIGHT_COMPENSATION = 5;
+	
+	//Autonomous Steps
+	public static int DROP_CUBE_STEPS = 1;
+	public static int GRAB_CUBE_STEPS = 1;
+	public static int LIFT_TO_SWITCH_POSITION_STEPS = 1;
+	public static int LOWER_GRABBER_ARM_STEPS = 1;
+	public static int LOWER_GRABBER_ARM_TO_DROP_POSITION_STEPS = 1;
 }
