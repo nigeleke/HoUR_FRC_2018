@@ -23,7 +23,7 @@ public class Robot extends IterativeRobot {
 	private DriveBase driveBase = new DriveBase();
 	private Climber climber = new Climber();
 	private Dashboard dashboard = new Dashboard();
-	private Autonomous auto = new Autonomous(driveBase, grabberArm, grabber, lift);
+	private Autonomous auto;
 	
 	private int autoPeriod;
 
@@ -35,6 +35,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		autoPeriod = 0;
+		auto = new Autonomous(driveBase, grabberArm, grabber, lift, dashboard.dashboardAutoCase());
 	}
 
 	@Override
