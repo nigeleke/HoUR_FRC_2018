@@ -17,7 +17,7 @@ public class Controller {
 
 	private Joystick stick = new Joystick(Config.JOYSTICK_PORT);
 	private XboxController xbox = new XboxController(Config.XBOX_PORT);
-	private DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL);
+	private DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL_DIO);
 	
 	
 	
@@ -53,19 +53,17 @@ public class Controller {
 		boolean grabberMicroSwitchClosed = grabberLimitSwitch.get();
 		
 		if ((leftButtonPressed) && (!rightButtonPressed)) {
-			/*
-			if (!grabberMicroSwitchClosed) {
-				return GrabberOperation.GRAB;
-			}
-			else {
-				return GrabberOperation.HOLD;
-			}
-			*/
-			return GrabberOperation.GRAB;
+				if (!grabberMicroSwitchClosed) {
+					return GrabberOperation.GRAB;
+				}
+				else if (!grabberMicroSwitchClosed){
+					return GrabberOperation.HOLD;
+				}
 		}
-		if ((rightButtonPressed) && (!leftButtonPressed)) {
-		return GrabberOperation.LET_GO;
+		else if ((rightButtonPressed) && (!leftButtonPressed)) {
+			return GrabberOperation.LET_GO;
 		}
+		
 		return GrabberOperation.STOP;
 	}
 	/**

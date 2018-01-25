@@ -1,4 +1,4 @@
-package org.usfirst.frc.team6035.robot.gamecomponents;
+package org.usfirst.frc.team6035.robot.gamecomponents.tele;
 
 import edu.wpi.first.wpilibj.*;
 import org.usfirst.frc.team6035.robot.*;

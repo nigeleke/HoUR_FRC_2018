@@ -4,9 +4,11 @@ package org.usfirst.frc.team6035.robot;
 //Imports 
 
 import edu.wpi.first.wpilibj.DriverStation;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.*;
-import org.usfirst.frc.team6035.robot.gamecomponents.*;
+import org.usfirst.frc.team6035.robot.gamecomponents.tele.*;
+import org.usfirst.frc.team6035.robot.gamecomponents.auto.*;
 import org.usfirst.frc.team6035.robot.auto.*;
 import org.usfirst.frc.team6035.robot.controller.*;
 /**
@@ -16,17 +18,19 @@ import org.usfirst.frc.team6035.robot.controller.*;
 
 public class Robot extends IterativeRobot {
 
-	DriverStation driverStation = DriverStation.getInstance();
-	Timer endGameCountdown = new Timer();
+	private DriverStation driverStation = DriverStation.getInstance();
+	private Timer endGameCountdown = new Timer();
 
-	Controller controller = new Controller();
-	Lift lift = new Lift();
-	Grabber grabber = new Grabber();
-	GrabberArm grabberArm = new GrabberArm();
-	DriveBase driveBase = new DriveBase();
-	Climber climber = new Climber();
-	Dashboard dashboard = new Dashboard();
-	Autonomous auto = new Autonomous(driveBase);
+	private Controller controller = new Controller();
+	private Lift lift = new Lift();
+	private Grabber grabber = new Grabber();
+	private GrabberArm grabberArm = new GrabberArm();
+	private DriveBase driveBase = new DriveBase();
+	private Climber climber = new Climber();
+	private Dashboard dashboard = new Dashboard();
+	private Autonomous auto = new Autonomous(driveBase, grabberArm, grabber, lift);
+	
+	private int autoPeriod;
 
 	@Override
 	public void robotInit() {
@@ -35,13 +39,12 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void autonomousInit() {
-		
+		autoPeriod = 0;
 	}
 
 	@Override
 	public void autonomousPeriodic() {
-		AutoDirection direction = dashboard.dashboardAutoCase();
-		auto.drive(direction);
+		autoPeriod++;
 	}
 
 	@Override

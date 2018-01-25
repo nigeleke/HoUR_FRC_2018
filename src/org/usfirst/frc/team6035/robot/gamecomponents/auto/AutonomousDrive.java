@@ -1,12 +1,13 @@
-package org.usfirst.frc.team6035.robot.gamecomponents;
+package org.usfirst.frc.team6035.robot.gamecomponents.auto;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import org.usfirst.frc.team6035.robot.gamecomponents.tele.*;
 import org.usfirst.frc.team6035.robot.auto.*;
 
-public class Autonomous extends IterativeRobot {
+public class AutonomousDrive extends IterativeRobot {
 	private DriveBase driveBase;
 	
-	public Autonomous(DriveBase driveBase) {
+	public AutonomousDrive(DriveBase driveBase) {
 		this.driveBase = driveBase;
 	}
 	

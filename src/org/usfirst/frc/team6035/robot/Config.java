@@ -21,10 +21,9 @@ public class Config {
 	public static int GRABBER_ARM_CHANNEL = 5;
 	public static int LIFT_CHANNEL = 6;
 	public static int CLIMBER_CHANNEL = 7;
-	public static int GRABBER_SWITCH_CHANNEL = 8;
+	public static int GRABBER_SWITCH_CHANNEL_DIO = 0;
 	
 	// Speeds
-
 	public static double LIFT_UP_SPEED = 0.5;
 	public static double LIFT_DOWN_SPEED = -0.5;
 	public static double GRABBER_ARM_UP_SPEED = 0.2;
@@ -37,11 +36,10 @@ public class Config {
 
 	
 	// Times
-	
 	public static int RAMP_UP_TIME_MS = 500;
 	
-	// Autonomous Speed Compensation
 	
+	// Autonomous Speed Compensation
 	public static double LEFT_TO_LEFT_COMPENSATION = 3.5;
 	public static double LEFT_TO_RIGHT_COMPENSATION = 1.0;
 	public static double MIDDLE_TO_LEFT_COMPENSATION = 2.8;
