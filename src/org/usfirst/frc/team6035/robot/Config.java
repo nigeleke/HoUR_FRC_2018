@@ -53,10 +53,10 @@ public class Config {
 	public static double DRIVE_STRAIGHT_COMPENSATION = 5;
 	
 	//Autonomous Steps
-	public static int DROP_CUBE_STEPS = 1;
-	public static int GRAB_CUBE_STEPS = 1;
-	public static int LIFT_TO_SWITCH_POSITION_STEPS = 1;
-	public static int LOWER_GRABBER_ARM_STEPS = 1;
-	public static int LOWER_GRABBER_ARM_TO_DROP_POSITION_STEPS = 1;
-	public static int RAISE_GRABBER_ARM_TO_DRIVE_POSITION = 1;
+	public static int DROP_CUBE_STEPS = 50;
+	public static int GRAB_CUBE_STEPS = 50;
+	public static int LIFT_TO_SWITCH_POSITION_STEPS = 100;
+	public static int LOWER_GRABBER_ARM_STEPS = 75;
+	public static int LOWER_GRABBER_ARM_TO_DROP_POSITION_STEPS = 75;
+	public static int RAISE_GRABBER_ARM_TO_DRIVE_POSITION = 225;
 }
