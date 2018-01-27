@@ -3,14 +3,15 @@ package org.usfirst.frc.team6035.robot.gamecomponents.auto;
 import org.usfirst.frc.team6035.robot.Config;
 import org.usfirst.frc.team6035.robot.gamecomponents.tele.*;
 
-public class LowerGrabberArmToDropPosition implements AutoCommand{
+public class LowerGrabberArmToDropPosition implements AutoCommand {
 
 	private GrabberArm grabberArm;
 	private int stepNumber;
-	
+
 	public LowerGrabberArmToDropPosition(GrabberArm grabberArm) {
 		this.grabberArm = grabberArm;
 	}
+
 	@Override
 	public void init() {
 		stepNumber = 0;

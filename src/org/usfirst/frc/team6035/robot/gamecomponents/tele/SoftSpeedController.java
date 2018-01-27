@@ -1,13 +1,13 @@
 package org.usfirst.frc.team6035.robot.gamecomponents.tele;
-import org.usfirst.frc.team6035.robot.*;
 
+import org.usfirst.frc.team6035.robot.*;
 
 import edu.wpi.first.wpilibj.*;
 
 /**
  * @author Ethan Sigler Gradual acceleration of motors
  */
- class SoftSpeedController implements SpeedController {
+class SoftSpeedController implements SpeedController {
 
 	private SpeedController target;
 
@@ -18,7 +18,6 @@ import edu.wpi.first.wpilibj.*;
 	@Override
 	public void pidWrite(double output) {
 		target.pidWrite(output);
-
 	}
 
 	@Override
@@ -26,6 +25,7 @@ import edu.wpi.first.wpilibj.*;
 		double numberIterations = Config.RAMP_UP_TIME_MS / 20;
 		double deltaSpeed = 1 / numberIterations;
 		double currentSpeed = target.get();
+
 		if (speed >= currentSpeed) {
 			double proposedNewSpeed = currentSpeed + deltaSpeed;
 			double actualNewSpeed = Math.min(proposedNewSpeed, speed);

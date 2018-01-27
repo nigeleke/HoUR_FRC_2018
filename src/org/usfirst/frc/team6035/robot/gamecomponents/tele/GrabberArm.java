@@ -4,13 +4,12 @@ import edu.wpi.first.wpilibj.VictorSP;
 import org.usfirst.frc.team6035.robot.*;
 
 /**
- * @author Harrison King
- * Class to operate the grabber arm
+ * @author Harrison King Class to operate the grabber arm
  */
 public class GrabberArm {
 	private VictorSP motor = new VictorSP(Config.GRABBER_ARM_CHANNEL);
 	private SoftSpeedController controller = new SoftSpeedController(motor);
-	
+
 	/**
 	 * sets the motor speed to operate the grabber arm
 	 */
@@ -31,5 +30,4 @@ public class GrabberArm {
 	public void down() {
 		controller.set(Config.GRABBER_ARM_DOWN_SPEED); // set motor in reverse to make the grabber arm go down
 	}
-
 }

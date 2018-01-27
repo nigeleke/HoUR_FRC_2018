@@ -1,17 +1,17 @@
 package org.usfirst.frc.team6035.robot.controller;
+
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import org.usfirst.frc.team6035.robot.auto.*;
 
-
 /**
- * @author Gabriel Love
- * Class for getting autonomous selections from smart dashboard
+ * @author Gabriel Love Class for getting autonomous selections from smart
+ *         dashboard
  */
 
 public class Dashboard {
-	
+
 	private SendableChooser<AutoDirection> autoCommand = new SendableChooser<>();
-	
+
 	public void dashboardInit() {
 		autoCommand.addDefault("DriveStraight", new DriveStraight());
 		autoCommand.addObject("LeftToLeftBlue", new LeftToLeft());
@@ -28,8 +28,7 @@ public class Dashboard {
 		autoCommand.addObject("RightToRightRed", new LeftToLeft());
 		SmartDashboard.putData("Autonomous Selecter", autoCommand);
 	}
-	
-	
+
 	public AutoDirection dashboardAutoCase() {
 		return (AutoDirection) autoCommand.getSelected();
 	}

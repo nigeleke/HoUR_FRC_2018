@@ -4,8 +4,8 @@ import edu.wpi.first.wpilibj.VictorSP;
 import org.usfirst.frc.team6035.robot.*;
 
 /**
- * @author Harrison 
- * The grabber class is responsible for running the motor controlling the grabber.
+ * @author Harrison The grabber class is responsible for running the motor
+ *         controlling the grabber.
  */
 public class Grabber {
 	private VictorSP motor = new VictorSP(Config.GRABBER_CHANNEL);

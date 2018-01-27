@@ -5,16 +5,14 @@ package org.usfirst.frc.team6035.robot;
 import edu.wpi.first.wpilibj.*;
 import org.usfirst.frc.team6035.robot.gamecomponents.tele.*;
 import org.usfirst.frc.team6035.robot.gamecomponents.auto.*;
-import org.usfirst.frc.team6035.robot.auto.*;
 import org.usfirst.frc.team6035.robot.controller.*;
+
+
 /**
  * @author Jack Gumley Integrated class to manage controllers and game
  *         components.
  */
-
 public class Robot extends IterativeRobot {
-
-	private DriverStation driverStation = DriverStation.getInstance();
 
 	private Controller controller = new Controller();
 	private Lift lift = new Lift();
@@ -41,8 +39,8 @@ public class Robot extends IterativeRobot {
 	}
 
 	@Override
-	public void teleopInit() {		
-		
+	public void teleopInit() {
+
 	}
 
 	@Override
@@ -58,7 +56,6 @@ public class Robot extends IterativeRobot {
 	 * Asking the controller which speed and direction to go, telling the drive base
 	 * to drive.
 	 */
-	
 	private void driveDriveBase() {
 		double speed = controller.getDriveSpeed();
 		double direction = controller.getDriveDirection();
@@ -70,9 +67,7 @@ public class Robot extends IterativeRobot {
 	 * Getting instructions from controller as to which direction to operate the
 	 * lift
 	 */
-
 	private void operateLift() {
-
 		LiftOperation OP = controller.getLiftOperation();
 		switch (OP) {
 		case UP:
@@ -94,9 +89,7 @@ public class Robot extends IterativeRobot {
 	 * Get instructions from controller to as which direction to operate the grabber
 	 * arm.
 	 */
-
 	private void operateGrabberArm() {
-
 		GrabberArmOperation OP = controller.getGrabberArmOperation();
 		switch (OP) {
 		case UP:
@@ -118,7 +111,6 @@ public class Robot extends IterativeRobot {
 	 * Get instructions from controller to as which direction to operate the
 	 * grabber.
 	 */
-
 	private void operateGrabber() {
 		GrabberOperation OP = controller.getGrabberOperation();
 		switch (OP) {
@@ -139,7 +131,7 @@ public class Robot extends IterativeRobot {
 			break;
 		}
 	}
-	
+
 	private void operateClimber() {
 		ClimberOperation OP = controller.getClimberOperation();
 		switch (OP) {
