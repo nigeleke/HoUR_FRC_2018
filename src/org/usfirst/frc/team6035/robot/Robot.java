@@ -68,17 +68,12 @@ public class Robot extends IterativeRobot {
 	 * lift
 	 */
 	private void operateLift() {
-		LiftOperation OP = controller.getLiftOperation();
-		switch (OP) {
-		case UP:
-			lift.up();
-			break;
-		case DOWN:
-			lift.down();
-			break;
-		case STOP:
-			lift.stop();
-			break;
+		LiftOperation op = controller.getLiftOperation();
+		switch (op) {
+		case UP:			lift.up();			break;
+		case DOWN:		lift.down();			break;
+		case STOP:		lift.stop();			break;
+		
 		default:
 			System.out.println("Error in operateLift Switch");
 			break;
@@ -90,17 +85,12 @@ public class Robot extends IterativeRobot {
 	 * arm.
 	 */
 	private void operateGrabberArm() {
-		GrabberArmOperation OP = controller.getGrabberArmOperation();
-		switch (OP) {
-		case UP:
-			grabberArm.up();
-			break;
-		case DOWN:
-			grabberArm.down();
-			break;
-		case STOP:
-			grabberArm.stop();
-			break;
+		GrabberArmOperation op = controller.getGrabberArmOperation();
+		switch (op) {
+		case UP:			grabberArm.up();		break;
+		case DOWN:		grabberArm.down();	break;
+		case STOP:		grabberArm.stop();	break;
+		
 		default:
 			System.out.println("Error in operateGrabberArm Switch");
 			break;
@@ -112,20 +102,13 @@ public class Robot extends IterativeRobot {
 	 * grabber.
 	 */
 	private void operateGrabber() {
-		GrabberOperation OP = controller.getGrabberOperation();
-		switch (OP) {
-		case GRAB:
-			grabber.grab();
-			break;
-		case HOLD:
-			grabber.hold();
-			break;
-		case LET_GO:
-			grabber.letgo();
-			break;
-		case STOP:
-			grabber.stop();
-			break;
+		GrabberOperation op = controller.getGrabberOperation();
+		switch (op) {
+		case GRAB:		grabber.grab();		break;
+		case HOLD:		grabber.hold();		break;
+		case LET_GO:		grabber.letgo();		break;
+		case STOP:		grabber.stop();		break;
+		
 		default:
 			System.out.println("Error in operateGrabber Switch");
 			break;
@@ -133,15 +116,12 @@ public class Robot extends IterativeRobot {
 	}
 
 	private void operateClimber() {
-		ClimberOperation OP = controller.getClimberOperation();
-		switch (OP) {
-		case UP:
-			climber.up();
-			lift.compensate();
-			break;
-		case STOP:
-			climber.stop();
-			break;
+		ClimberOperation op = controller.getClimberOperation();
+		switch (op) {
+		case UP:			climber.up();
+						lift.compensate();	break;
+		case STOP:		climber.stop();		break;
+		
 		default:
 			System.out.println("Error in operateClimber Switch");
 			break;
