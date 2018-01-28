@@ -10,7 +10,7 @@ import org.usfirst.frc.team6035.robot.auto.*;
  */
 
 public class Dashboard {
-	DriverStation driverStation = DriverStation.getInstance();
+	private DriverStation driverStation = DriverStation.getInstance();
 	private SendableChooser<String> robotPosition = new SendableChooser<>();
 	private SendableChooser<String> goal = new SendableChooser<>();
 

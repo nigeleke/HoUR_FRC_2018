@@ -9,12 +9,12 @@ public class LeftToLeftScale extends AutoDirection {
 	}
 	
 	double[] LeftMotorSpeeds = {
-			
-	};
-	
+			0.0
+		};
+		
 	double[] RightMotorSpeeds = {
-			
-	};
+			0.0	
+		};
 	
 	public int nSteps() {
 		return LeftMotorSpeeds.length;

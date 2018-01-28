@@ -9,11 +9,11 @@ public class LeftToRightScale extends AutoDirection{
 		}
 
 	double[] LeftMotorSpeeds = {
-		
+		0.0
 	};
 	
 	double[] RightMotorSpeeds = {
-			
+		0.0	
 	};
 	
 	public int nSteps() {
