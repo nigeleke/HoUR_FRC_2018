@@ -22,9 +22,9 @@ public class Controller {
 	public double getDriveSpeed() {
 		double speedY = stick.getY();
 		
-		double throttle = ((stick.getThrottle()) * -1);
-		double normalisedThrottle = ((throttle + 1.0) / 2.0);
-		normalisedThrottle = (normalisedThrottle < 0.25 ? 0.25 : normalisedThrottle);
+		double throttle = stick.getThrottle() * -1;
+		double normalisedThrottle = (throttle + 1.0) / 2.0;
+		normalisedThrottle = normalisedThrottle < 0.25 ? 0.25 : normalisedThrottle;
 		
 		double throttledSpeed = speedY * normalisedThrottle;
 
@@ -48,13 +48,13 @@ public class Controller {
 		boolean rightButtonPressed = xbox.getBButton();
 		boolean grabberMicroSwitchClosed = grabberLimitSwitch.get();
 
-		if ((leftButtonPressed) && (!rightButtonPressed)) {
+		if (leftButtonPressed && !rightButtonPressed) {
 			if (!grabberMicroSwitchClosed) {
 				return GrabberOperation.GRAB;
-			} else if (!grabberMicroSwitchClosed) {
+			} else {
 				return GrabberOperation.HOLD;
 			}
-		} else if ((rightButtonPressed) && (!leftButtonPressed)) {
+		} else if (rightButtonPressed && !leftButtonPressed) {
 			return GrabberOperation.LET_GO;
 		}
 
@@ -68,9 +68,9 @@ public class Controller {
 		boolean topButtonPressed = xbox.getYButton();
 		boolean bottomButtonPressed = xbox.getAButton();
 
-		if ((topButtonPressed) && (!bottomButtonPressed)) {
+		if (topButtonPressed && !bottomButtonPressed) {
 			return GrabberArmOperation.UP;
-		} else if ((bottomButtonPressed) && (!topButtonPressed)) {
+		} else if (bottomButtonPressed && !topButtonPressed) {
 			return GrabberArmOperation.DOWN;
 		}
 		
@@ -85,9 +85,9 @@ public class Controller {
 		boolean goUp = (325 <= dpadVal && dpadVal < 360) || (0 <= dpadVal && dpadVal <= 45);
 		boolean goDown = (135 <= dpadVal && dpadVal < 225);
 
-		if ((goUp) && (!goDown)) {
+		if (goUp && !goDown) {
 			return LiftOperation.UP;
-		} else if ((goDown) && (!goUp)) {
+		} else if (goDown && !goUp) {
 			return LiftOperation.DOWN;
 		}
 		
@@ -109,7 +109,7 @@ public class Controller {
 		boolean bothBumpersPressed = leftBumperPressed && rightBumperPressed;
 		boolean inLastPeriod = (timer.get() >= Config.CLIMBER_DISABLED_TIME);
 		
-		if ((bothBumpersPressed) && (inLastPeriod)) {
+		if (bothBumpersPressed && inLastPeriod) {
 			return ClimberOperation.UP;
 		}
 		
