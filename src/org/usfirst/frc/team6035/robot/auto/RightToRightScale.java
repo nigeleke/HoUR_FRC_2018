@@ -4,7 +4,7 @@ import org.usfirst.frc.team6035.robot.Config;
 
 public class RightToRightScale extends AutoDirection {
 	public RightToRightScale() {
-		super(Config.RIGHT_TO_RIGHT_COMPENSATION);
+		super(Config.RIGHT_TO_RIGHT_SCALE_SPEED_COMPENSATION);
 	}
 
 	private double[] leftMotorSpeeds = { 0.0 };

@@ -5,7 +5,7 @@ import org.usfirst.frc.team6035.robot.Config;
 public class DriveStraight extends AutoDirection{
 	
 	public DriveStraight() {
-		super(Config.DRIVE_STRAIGHT_COMPENSATION);	
+		super(Config.DRIVE_STRAIGHT_SPEED_COMPENSATION);	
 	}
 	
 	@Override

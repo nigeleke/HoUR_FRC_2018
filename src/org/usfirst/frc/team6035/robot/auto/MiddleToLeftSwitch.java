@@ -5,7 +5,7 @@ import org.usfirst.frc.team6035.robot.Config;
 public class MiddleToLeftSwitch extends AutoDirection{
 	
 	public MiddleToLeftSwitch() {
-		super(Config.MIDDLE_TO_LEFT_COMPENSATION);	
+		super(Config.MIDDLE_TO_LEFT_SWITCH_SPEED_COMPENSATION);	
 	}
 
 	private double[] leftMotorSpeeds = {

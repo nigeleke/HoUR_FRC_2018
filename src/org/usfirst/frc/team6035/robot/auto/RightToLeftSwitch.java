@@ -5,7 +5,7 @@ import org.usfirst.frc.team6035.robot.Config;
 public class RightToLeftSwitch extends AutoDirection{
 	
 	public RightToLeftSwitch() {
-		super(Config.RIGHT_TO_LEFT_COMPENSATION);	
+		super(Config.RIGHT_TO_LEFT_SWITCH_SPEED_COMPENSATION);	
 	}
 
 	private double[] leftMotorSpeeds = {
