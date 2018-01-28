@@ -18,9 +18,11 @@ public class Dashboard {
 		robotPosition.addObject("Left", "L");
 		robotPosition.addObject("Middle", "M");
 		robotPosition.addObject("Right", "R");
+		robotPosition.addDefault("Right", "R");
 		goal.addObject("Switch", "Switch");
 		goal.addObject("Scale", "Scale");
 		goal.addObject("Base Line", "Base Line");
+		goal.addDefault("Switch", "Switch");
 	}
 
 	public AutoDirection getPath() {
