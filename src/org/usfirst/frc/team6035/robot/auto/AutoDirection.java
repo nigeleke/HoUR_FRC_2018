@@ -9,9 +9,9 @@ public abstract class AutoDirection {
 
 	public abstract int nSteps();
 
-	public abstract double LeftSpeed(int i);
+	public abstract double leftSpeed(int i);
 
-	public abstract double RightSpeed(int i);
+	public abstract double rightSpeed(int i);
 
 	public double Compensation() {
 		return compensation;

@@ -8,20 +8,20 @@ public class RightToLeftScale extends AutoDirection {
 		super(Config.RIGHT_TO_LEFT_COMPENSATION);
 	}
 
-	double[] LeftMotorSpeeds = { 0.0 };
+	private double[] leftMotorSpeeds = { 0.0 };
 
-	double[] RightMotorSpeeds = { 0.0 };
+	private double[] rightMotorSpeeds = { 0.0 };
 
 	public int nSteps() {
-		return LeftMotorSpeeds.length;
+		return leftMotorSpeeds.length;
 	}
 
-	public double LeftSpeed(int i) {
-		return LeftMotorSpeeds[i];
+	public double leftSpeed(int i) {
+		return leftMotorSpeeds[i];
 	}
 
-	public double RightSpeed(int i) {
-		return RightMotorSpeeds[i];
+	public double rightSpeed(int i) {
+		return rightMotorSpeeds[i];
 	}
 
 }

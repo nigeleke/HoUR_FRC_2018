@@ -6,9 +6,9 @@ public class LeftToRightSwitch extends AutoDirection{
 
 	public LeftToRightSwitch() {
 		super(Config.LEFT_TO_RIGHT_COMPENSATION);	
-		}
+	}
 
-	double[] LeftMotorSpeeds = {
+	private double[] leftMotorSpeeds = {
 			0.0, 
 			0.14645154930206666, 
 			0.228327413069198, 
@@ -432,7 +432,7 @@ public class LeftToRightSwitch extends AutoDirection{
 			0.0
 	};
 	
-	double[] RightMotorSpeeds = {
+	private double[] rightMotorSpeeds = {
 			0.0, 
 			0.14646025439423588, 
 			0.2283454920490371, 
@@ -857,14 +857,14 @@ public class LeftToRightSwitch extends AutoDirection{
 	};
 
 	public int nSteps() {
-		return LeftMotorSpeeds.length;
+		return leftMotorSpeeds.length;
 	}
 	
-	public double LeftSpeed(int i) {
-		return LeftMotorSpeeds[i];
+	public double leftSpeed(int i) {
+		return leftMotorSpeeds[i];
 	}
-	public double RightSpeed(int i) {
-		return RightMotorSpeeds[i];
+	public double rightSpeed(int i) {
+		return rightMotorSpeeds[i];
 	}
 
 

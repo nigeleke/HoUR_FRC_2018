@@ -6,8 +6,7 @@ public class DriveStraight extends AutoDirection{
 	
 	public DriveStraight() {
 		super(Config.DRIVE_STRAIGHT_COMPENSATION);	
-		}
-
+	}
 	
 	@Override
 	public int nSteps() {
@@ -15,12 +14,12 @@ public class DriveStraight extends AutoDirection{
 	}
 
 	@Override
-	public double LeftSpeed(int i) {
+	public double leftSpeed(int i) {
 		return 0.164;
 	}
 
 	@Override
-	public double RightSpeed(int i) {
+	public double rightSpeed(int i) {
 		return 0.164;
 	}
 	

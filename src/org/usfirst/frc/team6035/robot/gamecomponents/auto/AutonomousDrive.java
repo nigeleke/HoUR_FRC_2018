@@ -21,8 +21,8 @@ public class AutonomousDrive implements AutoCommand {
 
 	@Override
 	public void doNextAction() {
-		double leftSpeed = direction.LeftSpeed(stepNumber) * direction.Compensation();
-		double rightSpeed = direction.RightSpeed(stepNumber) * direction.Compensation();
+		double leftSpeed = direction.leftSpeed(stepNumber) * direction.Compensation();
+		double rightSpeed = direction.rightSpeed(stepNumber) * direction.Compensation();
 
 		driveBase.autonomousDrive(leftSpeed, rightSpeed);
 	}
