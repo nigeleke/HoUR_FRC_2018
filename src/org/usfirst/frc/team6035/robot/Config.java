@@ -9,7 +9,9 @@ public class Config {
 
 	// Game Parameters
 	public static int GAME_TIME_S = 150;
-	public static int CLIMB_ENABLED_TIME_S = GAME_TIME_S - 30;
+	public static int AUTO_TIME = 15;
+	public static int TELE_OP_TIME = GAME_TIME_S - AUTO_TIME;
+	public static int CLIMBER_DISABLED_TIME = TELE_OP_TIME - 30;
 
 	// Ports
 	public static int JOYSTICK_PORT = 0;

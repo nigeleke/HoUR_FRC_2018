@@ -1,11 +1,11 @@
 package org.usfirst.frc.team6035.robot.controller;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.DriverStation;
 
 import org.usfirst.frc.team6035.robot.*;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
 
 /**
@@ -16,7 +16,8 @@ public class Controller {
 	private Joystick stick = new Joystick(Config.JOYSTICK_PORT);
 	private XboxController xbox = new XboxController(Config.XBOX_PORT);
 	private DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL_DIO);
-	private DriverStation driverStation = DriverStation.getInstance();
+	Timer timer = null;
+	
 
 	public double getDriveSpeed() {
 		double speedY = stick.getY();
@@ -97,13 +98,16 @@ public class Controller {
 	 * Return operation for climber based off controller input
 	 */
 	public ClimberOperation getClimberOperation() {
+		if(timer == null) {
+			timer = new Timer();
+			timer.start();
+		}
+		
 		boolean leftBumperPressed = xbox.getBumper(GenericHID.Hand.kLeft);
 		boolean rightBumperPressed = xbox.getBumper(GenericHID.Hand.kRight);
 		
 		boolean bothBumpersPressed = leftBumperPressed && rightBumperPressed;
-		
-		double currentGameTime = driverStation.getMatchTime();
-		boolean inLastPeriod = (currentGameTime >= Config.CLIMB_ENABLED_TIME_S);
+		boolean inLastPeriod = (timer.get() >= Config.CLIMBER_DISABLED_TIME);
 		
 		if ((bothBumpersPressed) && (inLastPeriod)) {
 			return ClimberOperation.UP;
