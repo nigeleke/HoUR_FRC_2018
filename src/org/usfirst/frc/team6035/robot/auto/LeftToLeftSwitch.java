@@ -2,9 +2,9 @@ package org.usfirst.frc.team6035.robot.auto;
 
 import org.usfirst.frc.team6035.robot.*;
 
-public class LeftToLeft extends AutoDirection {
+public class LeftToLeftSwitch extends AutoDirection {
 	
-	public LeftToLeft() {
+	public LeftToLeftSwitch() {
 	super(Config.LEFT_TO_LEFT_COMPENSATION);	
 	}
 	

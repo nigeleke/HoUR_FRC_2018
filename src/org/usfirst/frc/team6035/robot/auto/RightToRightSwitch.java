@@ -2,8 +2,8 @@ package org.usfirst.frc.team6035.robot.auto;
 
 import org.usfirst.frc.team6035.robot.Config;
 
-public class RightToRight extends AutoDirection{
-	public RightToRight() {
+public class RightToRightSwitch extends AutoDirection{
+	public RightToRightSwitch() {
 		super(Config.RIGHT_TO_RIGHT_COMPENSATION);	
 		}
 

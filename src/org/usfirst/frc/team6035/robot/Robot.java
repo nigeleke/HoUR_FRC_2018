@@ -30,7 +30,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void autonomousInit() {
-		auto = new Autonomous(driveBase, grabberArm, grabber, lift, dashboard.dashboardAutoCase());
+		auto = new Autonomous(driveBase, grabberArm, grabber, lift, dashboard.getPath());
 	}
 
 	@Override
