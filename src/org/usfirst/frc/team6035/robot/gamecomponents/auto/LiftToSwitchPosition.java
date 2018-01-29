@@ -20,6 +20,7 @@ public class LiftToSwitchPosition implements AutoCommand {
 	@Override
 	public void doNextAction() {
 		lift.up();
+		stepNumber++;
 	}
 
 	@Override

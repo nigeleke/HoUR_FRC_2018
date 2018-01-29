@@ -20,6 +20,7 @@ public class LowerGrabberArm implements AutoCommand {
 	@Override
 	public void doNextAction() {
 		grabberArm.down();
+		stepNumber++;
 	}
 
 	@Override

@@ -20,6 +20,7 @@ public class GrabCube implements AutoCommand {
 	@Override
 	public void doNextAction() {
 		grabber.grab();
+		stepNumber++;
 	}
 
 	@Override

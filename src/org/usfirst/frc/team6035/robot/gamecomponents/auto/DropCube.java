@@ -20,6 +20,7 @@ public class DropCube implements AutoCommand {
 	@Override
 	public void doNextAction() {
 		grabber.letgo();
+		stepNumber++;
 	}
 
 	@Override

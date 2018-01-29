@@ -19,6 +19,7 @@ public class RaiseGrabberArmToDrivePosition implements AutoCommand {
 	@Override
 	public void doNextAction() {
 		grabberArm.up();
+		stepNumber++;
 	}
 
 	@Override

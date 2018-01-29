@@ -20,6 +20,7 @@ public class LowerGrabberArmToDropPosition implements AutoCommand {
 	@Override
 	public void doNextAction() {
 		grabberArm.down();
+		stepNumber++;
 	}
 
 	@Override
