@@ -11,55 +11,54 @@ import org.usfirst.frc.team6035.robot.auto.*;
 
 public class Dashboard {
 	private DriverStation driverStation = DriverStation.getInstance();
-	private SendableChooser<String> robotPosition = new SendableChooser<>();
-	private SendableChooser<String> goal = new SendableChooser<>();
+	private SendableChooser<RobotPosition> robotPosition = new SendableChooser<>();
+	private SendableChooser<Goal> goal = new SendableChooser<>();
 
 	public void dashboardInit() {
-		robotPosition.addObject("Left", "L");
-		robotPosition.addObject("Middle", "M");
-		robotPosition.addObject("Right", "R");
-		robotPosition.addDefault("Right", "R");
+		robotPosition.addObject("Left", RobotPosition.LEFT);
+		robotPosition.addObject("Middle", RobotPosition.MIDDLE);
+		robotPosition.addObject("Right", RobotPosition.RIGHT);
+		robotPosition.addDefault("Right", RobotPosition.RIGHT);
 		
-		goal.addObject("Switch", "Switch");
-		goal.addObject("Scale", "Scale");
-		goal.addObject("Base Line", "Base Line");
-		goal.addDefault("Switch", "Switch");
+		goal.addObject("Switch", Goal.SWITCH);
+		goal.addObject("Scale", Goal.SCALE);
+		goal.addObject("Base Line", Goal.BASE_LINE);
+		goal.addDefault("Switch", Goal.SWITCH);
 		
 		SmartDashboard.putData("Robot Position", robotPosition);
 		SmartDashboard.putData("Drive Goal", goal);
 	}
 
 	public AutoDirection getPath() {
-		String selectedGoal = goal.getSelected();
-
-		if (selectedGoal.equals("Base Line")) {
-			return new DriveStraight();
-		} else if (selectedGoal.equals("Switch")) {
-			return getPathForSwitch();
-		} else if (selectedGoal.equals("Scale")) {
-			return getPathForScale();
-		} else {
-			System.out.println("Error, don't understand goal selection");
-		}
-
+		Goal selectedGoal = goal.getSelected();
+		
+		switch(selectedGoal) {
+		
+		case BASE_LINE:		return new DriveStraight();
+		case SWITCH:	 return getPathForSwitch();
+		case SCALE:		return getPathForScale();
+		
+		default: System.out.println("Error, don't understand goal selection"); break;
+		
+			}
 		return null;
 	}
 
 	private AutoDirection getPathForSwitch() {
-		String robotPos = robotPosition.getSelected();
+		RobotPosition robotPos = robotPosition.getSelected();
 		String switchPos = getGameSpecificMessage(0);
 
-		if (robotPos.equals("L") && switchPos.equals("L")) {
+		if (robotPos == RobotPosition.LEFT && switchPos.equals("L")) {
 			return new LeftToLeftSwitch();
-		} else if (robotPos.equals("L") && switchPos.equals("R")) {
+		} else if (robotPos == RobotPosition.LEFT && switchPos.equals("R")) {
 			return new LeftToRightSwitch();
-		} else if (robotPos.equals("M") && switchPos.equals("L")) {
+		} else if (robotPos == RobotPosition.MIDDLE && switchPos.equals("L")) {
 			return new MiddleToLeftSwitch();
-		} else if (robotPos.equals("M") && switchPos.equals("R")) {
+		} else if (robotPos == RobotPosition.MIDDLE && switchPos.equals("R")) {
 			return new MiddleToRightSwitch();
-		} else if (robotPos.equals("R") && switchPos.equals("L")) {
+		} else if (robotPos == RobotPosition.RIGHT && switchPos.equals("L")) {
 			return new RightToLeftSwitch();
-		} else if (robotPos.equals("R") && switchPos.equals("R")) {
+		} else if (robotPos == RobotPosition.RIGHT && switchPos.equals("R")) {
 			return new RightToRightSwitch();
 		} else {
 			System.out.println("Error, couldn't determine Switch Path");
@@ -81,20 +80,20 @@ public class Dashboard {
 	}
 
 	private AutoDirection getPathForScale() {
-		String robotPos = robotPosition.getSelected();
+		RobotPosition robotPos = robotPosition.getSelected();
 		String scalePos = getGameSpecificMessage(1);
 		
-		if (robotPos.equals("L") && scalePos.equals("L")) {
+		if (robotPos == RobotPosition.LEFT && scalePos.equals("L")) {
 			return new LeftToLeftScale();
-		} else if (robotPos.equals("L") && scalePos.equals("R")) {
+		} else if (robotPos == RobotPosition.LEFT && scalePos.equals("R")) {
 			return new LeftToRightScale();
-		} else if (robotPos.equals("M") && scalePos.equals("L")) {
+		} else if (robotPos == RobotPosition.MIDDLE && scalePos.equals("L")) {
 			return new MiddleToLeftScale();
-		} else if (robotPos.equals("M") && scalePos.equals("R")) {
+		} else if (robotPos == RobotPosition.MIDDLE && scalePos.equals("R")) {
 			return new MiddleToRightScale();
-		} else if (robotPos.equals("R") && scalePos.equals("L")) {
+		} else if (robotPos == RobotPosition.RIGHT && scalePos.equals("L")) {
 			return new RightToLeftScale();
-		} else if (robotPos.equals("R") && scalePos.equals("R")) {
+		} else if (robotPos == RobotPosition.RIGHT && scalePos.equals("R")) {
 			return new RightToRightScale();
 		} else {
 			System.out.println("Error, couldn't determine Switch Path");
