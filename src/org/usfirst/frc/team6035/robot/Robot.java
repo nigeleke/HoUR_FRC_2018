@@ -9,8 +9,9 @@ import org.usfirst.frc.team6035.robot.controller.*;
 
 
 /**
- * @author Jack Gumley Integrated class to manage controllers and game
- *         components.
+ * @author Jack Gumley 
+ * 
+ * Integrated class to manage controllers and game components.
  */
 public class Robot extends IterativeRobot {
 

@@ -49,11 +49,13 @@ public class Controller {
 		boolean grabberMicroSwitchClosed = grabberLimitSwitch.get();
 
 		if (leftButtonPressed && !rightButtonPressed) {
-			if (!grabberMicroSwitchClosed) {
+			/*if (!grabberMicroSwitchClosed) {
 				return GrabberOperation.GRAB;
 			} else {
 				return GrabberOperation.HOLD;
 			}
+			*/
+			return GrabberOperation.GRAB;
 		} else if (rightButtonPressed && !leftButtonPressed) {
 			return GrabberOperation.LET_GO;
 		}
