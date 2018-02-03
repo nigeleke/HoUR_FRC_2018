@@ -17,11 +17,10 @@ public class LeftToLeftScale extends AutoDirection {
 	}
 
 	public double leftSpeed(int i) {
-		return leftMotorSpeeds[i];
+		return (0.288 * Math.log(leftMotorSpeeds[i]) + 0.4);
 	}
-
 	public double rightSpeed(int i) {
-		return rightMotorSpeeds[i];
+		return (0.288 * Math.log(rightMotorSpeeds[i]) + 0.4);
 	}
 
 }

@@ -10,17 +10,17 @@ public class DriveStraight extends AutoDirection{
 	
 	@Override
 	public int nSteps() {
-		return 217;
+		return 50;
 	}
 
 	@Override
 	public double leftSpeed(int i) {
-		return 0.164;
+		return 1;
 	}
 
 	@Override
 	public double rightSpeed(int i) {
-		return 0.164;
+		return 1;
 	}
 	
 }
