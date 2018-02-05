@@ -1,7 +1,5 @@
 package org.usfirst.frc.team6035.robot;
 
-import org.usfirst.frc.team6035.robot.auto.LeftToLeftSwitch;
-
 /**
  * Provides hardware configuration for the RoboRio channels
  * 

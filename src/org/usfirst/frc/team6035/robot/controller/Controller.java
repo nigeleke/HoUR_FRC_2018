@@ -16,6 +16,8 @@ public class Controller {
 	private Joystick stick = new Joystick(Config.JOYSTICK_PORT);
 	private XboxController xbox = new XboxController(Config.XBOX_PORT);
 	private DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL_DIO);
+	private DigitalInput liftUpLimitSwitch = new DigitalInput(Config.LIFT_UP_TRAVEL_DIO);
+	private DigitalInput liftDownLimitSwitch = new DigitalInput(Config.LIFT_DOWN_TRAVEL_DIO);
 	Timer timer = null;
 	
 
@@ -49,18 +51,21 @@ public class Controller {
 		boolean grabberMicroSwitchClosed = grabberLimitSwitch.get();
 
 		if (leftButtonPressed && !rightButtonPressed) {
-			/*if (!grabberMicroSwitchClosed) {
+			if (!grabberMicroSwitchClosed) {
 				return GrabberOperation.GRAB;
-			} else {
+			} 
+			else {
 				return GrabberOperation.HOLD;
 			}
-			*/
+		}
+			/*
 			return GrabberOperation.GRAB;
 		} else if (rightButtonPressed && !leftButtonPressed) {
 			return GrabberOperation.LET_GO;
 		}
-
+			*/
 		return GrabberOperation.STOP;
+		
 	}
 
 	/**
@@ -88,12 +93,19 @@ public class Controller {
 		boolean goDown = (135 <= dpadVal && dpadVal <= 225);
 
 		if (goUp && !goDown) {
-			return LiftOperation.UP;
+			if (!liftUpLimitSwitch.get()) {
+				return LiftOperation.UP;
+			}
+			return LiftOperation.STOP;
+			
 		} else if (goDown && !goUp) {
-			return LiftOperation.DOWN;
+			if (!liftDownLimitSwitch.get()) {
+				return LiftOperation.DOWN;
+			}
+			return LiftOperation.STOP;
 		}
-		
 		return LiftOperation.STOP;
+	
 	}
 
 	/**
