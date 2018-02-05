@@ -57,15 +57,11 @@ public class Controller {
 			else {
 				return GrabberOperation.HOLD;
 			}
-		}
-			/*
-			return GrabberOperation.GRAB;
 		} else if (rightButtonPressed && !leftButtonPressed) {
 			return GrabberOperation.LET_GO;
 		}
-			*/
+
 		return GrabberOperation.STOP;
-		
 	}
 
 	/**
@@ -93,17 +89,11 @@ public class Controller {
 		boolean goDown = (135 <= dpadVal && dpadVal <= 225);
 
 		if (goUp && !goDown) {
-			if (!liftUpLimitSwitch.get()) {
-				return LiftOperation.UP;
-			}
-			return LiftOperation.STOP;
-			
+			return liftUpLimitSwitch.get() ? LiftOperation.STOP : LiftOperation.UP;
 		} else if (goDown && !goUp) {
-			if (!liftDownLimitSwitch.get()) {
-				return LiftOperation.DOWN;
-			}
-			return LiftOperation.STOP;
+			return liftDownLimitSwitch.get() ? LiftOperation.STOP : LiftOperation.DOWN;
 		}
+
 		return LiftOperation.STOP;
 	
 	}

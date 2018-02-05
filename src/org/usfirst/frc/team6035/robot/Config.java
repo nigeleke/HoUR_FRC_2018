@@ -26,9 +26,10 @@ public class Config {
 	public static int GRABBER_ARM_CHANNEL = 4;
 	public static int LIFT_CHANNEL = 6;
 	public static int CLIMBER_CHANNEL = 5;
-	public static int GRABBER_SWITCH_CHANNEL_DIO = 7;
+	// ...
+	public static int GRABBER_SWITCH_CHANNEL_DIO = 8;
 	public static int LIFT_UP_TRAVEL_DIO = 0;
-	public static int LIFT_DOWN_TRAVEL_DIO = 3;
+	public static int LIFT_DOWN_TRAVEL_DIO = 1;
 
 	// Speeds
 	public static double LIFT_UP_SPEED = 0.5;
