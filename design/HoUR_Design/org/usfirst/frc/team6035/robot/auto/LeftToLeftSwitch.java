@@ -2,13 +2,13 @@ package org.usfirst.frc.team6035.robot.auto;
 
 import org.usfirst.frc.team6035.robot.*;
 
-public class LeftToLeft extends AutoDirection {
+public class LeftToLeftSwitch extends AutoDirection {
 	
-	public LeftToLeft() {
-	super(Config.LEFT_TO_LEFT_COMPENSATION);	
+	public LeftToLeftSwitch() {
+		super(Config.LEFT_TO_LEFT_SWITCH_SPEED_COMPENSATION);	
 	}
 	
-	double[] LeftMotorSpeeds = { 0.0,
+	private double[] leftMotorSpeeds = { 0.0,
 			0.0, 
 			0.09140182100724645, 
 			0.14257820721131093, 
@@ -492,7 +492,7 @@ public class LeftToLeft extends AutoDirection {
 			0.0
 };
 	
-	double[] RightMotorSpeeds = {
+	private double[] rightMotorSpeeds = {
 			0.0, 
 			0.09140320274266081, 
 			0.14258109032794877, 
@@ -977,14 +977,14 @@ public class LeftToLeft extends AutoDirection {
 	};
 	
 	public int nSteps() {
-		return LeftMotorSpeeds.length;
+		return leftMotorSpeeds.length;
 	}
 	
-	public double LeftSpeed(int i) {
-		return LeftMotorSpeeds[i];
+	public double leftSpeed(int i) {
+		return leftMotorSpeeds[i];
 	}
-	public double RightSpeed(int i) {
-		return RightMotorSpeeds[i];
+	public double rightSpeed(int i) {
+		return rightMotorSpeeds[i];
 	}
 
 }

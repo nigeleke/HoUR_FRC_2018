@@ -1,4 +1,5 @@
 org.usfirst.frc.team6035.robot
 org.usfirst.frc.team6035.robot.auto
 org.usfirst.frc.team6035.robot.controller
-org.usfirst.frc.team6035.robot.gamecomponents
+org.usfirst.frc.team6035.robot.gamecomponents.auto
+org.usfirst.frc.team6035.robot.gamecomponents.tele
