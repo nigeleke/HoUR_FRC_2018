@@ -50,17 +50,16 @@ public class Controller {
 		boolean rightButtonPressed = xbox.getBButton();
 		boolean grabberMicroSwitchClosed = grabberLimitSwitch.get();
 
-		if (leftButtonPressed && !rightButtonPressed) {
-			if (!grabberMicroSwitchClosed) {
-				return GrabberOperation.GRAB;
-			} 
-			else {
-				return GrabberOperation.HOLD;
-			}
-		} else if (rightButtonPressed && !leftButtonPressed) {
+		if (leftButtonPressed) {
+				if (grabberMicroSwitchClosed) {
+					return GrabberOperation.GRAB;
+				} else if (!grabberMicroSwitchClosed){
+					return GrabberOperation.HOLD;
+				}
+		} else if (rightButtonPressed) {
 			return GrabberOperation.LET_GO;
 		}
-
+		
 		return GrabberOperation.STOP;
 	}
 

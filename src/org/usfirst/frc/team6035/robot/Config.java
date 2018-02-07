@@ -45,21 +45,6 @@ public class Config {
 	// Times
 	public static int RAMP_UP_TIME_MS = 500;
 
-	// Autonomous Speed Compensation
-	public static double DRIVE_STRAIGHT_SPEED_COMPENSATION = 1;
-	public static double LEFT_TO_LEFT_SWITCH_SPEED_COMPENSATION = 1;
-	public static double LEFT_TO_RIGHT_SWITCH_SPEED_COMPENSATION = 1.0;
-	public static double MIDDLE_TO_LEFT_SWITCH_SPEED_COMPENSATION = 1;
-	public static double MIDDLE_TO_RIGHT_SWITCH_SPEED_COMPENSATION = 1;
-	public static double RIGHT_TO_RIGHT_SWITCH_SPEED_COMPENSATION = 1.0;
-	public static double RIGHT_TO_LEFT_SWITCH_SPEED_COMPENSATION = 1.0;
-	public static double LEFT_TO_LEFT_SCALE_SPEED_COMPENSATION = 1;
-	public static double LEFT_TO_RIGHT_SCALE_SPEED_COMPENSATION = 1;
-	public static double MIDDLE_TO_LEFT_SCALE_SPEED_COMPENSATION = 1;
-	public static double MIDDLE_TO_RIGHT_SCALE_SPEED_COMPENSATION = 1;
-	public static double RIGHT_TO_RIGHT_SCALE_SPEED_COMPENSATION = 1;
-	public static double RIGHT_TO_LEFT_SCALE_SPEED_COMPENSATION = 1;
-
 	// Autonomous Steps
 	public static int DROP_CUBE_STEPS = 50;
 	public static int GRAB_CUBE_STEPS = 50;
