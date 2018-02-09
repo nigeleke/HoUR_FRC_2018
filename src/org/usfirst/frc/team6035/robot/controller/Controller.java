@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.DigitalInput;
 
 import org.usfirst.frc.team6035.robot.*;
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
@@ -119,5 +118,26 @@ public class Controller {
 		
 		return ClimberOperation.STOP;
 	}
+	/**
+	 * Return operation for cube pusher based off controller input
+	 */
+	public PushOperation getPushOperation() {
 
+		
+		boolean leftBumper = xbox.getBumper(GenericHID.Hand.kLeft);
+		boolean rightBumper = xbox.getBumper(GenericHID.Hand.kRight);
+		
+		if (leftBumper) { 
+			return PushOperation.REWIND ;
+		
+		}
+		else if (rightBumper) { 
+			return PushOperation.PUSH ;
+		}
+		
+		return PushOperation.STOP;
+		
+		
+		
+	}
 }
