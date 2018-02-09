@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 
 import org.usfirst.frc.team6035.robot.*;
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
@@ -106,13 +107,13 @@ public class Controller {
 			timer.start();
 		}
 		
-		boolean leftBumperPressed = xbox.getBumper(GenericHID.Hand.kLeft);
-		boolean rightBumperPressed = xbox.getBumper(GenericHID.Hand.kRight);
+		double leftTrigger = xbox.getTriggerAxis(GenericHID.Hand.kLeft);
+		double rightTrigger = xbox.getTriggerAxis(GenericHID.Hand.kRight);
 		
-		boolean bothBumpersPressed = leftBumperPressed && rightBumperPressed;
+		boolean bothPressed = leftTrigger >= 0.5 && rightTrigger >= 0.5 ;
 		boolean inLastPeriod = (timer.get() >= Config.CLIMBER_DISABLED_TIME);
 		
-		if (bothBumpersPressed && inLastPeriod) {
+		if (bothPressed && inLastPeriod) {
 			return ClimberOperation.UP;
 		}
 		
