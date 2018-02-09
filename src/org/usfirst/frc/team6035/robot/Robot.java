@@ -21,6 +21,7 @@ public class Robot extends IterativeRobot {
 	private GrabberArm grabberArm = new GrabberArm();
 	private DriveBase driveBase = new DriveBase();
 	private Climber climber = new Climber();
+	private Pusher pusher = new Pusher();
 	private Dashboard dashboard = new Dashboard();
 	private Autonomous auto;
 
@@ -51,6 +52,7 @@ public class Robot extends IterativeRobot {
 		operateGrabberArm();
 		operateGrabber();
 		operateClimber();
+		operatePusher();
 	}
 
 	/**
@@ -100,7 +102,7 @@ public class Robot extends IterativeRobot {
 
 	/**
 	 * Get instructions from controller to as which direction to operate the
-	 * grabber.
+	 * grabber
 	 */
 	private void operateGrabber() {
 		GrabberOperation op = controller.getGrabberOperation();
@@ -129,6 +131,23 @@ public class Robot extends IterativeRobot {
 		}
 	}
 
+	/**
+	 * Getting instructions from controller as to which direction to operate the
+	 * Pusher
+	 */
+	private void operatePusher() {
+		PushOperation op = controller.getPushOperation();
+		switch (op) {
+		case PUSH:			pusher.push();			break;
+		case REWIND:		pusher.rewind();		break;
+		case STOP:			pusher.stop();			break;
+		
+		default:
+			System.out.println("Error in operatePusher Switch");
+			break;
+		}
+	}
+	
 	@Override
 	public void testPeriodic() {
 		// probably not going to be used but may be useful...
