@@ -16,10 +16,10 @@ public class Dashboard {
 	private SendableChooser<Goal> goal = new SendableChooser<>();
 
 	public void dashboardInit() {
-		robotPosition.addObject("Left", RobotPosition.LEFT);
+		robotPosition.addDefault("Left", RobotPosition.LEFT);
 		robotPosition.addObject("Middle", RobotPosition.MIDDLE);
 		robotPosition.addObject("Right", RobotPosition.RIGHT);
-		robotPosition.addDefault("Right", RobotPosition.RIGHT);
+		robotPosition.addObject("Right", RobotPosition.RIGHT);
 		
 		goal.addObject("Switch", Goal.SWITCH);
 		goal.addObject("Scale", Goal.SCALE);

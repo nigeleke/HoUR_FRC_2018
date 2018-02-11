@@ -24,13 +24,16 @@ public class AutonomousDrive implements AutoCommand {
 		double leftSpeedFtPerSec = direction.leftSpeed(stepNumber);
 		double rightSpeedFtPerSec = direction.rightSpeed(stepNumber);
 		
-		double leftControllerSpeed =   (0.288 * Math.log(leftSpeedFtPerSec) + 0.4);
-		double rightControllerSpeed = (0.288 * Math.log(rightSpeedFtPerSec) + 0.4);
+		double leftControllerSpeed =   FeetPerSecToContSpeed(leftSpeedFtPerSec);
+		double rightControllerSpeed = FeetPerSecToContSpeed(rightSpeedFtPerSec);
 
-		driveBase.autonomousDrive(leftControllerSpeed, rightControllerSpeed);
+		driveBase.autonomousDrive(rightControllerSpeed, leftControllerSpeed);
 		stepNumber++;
 	}
 
+	private static double FeetPerSecToContSpeed(double fps) {
+		return fps = -1*(0.28*Math.log(fps)+0.485);
+	}
 	@Override
 	public boolean isFinished() {
 		return (stepNumber == direction.nSteps());
