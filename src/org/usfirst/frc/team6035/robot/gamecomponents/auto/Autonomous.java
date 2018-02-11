@@ -10,6 +10,9 @@ public class Autonomous {
 	private List<AutoCommand> commandSequence = new ArrayList<>();
 	private int currentCommandIndex = 0;
 
+	private int steps = 50;
+	private double speed = 0.5;
+	
 	public Autonomous(DriveBase driveBase, GrabberArm grabberArm, Grabber grabber, Lift lift, AutoDirection direction) {
 		//commandSequence.add(new LowerGrabberArm(grabberArm));
 		//commandSequence.add(new GrabCube(grabber));

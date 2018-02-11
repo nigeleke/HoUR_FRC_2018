@@ -30,14 +30,20 @@ public class Robot extends IterativeRobot {
 		dashboard.dashboardInit();
 	}
 
+	int steps;
+	double speed = 0.5;
+	
 	@Override
 	public void autonomousInit() {
-		auto = new Autonomous(driveBase, grabberArm, grabber, lift, dashboard.getPath());
+		steps = 50;
 	}
 
 	@Override
 	public void autonomousPeriodic() {
-		auto.doNextAction();
+		if (steps > 0) {
+			driveBase.autonomousDrive(speed, speed);
+			steps--;
+		}
 	}
 
 	@Override
