@@ -38,7 +38,7 @@ public class DriveBase {
 	 *            = the value we assign the amount we differ from a straight path
 	 */
 	public void manualDrive(double speed, double direction) {
-		drive.arcadeDrive(speed, direction);
+		drive.arcadeDrive(speed, Config.DIRECTION_SENSITIVITY*direction);
 	}
 
 	public void autonomousDrive(double leftSpeed, double rightSpeed) {
