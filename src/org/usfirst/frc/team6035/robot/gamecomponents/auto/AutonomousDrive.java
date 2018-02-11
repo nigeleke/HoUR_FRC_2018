@@ -32,7 +32,7 @@ public class AutonomousDrive implements AutoCommand {
 	}
 
 	private static double FeetPerSecToContSpeed(double fps) {
-		return fps = -1*(0.28*Math.log(fps)+0.485);
+		return fps = -1*(0.28*Math.log(fps)+0.26);
 	}
 	@Override
 	public boolean isFinished() {

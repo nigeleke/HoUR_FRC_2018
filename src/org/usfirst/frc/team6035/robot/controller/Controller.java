@@ -18,6 +18,7 @@ public class Controller {
 	private DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL_DIO);
 	private DigitalInput liftUpLimitSwitch = new DigitalInput(Config.LIFT_UP_TRAVEL_DIO);
 	private DigitalInput liftDownLimitSwitch = new DigitalInput(Config.LIFT_DOWN_TRAVEL_DIO);
+	private boolean twist = true;
 	Timer timer = null;
 	
 
@@ -34,12 +35,10 @@ public class Controller {
 	}
 
 	public double getDriveDirection() {
-		double twist = stick.getZ();
-		double tilt = stick.getX();
-		boolean twistOrTilt = stick.getRawButton(2);
-		double direction = (twistOrTilt ? twist : tilt);
-
-		return direction;
+		if(stick.getRawButtonPressed(2)){
+			twist = !twist;
+		}
+		return (twist ? stick.getZ() : stick.getX());
 	}
 
 	/**
