@@ -9,12 +9,13 @@ import org.usfirst.frc.team6035.robot.*;
 public class Lift {
 	private VictorSP motor = new VictorSP(Config.LIFT_CHANNEL);
 	private SoftSpeedController controller = new SoftSpeedController(motor);
+	private SoftSpeedController superSoftController = new SoftSpeedController(motor, Config.LIFT_UP_RAMP_UP_TIME_MS);
 
 	/**
 	 * sets the motor speed to operate the lift
 	 */
 	public void up() {
-		controller.set(Config.LIFT_UP_SPEED); // set motor at a positive value to operate the lift
+		superSoftController.set(Config.LIFT_UP_SPEED); // set motor at a positive value to operate the lift
 	}
 
 	/**

@@ -47,6 +47,7 @@ public class Config {
 
 	// Times
 	public static int RAMP_UP_TIME_MS = 500;
+	public static int LIFT_UP_RAMP_UP_TIME_MS = 3000;
 
 	// Autonomous Steps
 	public static int DROP_CUBE_STEPS = 50;

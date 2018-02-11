@@ -10,9 +10,15 @@ import edu.wpi.first.wpilibj.*;
 class SoftSpeedController implements SpeedController {
 
 	private SpeedController target;
+	private int rampUpTimeMs;
+
+	public SoftSpeedController(SpeedController target, int rampUpTimeMs) {
+		this.target = target;
+		this.rampUpTimeMs = rampUpTimeMs;
+	}
 
 	public SoftSpeedController(SpeedController target) {
-		this.target = target;
+		this(target, Config.RAMP_UP_TIME_MS);
 	}
 
 	@Override
@@ -22,7 +28,7 @@ class SoftSpeedController implements SpeedController {
 
 	@Override
 	public void set(double speed) {
-		double numberIterations = Config.RAMP_UP_TIME_MS / 20;
+		double numberIterations = rampUpTimeMs / 20.0;
 		double deltaSpeed = 1 / numberIterations;
 		double currentSpeed = target.get();
 
