@@ -9,7 +9,7 @@ public class Forward implements TurtleStep {
 	}
 
 	/**************************************************************************
-	 * These number need tuning - but I think they should be close (judging
+	 * These numbers need tuning - but I think they should be close (judging
 	 * from the speed tests). Suggest you keep speed as-is and reduce nSteps if
 	 * overshooting.
 	 */
