@@ -5,10 +5,9 @@ import java.util.*;
 public class Turtle {
 	
 	private List<TurtleStep> turtleSteps = new ArrayList<>();
-	private int nSteps = 0;
 	
-	public Turtle go(double n) {
-		return add(new Go(n));
+	public Turtle forward(double n) {
+		return add(new Forward(n));
 	}
 	
 	public Turtle turn(int n) {
@@ -17,11 +16,15 @@ public class Turtle {
 	
 	private Turtle add(TurtleStep step) {
 		turtleSteps.add(step);
-		nSteps = step.nSteps();
 		return this;
 	}
 	
 	public int nSteps() {
-		return nSteps;
+		return turtleSteps.size();
 	}
+	
+	public TurtleStep step(int n) {
+		return turtleSteps.get(n);
+	}
+	
 }

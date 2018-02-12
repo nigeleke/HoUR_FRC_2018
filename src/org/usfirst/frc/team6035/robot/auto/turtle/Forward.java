@@ -1,10 +1,10 @@
 package org.usfirst.frc.team6035.robot.auto.turtle;
 
-public class Go implements TurtleStep {
+public class Forward implements TurtleStep {
 	
 	private double nMetres;
 	
-	public Go(double nMetres) {
+	public Forward(double nMetres) {
 		this.nMetres = nMetres;
 	}
 
