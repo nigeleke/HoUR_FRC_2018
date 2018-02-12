@@ -7,7 +7,6 @@ import org.usfirst.frc.team6035.robot.gamecomponents.tele.*;
 import org.usfirst.frc.team6035.robot.gamecomponents.auto.*;
 import org.usfirst.frc.team6035.robot.controller.*;
 
-// turtle steps
 /**
  * @author Jack Gumley 
  * 
