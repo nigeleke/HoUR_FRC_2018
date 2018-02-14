@@ -3,6 +3,7 @@ package org.usfirst.frc.team6035.robot;
 
 //Imports 
 import edu.wpi.first.wpilibj.*;
+
 import org.usfirst.frc.team6035.robot.gamecomponents.tele.*;
 import org.usfirst.frc.team6035.robot.gamecomponents.auto.*;
 import org.usfirst.frc.team6035.robot.controller.*;
@@ -24,7 +25,6 @@ public class Robot extends IterativeRobot {
 	private Pusher pusher = new Pusher();
 	private Dashboard dashboard = new Dashboard();
 	private Autonomous auto;
-
 	@Override
 	public void robotInit() {
 		dashboard.dashboardInit();

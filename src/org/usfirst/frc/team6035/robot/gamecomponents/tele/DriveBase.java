@@ -40,7 +40,7 @@ public class DriveBase {
 	public void manualDrive(double speed, double direction) {
 		drive.arcadeDrive(speed, Config.DIRECTION_SENSITIVITY*direction);
 	}
-
+	
 	public void autonomousDrive(double leftSpeed, double rightSpeed) {
 		drive.tankDrive(leftSpeed, rightSpeed);
 	}
