@@ -19,12 +19,11 @@ public class Dashboard {
 		robotPosition.addDefault("Left", RobotPosition.LEFT);
 		robotPosition.addObject("Middle", RobotPosition.MIDDLE);
 		robotPosition.addObject("Right", RobotPosition.RIGHT);
-		robotPosition.addObject("Right", RobotPosition.RIGHT);
 		
 		goal.addObject("Switch", Goal.SWITCH);
 		goal.addObject("Scale", Goal.SCALE);
 		goal.addObject("Base Line", Goal.BASE_LINE);
-		goal.addDefault("Switch", Goal.SWITCH);
+		goal.addDefault("Test", Goal.TEST);
 		
 		SmartDashboard.putData("Robot Position", robotPosition);
 		SmartDashboard.putData("Drive Goal", goal);
@@ -38,6 +37,7 @@ public class Dashboard {
 		case BASE_LINE:		return new DriveStraight();
 		case SWITCH:	 return getPathForSwitch();
 		case SCALE:		return getPathForScale();
+		case TEST: 		return new TestAuto();
 		
 		default: System.out.println("Error, don't understand goal selection"); break;
 		
