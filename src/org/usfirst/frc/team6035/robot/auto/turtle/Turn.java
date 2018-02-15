@@ -10,17 +10,18 @@ public class Turn implements TurtleStep{
 	
 	@Override
 	public int nSteps() {
-		double rightAngleSteps = 5; // TODO Insert amount of steps required to turn 90 degrees
-		return (int)(degrees/rightAngleSteps);
+		double rightAngleSteps = 0.25; // TODO Insert amount of steps required to turn 90 degrees
+		return (int)(rightAngleSteps * degrees / 90.0);
 	}
 
 	@Override
 	public double leftSpeed() {
+		double speed = 0.56;
 		if(degrees < 0) {
-			return -0.9;
+			return -speed;
 		}
 		else {
-			return 0.9;
+			return speed;
 		}
 	}
 

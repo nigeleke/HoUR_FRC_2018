@@ -9,13 +9,13 @@ public class Forward implements TurtleStep {
 	}
 	@Override
 	public int nSteps() {
-		double metreSteps = 15; // TODO Enter amount of Steps required to travel 1 metre
+		int metreSteps = 100; // TODO Enter amount of Steps required to travel 1 metre
 		return (int)(metreSteps*nMetres);
 	}
 
 	@Override
 	public double leftSpeed() {
-		return 0.9;
+		return -0.7;
 	}
 
 	@Override
