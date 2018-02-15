@@ -1,7 +1,5 @@
 package org.usfirst.frc.team6035.robot.auto;
 
-import org.usfirst.frc.team6035.robot.*;
-
 public class LeftToLeftScale extends AutoDirection {
 
 	private double[] leftMotorSpeeds = { 0.0, 1.82803190779082, 2.851554694928819, 3.4305906965213424,
