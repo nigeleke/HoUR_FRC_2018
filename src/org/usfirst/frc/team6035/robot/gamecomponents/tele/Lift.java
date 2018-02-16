@@ -9,7 +9,7 @@ import org.usfirst.frc.team6035.robot.*;
 public class Lift {
 	private VictorSP motor = new VictorSP(Config.LIFT_CHANNEL);
 	private SoftSpeedController controller = new SoftSpeedController(motor);
-	private SoftSpeedController superSoftController = new SoftSpeedController(motor, 3000);
+	private SoftSpeedController superSoftController = new SoftSpeedController(motor, Config.RAMP_UP_TIME_MS_LIFT_UP);
 
 	/**
 	 * sets the motor speed to operate the lift

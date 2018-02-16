@@ -15,7 +15,7 @@ public class Controller {
 
 	private Joystick stick = new Joystick(Config.JOYSTICK_PORT);
 	private XboxController xbox = new XboxController(Config.XBOX_PORT);
-	private DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL_DIO);
+	//private DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL_DIO);
 	private DigitalInput liftUpLimitSwitch = new DigitalInput(Config.LIFT_UP_TRAVEL_DIO);
 	private DigitalInput liftDownLimitSwitch = new DigitalInput(Config.LIFT_DOWN_TRAVEL_DIO);
 	private boolean twist = true;
@@ -47,18 +47,17 @@ public class Controller {
 	public GrabberOperation getGrabberOperation() {
 		boolean leftButtonPressed = xbox.getXButton();
 		boolean rightButtonPressed = xbox.getBButton();
-		boolean grabberMicroSwitchClosed = grabberLimitSwitch.get();
+		//boolean grabberMicroSwitchClosed = grabberLimitSwitch.get();
 
 		if (leftButtonPressed) {
-				if (grabberMicroSwitchClosed) {
+				//if (grabberMicroSwitchClosed) {
 					return GrabberOperation.GRAB;
-				} else if (!grabberMicroSwitchClosed){
-					return GrabberOperation.HOLD;
+				//} else if (!grabberMicroSwitchClosed){
+					//return GrabberOperation.HOLD;
 				}
-		} else if (rightButtonPressed) {
+		 else if (rightButtonPressed) {
 			return GrabberOperation.LET_GO;
-		}
-		
+		 }
 		return GrabberOperation.STOP;
 	}
 
@@ -87,9 +86,23 @@ public class Controller {
 		boolean goDown = (135 <= dpadVal && dpadVal <= 225);
 
 		if (goUp && !goDown) {
-			return liftUpLimitSwitch.get() ? LiftOperation.STOP : LiftOperation.UP;
+			if (!liftUpLimitSwitch.get()) {
+				return LiftOperation.STOP;
+			}
+			else {
+				return LiftOperation.UP;
+			}
+			//return liftUpLimitSwitch.get() ? LiftOperation.STOP : LiftOperation.UP;
+			//return LiftOperation.UP;
 		} else if (goDown && !goUp) {
-			return liftDownLimitSwitch.get() ? LiftOperation.STOP : LiftOperation.DOWN;
+			if (liftDownLimitSwitch.get()) {
+				return LiftOperation.DOWN;
+			}
+			else {
+				return LiftOperation.STOP;
+			}
+			//return liftDownLimitSwitch.get() ? LiftOperation.STOP : LiftOperation.DOWN;
+			//return LiftOperation.DOWN;
 		}
 
 		return LiftOperation.STOP;

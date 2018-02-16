@@ -53,7 +53,6 @@ public abstract class AutoDirection {
 	public boolean isFinished() {
 
 		return turtleNumber >= turtle.nSteps();
-
 	}
 
 	

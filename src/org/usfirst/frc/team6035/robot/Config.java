@@ -33,7 +33,7 @@ public class Config {
 	public static int LIFT_DOWN_TRAVEL_DIO = 3;
 
 	// Speeds
-	public static double LIFT_UP_SPEED = 0.5;
+	public static double LIFT_UP_SPEED = 0.55;
 	public static double LIFT_DOWN_SPEED = -0.5;
 	public static double GRABBER_ARM_UP_SPEED = 0.2;
 	public static double GRABBER_ARM_DOWN_SPEED = -0.2;
@@ -47,6 +47,7 @@ public class Config {
 
 	// Times
 	public static int RAMP_UP_TIME_MS = 500;
+	public static int RAMP_UP_TIME_MS_LIFT_UP = 3000;
 
 	// Autonomous Steps
 	public static int DROP_CUBE_STEPS = 50;

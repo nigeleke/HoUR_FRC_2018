@@ -4,6 +4,7 @@ public class TestAuto extends AutoDirection {
 
 	public TestAuto() {
 		turtle = turtle
-				.turn(90);
+				.forward(1)
+				.turn(-90);
 	}
 }

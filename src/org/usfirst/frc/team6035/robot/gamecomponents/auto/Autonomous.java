@@ -31,6 +31,7 @@ public class Autonomous {
 				currentCommandIndex++;
 				commandSequence.get(currentCommandIndex).init();
 			}
+			
 		}
 	}
 
