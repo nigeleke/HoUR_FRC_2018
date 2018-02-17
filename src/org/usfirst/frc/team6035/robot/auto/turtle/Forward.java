@@ -10,7 +10,7 @@ public class Forward implements TurtleStep {
 	}
 	public Forward(double nMetres, double speed) {
 		this.nMetres = nMetres;
-		this.speed = speed;
+		this.speed = -speed;
 	}
 	@Override
 	public int nSteps() {
