@@ -47,8 +47,8 @@ public class Config {
 	public static double PUSHER_REWIND_SPEED = 0.7;
 
 	// Times
-	public static int RAMP_UP_TIME_MS_DEFAULT = 500;
-	public static int RAMP_UP_TIME_MS_LIFT_UP = 3000;
+	public static int DEFAULT_RAMP_UP_TIME_MS = 500;
+	public static int LIFT_UP_RAMP_UP_TIME_MS = 3000;
 
 	// Autonomous Steps
 	public static int DROP_CUBE_STEPS = 50;

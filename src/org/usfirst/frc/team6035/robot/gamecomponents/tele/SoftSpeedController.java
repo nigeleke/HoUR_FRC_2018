@@ -18,7 +18,7 @@ class SoftSpeedController implements SpeedController {
 	}
 
 	public SoftSpeedController(SpeedController target) {
-		this(target, Config.RAMP_UP_TIME_MS_DEFAULT);
+		this(target, Config.DEFAULT_RAMP_UP_TIME_MS);
 
 	}
 	
