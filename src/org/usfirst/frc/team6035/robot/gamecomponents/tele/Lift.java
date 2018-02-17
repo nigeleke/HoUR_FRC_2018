@@ -1,15 +1,18 @@
 package org.usfirst.frc.team6035.robot.gamecomponents.tele;
 
-import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.*;
 import org.usfirst.frc.team6035.robot.*;
 
 /**
  * @author Harrison King Class for operating the lift
  */
 public class Lift {
-	private VictorSP motor = new VictorSP(Config.LIFT_CHANNEL);
-	private SoftSpeedController controller = new SoftSpeedController(motor);
-	private SoftSpeedController superSoftController = new SoftSpeedController(motor, Config.RAMP_UP_TIME_MS_LIFT_UP);
+	private VictorSP motor1 = new VictorSP(Config.LIFT_CHANNEL_1);
+	private VictorSP motor2 = new VictorSP(Config.LIFT_CHANNEL_2);
+	private SpeedController motors = new SpeedControllerGroup(motor1, motor2);
+	
+	private SoftSpeedController controller = new SoftSpeedController(motors);
+	private SoftSpeedController superSoftController = new SoftSpeedController(motors, Config.RAMP_UP_TIME_MS_LIFT_UP);
 
 	/**
 	 * sets the motor speed to operate the lift
