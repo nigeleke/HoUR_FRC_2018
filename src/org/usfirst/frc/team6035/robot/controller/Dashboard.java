@@ -29,7 +29,7 @@ public class Dashboard {
 		SmartDashboard.putData("Drive Goal", goal);
 	}
 
-	public AutoDirection getPath() {
+	public AutoPlay getPath() {
 		Goal selectedGoal = goal.getSelected();
 		
 		switch(selectedGoal) {
@@ -45,7 +45,7 @@ public class Dashboard {
 		return null;
 	}
 
-	private AutoDirection getPathForSwitch() {
+	private AutoPlay getPathForSwitch() {
 		RobotPosition robotPos = robotPosition.getSelected();
 		String switchPos = getGameSpecificMessage(0);
 
@@ -80,7 +80,7 @@ public class Dashboard {
 		}
 	}
 
-	private AutoDirection getPathForScale() {
+	private AutoPlay getPathForScale() {
 		RobotPosition robotPos = robotPosition.getSelected();
 		String scalePos = getGameSpecificMessage(1);
 		

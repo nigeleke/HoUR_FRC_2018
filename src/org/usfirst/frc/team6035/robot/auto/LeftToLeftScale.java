@@ -1,9 +1,7 @@
 package org.usfirst.frc.team6035.robot.auto;
 
-public class LeftToLeftScale extends AutoDirection {
+public class LeftToLeftScale extends AutoPlay {
 	public LeftToLeftScale() {
-		turtle.forward(9)
-		.turn(90)
-		.forward(0.8);
+		super("LeftToLeftScale.dat");
 	}
 }

@@ -1,9 +1,8 @@
 package org.usfirst.frc.team6035.robot.auto;
 
-public class TestAuto extends AutoDirection {
+public class TestAuto extends AutoPlay {
 
 	public TestAuto() {
-				 turtle
-				.turn(90);
+		super("TestAuto.dat");
 	}
 }

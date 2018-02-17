@@ -2,7 +2,7 @@ package org.usfirst.frc.team6035.robot.gamecomponents.auto;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.usfirst.frc.team6035.robot.auto.AutoDirection;
+import org.usfirst.frc.team6035.robot.auto.AutoPlay;
 import org.usfirst.frc.team6035.robot.gamecomponents.tele.*;
 
 public class Autonomous {
@@ -10,7 +10,7 @@ public class Autonomous {
 	private List<AutoCommand> commandSequence = new ArrayList<>();
 	private int currentCommandIndex = 0;
 
-	public Autonomous(DriveBase driveBase, GrabberArm grabberArm, Grabber grabber, Lift lift, AutoDirection direction) {
+	public Autonomous(DriveBase driveBase, GrabberArm grabberArm, Grabber grabber, Lift lift, AutoPlay direction) {
 		//commandSequence.add(new LowerGrabberArm(grabberArm));
 		//commandSequence.add(new GrabCube(grabber));
 		//commandSequence.add(new RaiseGrabberArmToDrivePosition(grabberArm));

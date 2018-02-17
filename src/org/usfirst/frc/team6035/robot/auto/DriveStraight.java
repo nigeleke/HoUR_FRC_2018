@@ -1,7 +1,7 @@
 package org.usfirst.frc.team6035.robot.auto;
 
-public class DriveStraight extends AutoDirection {
+public class DriveStraight extends AutoPlay {
 	public DriveStraight() {
-		turtle.forward(2.5);
+		super("DriveStraight.dat");
 	}
 }

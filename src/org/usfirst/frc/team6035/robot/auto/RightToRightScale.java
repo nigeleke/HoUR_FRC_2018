@@ -1,10 +1,8 @@
 package org.usfirst.frc.team6035.robot.auto;
 
 
-public class RightToRightScale extends AutoDirection {
+public class RightToRightScale extends AutoPlay {
 	public RightToRightScale() {
-			turtle.forward(9)
-			.turn(-90)
-			.forward(0.8);
+			super("RightToRightScale.dat");
 	}
 }

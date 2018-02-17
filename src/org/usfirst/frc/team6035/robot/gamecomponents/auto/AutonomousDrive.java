@@ -6,9 +6,9 @@ import org.usfirst.frc.team6035.robot.auto.*;
 public class AutonomousDrive implements AutoCommand {
 	
 	private DriveBase driveBase;
-	private AutoDirection direction;
+	private AutoPlay direction;
 
-	public AutonomousDrive(DriveBase driveBase, AutoDirection direction) {
+	public AutonomousDrive(DriveBase driveBase, AutoPlay direction) {
 		this.driveBase = driveBase;
 		this.direction = direction;
 	}
