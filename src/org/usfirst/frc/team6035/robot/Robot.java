@@ -16,7 +16,7 @@ import org.usfirst.frc.team6035.robot.controller.*;
  */
 public class Robot extends IterativeRobot {
 
-	private Controller controller = new Controller();
+	private Controller controller = new TeleopController();
 	private Lift lift = new Lift();
 	private Grabber grabber = new Grabber();
 	private GrabberArm grabberArm = new GrabberArm();
