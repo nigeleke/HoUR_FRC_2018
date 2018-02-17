@@ -30,5 +30,10 @@ public interface Controller {
 	 * Return operation for cube pusher based off controller input
 	 */
 	PushOperation getPushOperation();
+	
+	/**
+	 * Notify controller the next 20 ms cycle is about to start
+	 */
+	void nextCycle();
 
 }

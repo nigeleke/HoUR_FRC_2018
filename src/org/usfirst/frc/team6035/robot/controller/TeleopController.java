@@ -2,6 +2,8 @@ package org.usfirst.frc.team6035.robot.controller;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.usfirst.frc.team6035.robot.*;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
@@ -15,11 +17,13 @@ public class TeleopController implements Controller {
 
 	private Joystick stick = new Joystick(Config.JOYSTICK_PORT);
 	private XboxController xbox = new XboxController(Config.XBOX_PORT);
-	//private DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL_DIO);
+	private DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL_DIO);
 	private DigitalInput liftUpLimitSwitch = new DigitalInput(Config.LIFT_UP_TRAVEL_DIO);
 	private DigitalInput liftDownLimitSwitch = new DigitalInput(Config.LIFT_DOWN_TRAVEL_DIO);
 	private boolean twist = true;
 	Timer timer = null;
+	private List<RobotOperation> recordedOperations = new ArrayList<>();
+	private RobotOperation currentOperations = new RobotOperation();
 	
 
 	/* (non-Javadoc)
@@ -34,7 +38,8 @@ public class TeleopController implements Controller {
 		normalisedThrottle = normalisedThrottle < 0.25 ? 0.25 : normalisedThrottle;
 		
 		double throttledSpeed = speedY * normalisedThrottle;
-
+		
+		currentOperations.driveSpeed = throttledSpeed;
 		return throttledSpeed;
 	}
 
@@ -46,7 +51,9 @@ public class TeleopController implements Controller {
 		if(stick.getRawButtonPressed(2)){
 			twist = !twist;
 		}
-		return (twist ? stick.getZ() : stick.getX());
+		double direction = (twist ? stick.getZ() : stick.getX());
+		currentOperations.driveDirection = direction;
+		return direction;
 	}
 
 	/* (non-Javadoc)
@@ -56,18 +63,20 @@ public class TeleopController implements Controller {
 	public GrabberOperation getGrabberOperation() {
 		boolean leftButtonPressed = xbox.getXButton();
 		boolean rightButtonPressed = xbox.getBButton();
-		//boolean grabberMicroSwitchClosed = grabberLimitSwitch.get();
-
+		boolean grabberMicroSwitchClosed = grabberLimitSwitch.get();
+		GrabberOperation op = GrabberOperation.STOP;
 		if (leftButtonPressed) {
-				//if (grabberMicroSwitchClosed) {
-					return GrabberOperation.GRAB;
-				//} else if (!grabberMicroSwitchClosed){
-					//return GrabberOperation.HOLD;
+				if (grabberMicroSwitchClosed) {
+					op = GrabberOperation.GRAB;
+				} else if (!grabberMicroSwitchClosed){
+					op = GrabberOperation.HOLD;
 				}
+		}
 		 else if (rightButtonPressed) {
-			return GrabberOperation.LET_GO;
+			op = GrabberOperation.LET_GO;
 		 }
-		return GrabberOperation.STOP;
+		currentOperations.grabberOperation = op;
+		return op;
 	}
 
 	/* (non-Javadoc)
@@ -77,14 +86,14 @@ public class TeleopController implements Controller {
 	public GrabberArmOperation getGrabberArmOperation() {
 		boolean topButtonPressed = xbox.getYButton();
 		boolean bottomButtonPressed = xbox.getAButton();
-
+		GrabberArmOperation op = GrabberArmOperation.STOP;
 		if (topButtonPressed && !bottomButtonPressed) {
-			return GrabberArmOperation.UP;
+			op = GrabberArmOperation.UP;
 		} else if (bottomButtonPressed && !topButtonPressed) {
-			return GrabberArmOperation.DOWN;
+			op = GrabberArmOperation.DOWN;
 		}
-		
-		return GrabberArmOperation.STOP;
+		currentOperations.grabberArmOperation = op;
+		return op;
 	}
 
 	/* (non-Javadoc)
@@ -95,28 +104,25 @@ public class TeleopController implements Controller {
 		int dpadVal = xbox.getPOV();
 		boolean goUp = (325 <= dpadVal && dpadVal < 360) || (0 <= dpadVal && dpadVal <= 45);
 		boolean goDown = (135 <= dpadVal && dpadVal <= 225);
+		LiftOperation op = LiftOperation.STOP;
 
 		if (goUp && !goDown) {
 			if (!liftUpLimitSwitch.get()) {
-				return LiftOperation.STOP;
+				op = LiftOperation.STOP;
 			}
 			else {
-				return LiftOperation.UP;
+				op = LiftOperation.UP;
 			}
-			//return liftUpLimitSwitch.get() ? LiftOperation.STOP : LiftOperation.UP;
-			//return LiftOperation.UP;
 		} else if (goDown && !goUp) {
 			if (liftDownLimitSwitch.get()) {
-				return LiftOperation.DOWN;
+				op = LiftOperation.DOWN;
 			}
 			else {
-				return LiftOperation.STOP;
+				op = LiftOperation.STOP;
 			}
-			//return liftDownLimitSwitch.get() ? LiftOperation.STOP : LiftOperation.DOWN;
-			//return LiftOperation.DOWN;
 		}
-
-		return LiftOperation.STOP;
+		currentOperations.liftOperation = op;
+		return op;
 	
 	}
 
@@ -135,12 +141,12 @@ public class TeleopController implements Controller {
 		
 		boolean bothPressed = leftTrigger >= 0.5 && rightTrigger >= 0.5 ;
 		boolean inLastPeriod = (timer.get() >= Config.CLIMBER_DISABLED_TIME);
+		ClimberOperation op = ClimberOperation.STOP;
 		
 		if (bothPressed && inLastPeriod) {
-			return ClimberOperation.UP;
+			op = ClimberOperation.UP;
 		}
-		
-		return ClimberOperation.STOP;
+		return op;
 	}
 	/* (non-Javadoc)
 	 * @see org.usfirst.frc.team6035.robot.controller.IController#getPushOperation()
@@ -151,18 +157,24 @@ public class TeleopController implements Controller {
 		
 		boolean leftBumper = xbox.getBumper(GenericHID.Hand.kLeft);
 		boolean rightBumper = xbox.getBumper(GenericHID.Hand.kRight);
+		PushOperation op = PushOperation.STOP;
 		
 		if (leftBumper) { 
-			return PushOperation.REWIND ;
+			op = PushOperation.REWIND ;
 		
 		}
 		else if (rightBumper) { 
-			return PushOperation.PUSH ;
+			op = PushOperation.PUSH ;
 		}
+		currentOperations.pushOperation = op;
+		return op;	
 		
-		return PushOperation.STOP;
-		
-		
-		
+	}
+
+	@Override
+	public void nextCycle() {
+	//TODO
+	recordedOperations.add(currentOperations);	
+	currentOperations = new RobotOperation();
 	}
 }
