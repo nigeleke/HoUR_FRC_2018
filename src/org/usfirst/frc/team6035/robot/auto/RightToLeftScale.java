@@ -10,5 +10,6 @@ public class RightToLeftScale extends AutoDirection {
 		.forward(3)
 		.turn(90)
 		.forward(0.8);
+		//TODO Mirror values from LeftToRightScale and finalise
 	}
 }

@@ -10,8 +10,16 @@ public class Turtle {
 		return add(new Forward(n));
 	}
 	
+	public Turtle forward(double n, double speed) {
+		return add(new Forward(n, speed));
+	}
+	
 	public Turtle turn(double n) {
 		return add(new Turn(n));
+	}
+	
+	public Turtle turn(double n, double speed) {
+		return add(new Turn(n, speed));
 	}
 	
 	private Turtle add(TurtleStep step) {

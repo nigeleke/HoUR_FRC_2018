@@ -3,7 +3,7 @@ package org.usfirst.frc.team6035.robot.auto.turtle;
 public class Turn implements TurtleStep{
 
 	private double degrees;
-	private double speed = 0.485;
+	private double speed = 0.495;
 	
 	public Turn(double degrees) {
 		this.degrees = degrees;

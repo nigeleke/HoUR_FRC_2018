@@ -10,5 +10,6 @@ public class MiddleToLeftScale extends AutoDirection {
 	.forward(7.5)
 	.turn(90)
 	.forward(1.2);
+	//TODO Complete
 	}
 }
