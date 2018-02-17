@@ -2,10 +2,15 @@ package org.usfirst.frc.team6035.robot.auto.turtle;
 
 public class Turn implements TurtleStep{
 
-	double degrees;
+	private double degrees;
+	private double speed = 0.485;
 	
 	public Turn(double degrees) {
 		this.degrees = degrees;
+	}
+	public Turn(double degrees, double speed) {
+		this.degrees = degrees;
+		this.speed = speed;
 	}
 	
 	@Override
@@ -16,7 +21,6 @@ public class Turn implements TurtleStep{
 
 	@Override
 	public double leftSpeed() {
-		double speed = 0.485;
 		if(degrees < 0) {
 			return -speed;
 		}
