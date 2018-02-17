@@ -2,6 +2,8 @@ package org.usfirst.frc.team6035.robot.controller;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import org.usfirst.frc.team6035.robot.*;
@@ -24,31 +26,36 @@ public class TeleopController implements Controller {
 	Timer timer = null;
 	private List<RobotOperation> recordedOperations = new ArrayList<>();
 	private RobotOperation currentOperations = new RobotOperation();
-	
+	private boolean recording = false;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.usfirst.frc.team6035.robot.controller.IController#getDriveSpeed()
 	 */
 	@Override
 	public double getDriveSpeed() {
 		double speedY = stick.getY();
-		
+
 		double throttle = stick.getThrottle() * -1;
 		double normalisedThrottle = (throttle + 1.0) / 2.0;
 		normalisedThrottle = normalisedThrottle < 0.25 ? 0.25 : normalisedThrottle;
-		
+
 		double throttledSpeed = speedY * normalisedThrottle;
-		
+
 		currentOperations.driveSpeed = throttledSpeed;
 		return throttledSpeed;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.usfirst.frc.team6035.robot.controller.IController#getDriveDirection()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.usfirst.frc.team6035.robot.controller.IController#getDriveDirection()
 	 */
 	@Override
 	public double getDriveDirection() {
-		if(stick.getRawButtonPressed(2)){
+		if (stick.getRawButtonPressed(2)) {
 			twist = !twist;
 		}
 		double direction = (twist ? stick.getZ() : stick.getX());
@@ -56,8 +63,11 @@ public class TeleopController implements Controller {
 		return direction;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.usfirst.frc.team6035.robot.controller.IController#getGrabberOperation()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.usfirst.frc.team6035.robot.controller.IController#getGrabberOperation()
 	 */
 	@Override
 	public GrabberOperation getGrabberOperation() {
@@ -66,21 +76,24 @@ public class TeleopController implements Controller {
 		boolean grabberMicroSwitchClosed = grabberLimitSwitch.get();
 		GrabberOperation op = GrabberOperation.STOP;
 		if (leftButtonPressed) {
-				if (grabberMicroSwitchClosed) {
-					op = GrabberOperation.GRAB;
-				} else if (!grabberMicroSwitchClosed){
-					op = GrabberOperation.HOLD;
-				}
-		}
-		 else if (rightButtonPressed) {
+			if (grabberMicroSwitchClosed) {
+				op = GrabberOperation.GRAB;
+			} else if (!grabberMicroSwitchClosed) {
+				op = GrabberOperation.HOLD;
+			}
+		} else if (rightButtonPressed) {
 			op = GrabberOperation.LET_GO;
-		 }
+		}
 		currentOperations.grabberOperation = op;
 		return op;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.usfirst.frc.team6035.robot.controller.IController#getGrabberArmOperation()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.usfirst.frc.team6035.robot.controller.IController#getGrabberArmOperation(
+	 * )
 	 */
 	@Override
 	public GrabberArmOperation getGrabberArmOperation() {
@@ -96,7 +109,9 @@ public class TeleopController implements Controller {
 		return op;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.usfirst.frc.team6035.robot.controller.IController#getLiftOperation()
 	 */
 	@Override
@@ -109,72 +124,92 @@ public class TeleopController implements Controller {
 		if (goUp && !goDown) {
 			if (!liftUpLimitSwitch.get()) {
 				op = LiftOperation.STOP;
-			}
-			else {
+			} else {
 				op = LiftOperation.UP;
 			}
 		} else if (goDown && !goUp) {
 			if (liftDownLimitSwitch.get()) {
 				op = LiftOperation.DOWN;
-			}
-			else {
+			} else {
 				op = LiftOperation.STOP;
 			}
 		}
 		currentOperations.liftOperation = op;
 		return op;
-	
+
 	}
 
-	/* (non-Javadoc)
-	 * @see org.usfirst.frc.team6035.robot.controller.IController#getClimberOperation()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.usfirst.frc.team6035.robot.controller.IController#getClimberOperation()
 	 */
 	@Override
 	public ClimberOperation getClimberOperation() {
-		if(timer == null) {
+		if (timer == null) {
 			timer = new Timer();
 			timer.start();
 		}
-		
+
 		double leftTrigger = xbox.getTriggerAxis(GenericHID.Hand.kLeft);
 		double rightTrigger = xbox.getTriggerAxis(GenericHID.Hand.kRight);
-		
-		boolean bothPressed = leftTrigger >= 0.5 && rightTrigger >= 0.5 ;
+
+		boolean bothPressed = leftTrigger >= 0.5 && rightTrigger >= 0.5;
 		boolean inLastPeriod = (timer.get() >= Config.CLIMBER_DISABLED_TIME);
 		ClimberOperation op = ClimberOperation.STOP;
-		
+
 		if (bothPressed && inLastPeriod) {
 			op = ClimberOperation.UP;
 		}
 		return op;
 	}
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.usfirst.frc.team6035.robot.controller.IController#getPushOperation()
 	 */
 	@Override
 	public PushOperation getPushOperation() {
 
-		
 		boolean leftBumper = xbox.getBumper(GenericHID.Hand.kLeft);
 		boolean rightBumper = xbox.getBumper(GenericHID.Hand.kRight);
 		PushOperation op = PushOperation.STOP;
-		
-		if (leftBumper) { 
-			op = PushOperation.REWIND ;
-		
-		}
-		else if (rightBumper) { 
-			op = PushOperation.PUSH ;
+
+		if (leftBumper) {
+			op = PushOperation.REWIND;
+
+		} else if (rightBumper) {
+			op = PushOperation.PUSH;
 		}
 		currentOperations.pushOperation = op;
-		return op;	
-		
+		return op;
+
 	}
 
 	@Override
 	public void nextCycle() {
-	//TODO
-	recordedOperations.add(currentOperations);	
-	currentOperations = new RobotOperation();
+		// TODO
+		boolean startButton = xbox.getStartButton();
+		boolean backButton = xbox.getBackButton();
+		if (startButton) {
+			recording = !recording;
+		}
+		if (recording) {
+			recordedOperations.add(currentOperations);
+			currentOperations = new RobotOperation();
+		}
+		if (backButton && !recording) {
+			saveOperations();
+		}
+	}
+
+	private void saveOperations() {
+		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("RobotOperations.dat"))) {
+			oos.writeObject(recordedOperations);
+		} catch (Exception ex) {
+			System.out.println("Failed to save RobotOperations" + ex.toString());
+		}
 	}
 }
