@@ -57,7 +57,8 @@ public class Config {
 	public static int LOWER_GRABBER_ARM_STEPS = 75;
 	public static int LOWER_GRABBER_ARM_TO_DROP_POSITION_STEPS = 75;
 	public static int RAISE_GRABBER_ARM_TO_DRIVE_POSITION = 225;
-	
+
 	// Misc.
 	public static double DIRECTION_SENSITIVITY = 0.8;
+
 }

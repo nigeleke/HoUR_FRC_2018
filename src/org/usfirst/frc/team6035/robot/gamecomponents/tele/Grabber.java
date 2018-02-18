@@ -15,7 +15,8 @@ public class Grabber {
 	 * is meant to grab the box by running the motor on a medium to fast speed.
 	 */
 	public void grab() {
-		controller.set(Config.GRABBER_GRAB_SPEED); // set motor at a lesser speed for robot to keep holding on to the box
+		controller.set(Config.GRABBER_GRAB_SPEED); // set motor at a lesser speed for robot to keep holding on to the
+													// box
 	}
 
 	/**
