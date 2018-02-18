@@ -3,11 +3,7 @@ package org.usfirst.frc.team6035.robot.auto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AutoPlayGroup extends AutoPlay {
-
-	public AutoPlayGroup() {
-		super("");
-	}
+public class AutoPlayGroup {
 
 	private List<AutoPlay> autoPlayObjects = new ArrayList<>();
 

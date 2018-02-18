@@ -5,14 +5,14 @@ import org.usfirst.frc.team6035.robot.auto.AutoPlay;
 import org.usfirst.frc.team6035.robot.auto.AutoPlayGroup;
 
 public class AutonomousController implements Controller {
-	private AutoPlayGroup autoPlay;
+	private AutoPlayGroup autoPlayGroup;
 	private int currentIndex = 0;
 	private AutoPlay currentAutoPlay;
 	private RobotOperation currentOperation;
 
-	public AutonomousController(AutoPlayGroup autoPlay) {
-		this.autoPlay = autoPlay;
-		currentAutoPlay = autoPlay.get(0);
+	public AutonomousController(AutoPlayGroup autoPlayGroup) {
+		this.autoPlayGroup = autoPlayGroup;
+		currentAutoPlay = autoPlayGroup.get(0);
 		System.out.println("cAP1: "+ currentAutoPlay);
 		currentAutoPlay.init();
 		System.out.println("cAP2: "+ currentAutoPlay);
@@ -86,10 +86,10 @@ public class AutonomousController implements Controller {
 			System.out.println("NextCycle2");
 		} else {
 			currentIndex++;
-			if (currentIndex >= autoPlay.size()) {
+			if (currentIndex >= autoPlayGroup.size()) {
 				currentOperation = null;
 			} else {
-				currentAutoPlay = autoPlay.get(currentIndex);
+				currentAutoPlay = autoPlayGroup.get(currentIndex);
 				currentAutoPlay.init();
 				System.out.println("NextCycle3");
 				currentOperation = currentAutoPlay.next();
