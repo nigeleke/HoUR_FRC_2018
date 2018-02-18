@@ -8,11 +8,10 @@ import org.usfirst.frc.team6035.robot.gamecomponents.tele.*;
 //import org.usfirst.frc.team6035.robot.gamecomponents.auto.*;
 import org.usfirst.frc.team6035.robot.controller.*;
 
-
 /**
- * @author Jack Gumley 
+ * @author Jack Gumley
  * 
- * Integrated class to manage controllers and game components.
+ *         Integrated class to manage controllers and game components.
  */
 public class Robot extends IterativeRobot {
 
@@ -24,6 +23,7 @@ public class Robot extends IterativeRobot {
 	private Climber climber = new Climber();
 	private Pusher pusher = new Pusher();
 	private Dashboard dashboard = new Dashboard();
+
 	@Override
 	public void robotInit() {
 		dashboard.dashboardInit();
@@ -77,10 +77,16 @@ public class Robot extends IterativeRobot {
 	private void operateLift() {
 		LiftOperation op = controller.getLiftOperation();
 		switch (op) {
-		case UP:			lift.up();			break;
-		case DOWN:		lift.down();			break;
-		case STOP:		lift.stop();			break;
-		
+		case UP:
+			lift.up();
+			break;
+		case DOWN:
+			lift.down();
+			break;
+		case STOP:
+			lift.stop();
+			break;
+
 		default:
 			System.out.println("Error in operateLift Switch");
 			break;
@@ -94,10 +100,16 @@ public class Robot extends IterativeRobot {
 	private void operateGrabberArm() {
 		GrabberArmOperation op = controller.getGrabberArmOperation();
 		switch (op) {
-		case UP:			grabberArm.up();		break;
-		case DOWN:		grabberArm.down();	break;
-		case STOP:		grabberArm.stop();	break;
-		
+		case UP:
+			grabberArm.up();
+			break;
+		case DOWN:
+			grabberArm.down();
+			break;
+		case STOP:
+			grabberArm.stop();
+			break;
+
 		default:
 			System.out.println("Error in operateGrabberArm Switch");
 			break;
@@ -105,17 +117,24 @@ public class Robot extends IterativeRobot {
 	}
 
 	/**
-	 * Get instructions from controller to as which direction to operate the
-	 * grabber
+	 * Get instructions from controller to as which direction to operate the grabber
 	 */
 	private void operateGrabber() {
 		GrabberOperation op = controller.getGrabberOperation();
 		switch (op) {
-		case GRAB:		grabber.grab();		break;
-		case HOLD:		grabber.hold();		break;
-		case LET_GO:		grabber.letgo();		break;
-		case STOP:		grabber.stop();		break;
-		
+		case GRAB:
+			grabber.grab();
+			break;
+		case HOLD:
+			grabber.hold();
+			break;
+		case LET_GO:
+			grabber.letgo();
+			break;
+		case STOP:
+			grabber.stop();
+			break;
+
 		default:
 			System.out.println("Error in operateGrabber Switch");
 			break;
@@ -125,10 +144,14 @@ public class Robot extends IterativeRobot {
 	private void operateClimber() {
 		ClimberOperation op = controller.getClimberOperation();
 		switch (op) {
-		case UP:			climber.up();
-						lift.compensate();	break;
-		case STOP:		climber.stop();		break;
-		
+		case UP:
+			climber.up();
+			lift.compensate();
+			break;
+		case STOP:
+			climber.stop();
+			break;
+
 		default:
 			System.out.println("Error in operateClimber Switch");
 			break;
@@ -142,16 +165,22 @@ public class Robot extends IterativeRobot {
 	private void operatePusher() {
 		PushOperation op = controller.getPushOperation();
 		switch (op) {
-		case PUSH:			pusher.push();			break;
-		case REWIND:		pusher.rewind();		break;
-		case STOP:			pusher.stop();			break;
-		
+		case PUSH:
+			pusher.push();
+			break;
+		case REWIND:
+			pusher.rewind();
+			break;
+		case STOP:
+			pusher.stop();
+			break;
+
 		default:
 			System.out.println("Error in operatePusher Switch");
 			break;
 		}
 	}
-	
+
 	@Override
 	public void testPeriodic() {
 		// probably not going to be used but may be useful...

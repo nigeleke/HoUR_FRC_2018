@@ -208,7 +208,8 @@ public class TeleopController implements Controller {
 	}
 
 	private void saveOperations() {
-		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("/home/lvuser/RobotOperations.dat"))) {
+		try (ObjectOutputStream oos = new ObjectOutputStream(
+				new FileOutputStream("/home/lvuser/RobotOperations.dat"))) {
 			oos.writeObject(recordedOperations);
 		} catch (Exception ex) {
 			System.out.println("Failed to save RobotOperations" + ex.toString());

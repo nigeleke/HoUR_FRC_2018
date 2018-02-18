@@ -21,7 +21,7 @@ class SoftSpeedController implements SpeedController {
 		this(target, Config.RAMP_UP_TIME_MS);
 
 	}
-	
+
 	@Override
 	public void pidWrite(double output) {
 		target.pidWrite(output);
@@ -38,8 +38,7 @@ class SoftSpeedController implements SpeedController {
 			double proposedNewSpeed = currentSpeed + deltaSpeed;
 			double actualNewSpeed = Math.min(proposedNewSpeed, speed);
 			target.set(actualNewSpeed);
-		} 
-		else {
+		} else {
 			double proposedNewSpeed = currentSpeed - deltaSpeed;
 			double actualNewSpeed = Math.max(proposedNewSpeed, speed);
 			target.set(actualNewSpeed);

@@ -35,12 +35,12 @@ public class Dashboard {
 		robotPosition.addDefault("Left", RobotPosition.LEFT);
 		robotPosition.addObject("Middle", RobotPosition.MIDDLE);
 		robotPosition.addObject("Right", RobotPosition.RIGHT);
-		
+
 		goal.addObject("Switch", Goal.SWITCH);
 		goal.addObject("Scale", Goal.SCALE);
 		goal.addObject("Base Line", Goal.BASE_LINE);
 		goal.addDefault("Test", Goal.TEST);
-		
+
 		SmartDashboard.putData("Robot Position", robotPosition);
 		SmartDashboard.putData("Drive Goal", goal);
 	}
@@ -55,17 +55,23 @@ public class Dashboard {
 
 	private AutoPlay getAutoPath() {
 		Goal selectedGoal = goal.getSelected();
-		
-		switch(selectedGoal) {
-		
-		case BASE_LINE:		return new DriveStraight();
-		case SWITCH:	 return getPathForSwitch();
-		case SCALE:		return getPathForScale();
-		case TEST: 		return new TestAuto();
-		
-		default: System.out.println("Error, don't understand goal selection"); break;
-		
-			}
+
+		switch (selectedGoal) {
+
+		case BASE_LINE:
+			return new DriveStraight();
+		case SWITCH:
+			return getPathForSwitch();
+		case SCALE:
+			return getPathForScale();
+		case TEST:
+			return new TestAuto();
+
+		default:
+			System.out.println("Error, don't understand goal selection");
+			break;
+
+		}
 		return null;
 	}
 
@@ -96,7 +102,7 @@ public class Dashboard {
 		String message = driverStation.getGameSpecificMessage();
 		boolean isEmpty = message == null || message.length() == 0;
 		boolean indexInRange = message != null && index < message.length();
-		
+
 		if (!isEmpty && indexInRange) {
 			return Character.toString(message.charAt(index));
 		} else {
@@ -107,7 +113,7 @@ public class Dashboard {
 	private AutoPlay getPathForScale() {
 		RobotPosition robotPos = robotPosition.getSelected();
 		String scalePos = getGameSpecificMessage(1);
-		
+
 		if (robotPos == RobotPosition.LEFT && scalePos.equals("L")) {
 			return new LeftToLeftScale();
 		} else if (robotPos == RobotPosition.LEFT && scalePos.equals("R")) {
@@ -123,7 +129,7 @@ public class Dashboard {
 		} else {
 			System.out.println("Error, couldn't determine Switch Path");
 		}
-		
+
 		return null;
 	}
 
