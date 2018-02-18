@@ -4,6 +4,22 @@ import edu.wpi.first.wpilibj.DriverStation;
 
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import org.usfirst.frc.team6035.robot.auto.*;
+import org.usfirst.frc.team6035.robot.auto.prerecorded.DriveStraight;
+import org.usfirst.frc.team6035.robot.auto.prerecorded.GrabCube;
+import org.usfirst.frc.team6035.robot.auto.prerecorded.LeftToLeftScale;
+import org.usfirst.frc.team6035.robot.auto.prerecorded.LeftToLeftSwitch;
+import org.usfirst.frc.team6035.robot.auto.prerecorded.LeftToRightScale;
+import org.usfirst.frc.team6035.robot.auto.prerecorded.LeftToRightSwitch;
+import org.usfirst.frc.team6035.robot.auto.prerecorded.MiddleToLeftScale;
+import org.usfirst.frc.team6035.robot.auto.prerecorded.MiddleToLeftSwitch;
+import org.usfirst.frc.team6035.robot.auto.prerecorded.MiddleToRightScale;
+import org.usfirst.frc.team6035.robot.auto.prerecorded.MiddleToRightSwitch;
+import org.usfirst.frc.team6035.robot.auto.prerecorded.PushCube;
+import org.usfirst.frc.team6035.robot.auto.prerecorded.RightToLeftScale;
+import org.usfirst.frc.team6035.robot.auto.prerecorded.RightToLeftSwitch;
+import org.usfirst.frc.team6035.robot.auto.prerecorded.RightToRightScale;
+import org.usfirst.frc.team6035.robot.auto.prerecorded.RightToRightSwitch;
+import org.usfirst.frc.team6035.robot.auto.prerecorded.TestAuto;
 
 /**
  * @author Gabriel Love Class for getting autonomous selections from smart
@@ -29,7 +45,15 @@ public class Dashboard {
 		SmartDashboard.putData("Drive Goal", goal);
 	}
 
-	public AutoPlay getPath() {
+	public AutoPlayGroup getPath() {
+		AutoPlayGroup apGroup = new AutoPlayGroup();
+		apGroup.add(new GrabCube());
+		apGroup.add(getAutoPath());
+		apGroup.add(new PushCube());
+		return apGroup;
+	}
+
+	private AutoPlay getAutoPath() {
 		Goal selectedGoal = goal.getSelected();
 		
 		switch(selectedGoal) {

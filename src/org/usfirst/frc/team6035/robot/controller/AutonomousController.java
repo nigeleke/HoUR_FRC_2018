@@ -1,7 +1,21 @@
 package org.usfirst.frc.team6035.robot.controller;
 
-public class AutonomousController implements Controller {
+import org.usfirst.frc.team6035.robot.RobotOperation;
+import org.usfirst.frc.team6035.robot.auto.AutoPlay;
+import org.usfirst.frc.team6035.robot.auto.AutoPlayGroup;
 
+public class AutonomousController implements Controller {
+	private AutoPlayGroup autoPlay;
+	private int playGroupSteps = 0;
+	private AutoPlay currentAutoPlay;
+	private RobotOperation currentOperation;
+	
+	public AutonomousController(AutoPlayGroup autoPlay) {
+		this.autoPlay = autoPlay;
+		currentAutoPlay = autoPlay.get(0);
+		currentOperation = currentAutoPlay.next();
+	}
+	
 	@Override
 	public double getDriveSpeed() {
 		// TODO Auto-generated method stub

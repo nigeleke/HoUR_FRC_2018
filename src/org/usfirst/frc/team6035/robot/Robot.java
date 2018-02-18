@@ -24,7 +24,6 @@ public class Robot extends IterativeRobot {
 	private Climber climber = new Climber();
 	private Pusher pusher = new Pusher();
 	private Dashboard dashboard = new Dashboard();
-	//private Autonomous auto;
 	@Override
 	public void robotInit() {
 		dashboard.dashboardInit();
@@ -32,13 +31,11 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void autonomousInit() {
-		//auto = new Autonomous(driveBase, grabberArm, grabber, lift, dashboard.getPath());
-		controller = new AutonomousController();
+		controller = new AutonomousController(dashboard.getPath());
 	}
 
 	@Override
 	public void autonomousPeriodic() {
-		//auto.doNextAction();
 		operateRobot();
 	}
 
