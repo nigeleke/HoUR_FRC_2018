@@ -42,7 +42,7 @@ public class Dashboard {
 		default: System.out.println("Error, don't understand goal selection"); break;
 		
 			}
-		return null;
+		return new TestAuto();
 	}
 
 	private AutoDirection getPathForSwitch() {
