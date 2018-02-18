@@ -47,9 +47,9 @@ public class Dashboard {
 
 	public AutoPlayGroup getPath() {
 		AutoPlayGroup apGroup = new AutoPlayGroup();
-		apGroup.add(new GrabCube());
-		apGroup.add(getAutoPath());
-		apGroup.add(new PushCube());
+		//apGroup.add(new GrabCube());
+		apGroup.add(getAutoPath()); //TODO
+		//apGroup.add(new PushCube());
 		return apGroup;
 	}
 
