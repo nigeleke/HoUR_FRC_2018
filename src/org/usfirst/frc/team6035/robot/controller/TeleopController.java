@@ -191,10 +191,11 @@ public class TeleopController implements Controller {
 	@Override
 	public void nextCycle() {
 		// TODO
-		boolean startButton = xbox.getStartButton();
-		boolean backButton = xbox.getBackButton();
+		boolean startButton = xbox.getStartButtonPressed();
+		boolean backButton = xbox.getBackButtonPressed();
 		if (startButton) {
 			recording = !recording;
+			System.out.println("startButton" + startButton + " Recording" + recording);
 		}
 		if (recording) {
 			recordedOperations.add(currentOperations);
@@ -202,11 +203,12 @@ public class TeleopController implements Controller {
 		}
 		if (backButton && !recording) {
 			saveOperations();
+			System.out.println("Saved");
 		}
 	}
 
 	private void saveOperations() {
-		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("RobotOperations.dat"))) {
+		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("/home/lvuser/RobotOperations.dat"))) {
 			oos.writeObject(recordedOperations);
 		} catch (Exception ex) {
 			System.out.println("Failed to save RobotOperations" + ex.toString());

@@ -27,7 +27,7 @@ public abstract class AutoPlay implements Controller {
 
 	@SuppressWarnings("unchecked")
 	public AutoPlay(String fileName) {
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("fileName"))) {
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
 			robotOperations = (List<RobotOperation>) ois.readObject();
 		} catch (Exception ex) {
 			System.out.println("Failed to read fileName" + ex.toString());

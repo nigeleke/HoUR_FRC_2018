@@ -5,7 +5,7 @@ package org.usfirst.frc.team6035.robot;
 import edu.wpi.first.wpilibj.*;
 
 import org.usfirst.frc.team6035.robot.gamecomponents.tele.*;
-import org.usfirst.frc.team6035.robot.gamecomponents.auto.*;
+//import org.usfirst.frc.team6035.robot.gamecomponents.auto.*;
 import org.usfirst.frc.team6035.robot.controller.*;
 
 
@@ -16,7 +16,7 @@ import org.usfirst.frc.team6035.robot.controller.*;
  */
 public class Robot extends IterativeRobot {
 
-	private Controller controller = new TeleopController();
+	private Controller controller = null;
 	private Lift lift = new Lift();
 	private Grabber grabber = new Grabber();
 	private GrabberArm grabberArm = new GrabberArm();
@@ -24,7 +24,7 @@ public class Robot extends IterativeRobot {
 	private Climber climber = new Climber();
 	private Pusher pusher = new Pusher();
 	private Dashboard dashboard = new Dashboard();
-	private Autonomous auto;
+	//private Autonomous auto;
 	@Override
 	public void robotInit() {
 		dashboard.dashboardInit();
@@ -32,27 +32,34 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void autonomousInit() {
-		auto = new Autonomous(driveBase, grabberArm, grabber, lift, dashboard.getPath());
+		//auto = new Autonomous(driveBase, grabberArm, grabber, lift, dashboard.getPath());
+		controller = new AutonomousController();
 	}
 
 	@Override
 	public void autonomousPeriodic() {
-		auto.doNextAction();
+		//auto.doNextAction();
+		operateRobot();
 	}
 
 	@Override
 	public void teleopInit() {
-
+		controller = new TeleopController();
 	}
 
 	@Override
 	public void teleopPeriodic() {
+		operateRobot();
+	}
+
+	private void operateRobot() {
 		driveDriveBase();
 		operateLift();
 		operateGrabberArm();
 		operateGrabber();
 		operateClimber();
 		operatePusher();
+		controller.nextCycle();
 	}
 
 	/**
