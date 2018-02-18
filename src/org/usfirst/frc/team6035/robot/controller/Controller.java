@@ -1,5 +1,11 @@
 package org.usfirst.frc.team6035.robot.controller;
 
+import org.usfirst.frc.team6035.robot.controller.operations.ClimberOperation;
+import org.usfirst.frc.team6035.robot.controller.operations.GrabberArmOperation;
+import org.usfirst.frc.team6035.robot.controller.operations.GrabberOperation;
+import org.usfirst.frc.team6035.robot.controller.operations.LiftOperation;
+import org.usfirst.frc.team6035.robot.controller.operations.PushOperation;
+
 public interface Controller {
 
 	double getDriveSpeed();

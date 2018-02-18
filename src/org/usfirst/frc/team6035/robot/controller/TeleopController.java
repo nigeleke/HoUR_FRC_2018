@@ -7,6 +7,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import org.usfirst.frc.team6035.robot.*;
+import org.usfirst.frc.team6035.robot.controller.operations.*;
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Timer;
@@ -23,9 +25,9 @@ public class TeleopController implements Controller {
 	private DigitalInput liftUpLimitSwitch = new DigitalInput(Config.LIFT_UP_TRAVEL_DIO);
 	private DigitalInput liftDownLimitSwitch = new DigitalInput(Config.LIFT_DOWN_TRAVEL_DIO);
 	private boolean twist = true;
-	Timer timer = null;
-	private List<RobotOperation> recordedOperations = new ArrayList<>();
-	private RobotOperation currentOperations = new RobotOperation();
+	private Timer timer = null;
+	private List<RobotOperations> recordedOperations = new ArrayList<>();
+	private RobotOperations currentOperations = new RobotOperations();
 	private boolean recording = false;
 
 	/*
@@ -190,20 +192,17 @@ public class TeleopController implements Controller {
 
 	@Override
 	public void nextCycle() {
-		// TODO
 		boolean startButton = xbox.getStartButtonPressed();
 		boolean backButton = xbox.getBackButtonPressed();
 		if (startButton) {
 			recording = !recording;
-			System.out.println("startButton" + startButton + " Recording" + recording);
 		}
 		if (recording) {
 			recordedOperations.add(currentOperations);
-			currentOperations = new RobotOperation();
+			currentOperations = new RobotOperations();
 		}
 		if (backButton && !recording) {
 			saveOperations();
-			System.out.println("Saved");
 		}
 	}
 

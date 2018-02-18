@@ -7,7 +7,8 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import org.usfirst.frc.team6035.robot.RobotOperation;
+
+import org.usfirst.frc.team6035.robot.controller.operations.RobotOperations;
 
 /**
  * autonomous for base paths
@@ -17,8 +18,8 @@ import org.usfirst.frc.team6035.robot.RobotOperation;
  */
 public abstract class AutoPlay {
 
-	private List<RobotOperation> robotOperations = new ArrayList<>();
-	private Iterator<RobotOperation> nextOperation;
+	private List<RobotOperations> robotOperations = new ArrayList<>();
+	private Iterator<RobotOperations> nextOperation;
 
 	public AutoPlay(String fileName, boolean isResource) {
 		System.out.println("AutoPlay fileName " + fileName);
@@ -43,7 +44,7 @@ public abstract class AutoPlay {
 	private void loadFromStream(InputStream stream) {
 		try (ObjectInputStream ois = new ObjectInputStream(stream)) {
 			System.out.println("Post ois");
-			robotOperations = (List<RobotOperation>) ois.readObject();
+			robotOperations = (List<RobotOperations>) ois.readObject();
 			System.out.println("Post ois2"+ robotOperations.size());
 		} catch (Exception ex) {
 			System.out.println("Failed to read fileName" + ex.toString());
@@ -64,7 +65,7 @@ public abstract class AutoPlay {
 		return !nextOperation.hasNext();
 	}
 
-	public RobotOperation next() {
+	public RobotOperations next() {
 		System.out.println("AutoPlay next1");
 		return nextOperation.next();
 	}

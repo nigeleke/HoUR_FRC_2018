@@ -1,14 +1,14 @@
 package org.usfirst.frc.team6035.robot.controller;
 
-import org.usfirst.frc.team6035.robot.RobotOperation;
 import org.usfirst.frc.team6035.robot.auto.AutoPlay;
 import org.usfirst.frc.team6035.robot.auto.AutoPlayGroup;
+import org.usfirst.frc.team6035.robot.controller.operations.*;
 
 public class AutonomousController implements Controller {
 	private AutoPlayGroup autoPlayGroup;
 	private int currentIndex = 0;
 	private AutoPlay currentAutoPlay;
-	private RobotOperation currentOperation;
+	private RobotOperations currentOperation;
 
 	public AutonomousController(AutoPlayGroup autoPlayGroup) {
 		this.autoPlayGroup = autoPlayGroup;

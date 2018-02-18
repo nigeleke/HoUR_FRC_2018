@@ -4,9 +4,15 @@ package org.usfirst.frc.team6035.robot;
 //Imports 
 import edu.wpi.first.wpilibj.*;
 
-import org.usfirst.frc.team6035.robot.gamecomponents.tele.*;
 //import org.usfirst.frc.team6035.robot.gamecomponents.auto.*;
 import org.usfirst.frc.team6035.robot.controller.*;
+import org.usfirst.frc.team6035.robot.controller.operations.ClimberOperation;
+import org.usfirst.frc.team6035.robot.controller.operations.GrabberArmOperation;
+import org.usfirst.frc.team6035.robot.controller.operations.GrabberOperation;
+import org.usfirst.frc.team6035.robot.controller.operations.LiftOperation;
+import org.usfirst.frc.team6035.robot.controller.operations.PushOperation;
+import org.usfirst.frc.team6035.robot.dashboard.Dashboard;
+import org.usfirst.frc.team6035.robot.gamecomponents.*;
 
 /**
  * @author Jack Gumley
