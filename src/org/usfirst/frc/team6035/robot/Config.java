@@ -25,9 +25,9 @@ public class Config {
 	public static int GRABBER_CHANNEL = 7 ;
 	public static int GRABBER_ARM_CHANNEL = 4;
 	public static int LIFT_CHANNEL_1 = 6;
-	public static int LIFT_CHANNEL_2 = 9;
+	public static int LIFT_CHANNEL_2 = 8;
 	public static int CLIMBER_CHANNEL = 5;
-	public static int PUSHER_CHANNEL = 8;
+	public static int PUSHER_CHANNEL = 9;
 	// ...
 	public static int GRABBER_SWITCH_CHANNEL_DIO = 7;
 	public static int LIFT_UP_TRAVEL_DIO = 0;
