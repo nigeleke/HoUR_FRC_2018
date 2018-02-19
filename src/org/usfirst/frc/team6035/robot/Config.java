@@ -22,7 +22,7 @@ public class Config {
 	public static int DB_LEFT_FRONT_CHANNEL = 1;
 	public static int DB_RIGHT_BACK_CHANNEL = 2;
 	public static int DB_RIGHT_FRONT_CHANNEL = 3;
-	public static int GRABBER_CHANNEL = 7;
+	public static int GRABBER_CHANNEL = 7 ;
 	public static int GRABBER_ARM_CHANNEL = 4;
 	public static int LIFT_CHANNEL_1 = 6;
 	public static int LIFT_CHANNEL_2 = 8;

@@ -25,7 +25,9 @@ public interface Controller {
 	/**
 	 * Return operation for lift based off controller input
 	 */
+
 	LiftOperation getLiftOperation();
+
 
 	/**
 	 * Return operation for climber based off controller input

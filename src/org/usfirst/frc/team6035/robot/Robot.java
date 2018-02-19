@@ -83,6 +83,7 @@ public class Robot extends IterativeRobot {
 	private void operateLift() {
 		LiftOperation op = controller.getLiftOperation();
 		switch (op) {
+
 		case UP:
 			lift.up();
 			break;
