@@ -90,21 +90,15 @@ public class Controller {
 		boolean goUp = (325 <= dpadVal && dpadVal < 360) || (0 <= dpadVal && dpadVal <= 45);
 		boolean goDown = (135 <= dpadVal && dpadVal <= 225);
 
-		if (goUp && !goDown) {
-			if (!liftUpLimitSwitch.get()) {
-				return LiftOperation.UP;
+		if (goUp && !goDown && !liftUpLimitSwitch.get()) {
+			return LiftOperation.UP;
 			}
-			return LiftOperation.STOP;
-			
-		} else if (goDown && !goUp) {
-			if (!liftDownLimitSwitch.get()) {
+		if (goDown && !goUp && !liftDownLimitSwitch.get()) {
 				return LiftOperation.DOWN;
-			}
-			return LiftOperation.STOP;
 		}
 		return LiftOperation.STOP;
-	
-	}
+		
+		}
 
 	/**
 	 * Return operation for climber based off controller input
