@@ -25,24 +25,9 @@ public interface Controller {
 	/**
 	 * Return operation for lift based off controller input
 	 */
-<<<<<<< HEAD
-	public LiftOperation getLiftOperation() {
-		int dpadVal = xbox.getPOV();
-		boolean goUp = (325 <= dpadVal && dpadVal < 360) || (0 <= dpadVal && dpadVal <= 45);
-		boolean goDown = (135 <= dpadVal && dpadVal <= 225);
 
-		if (goUp && !goDown && !liftUpLimitSwitch.get()) {
-			return LiftOperation.UP;
-			}
-		if (goDown && !goUp && !liftDownLimitSwitch.get()) {
-				return LiftOperation.DOWN;
-		}
-		return LiftOperation.STOP;
-		
-		}
-=======
 	LiftOperation getLiftOperation();
->>>>>>> 8c5b9546891151bfd371be2f280a29cab4f8f6f1
+
 
 	/**
 	 * Return operation for climber based off controller input

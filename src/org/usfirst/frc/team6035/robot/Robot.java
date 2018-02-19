@@ -83,12 +83,7 @@ public class Robot extends IterativeRobot {
 	private void operateLift() {
 		LiftOperation op = controller.getLiftOperation();
 		switch (op) {
-<<<<<<< HEAD
-		case UP:		lift.up();				break;
-		case DOWN:		lift.down();			break;
-		case STOP:		lift.stop();			break;
-		
-=======
+
 		case UP:
 			lift.up();
 			break;
@@ -99,7 +94,6 @@ public class Robot extends IterativeRobot {
 			lift.stop();
 			break;
 
->>>>>>> 8c5b9546891151bfd371be2f280a29cab4f8f6f1
 		default:
 			System.out.println("Error in operateLift Switch");
 			break;
