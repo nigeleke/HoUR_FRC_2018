@@ -3,7 +3,9 @@ package org.usfirst.frc.team6035.robot.dashboard;
 import edu.wpi.first.wpilibj.DriverStation;
 
 import edu.wpi.first.wpilibj.smartdashboard.*;
-import org.usfirst.frc.team6035.robot.auto.*;
+
+import org.usfirst.frc.team6035.robot.auto.AutoPlay;
+import org.usfirst.frc.team6035.robot.auto.AutoPlayGroup;
 import org.usfirst.frc.team6035.robot.auto.recorded.*;
 
 /**
