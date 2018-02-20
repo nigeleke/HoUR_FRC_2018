@@ -164,6 +164,7 @@ public class TeleopController implements Controller {
 		if (bothPressed && inLastPeriod) {
 			op = ClimberOperation.UP;
 		}
+		// Climber operation is not recorded; this will always be STOP during autonomous.
 		return op;
 	}
 
