@@ -10,7 +10,6 @@ public class Lift {
 	private VictorSP motor1 = new VictorSP(Config.LIFT_CHANNEL_1);
 	private VictorSP motor2 = new VictorSP(Config.LIFT_CHANNEL_2);
 	private SpeedController motors = new SpeedControllerGroup(motor1, motor2);
-	
 	private SoftSpeedController controller = new SoftSpeedController(motors);
 	private SoftSpeedController superSoftController = new SoftSpeedController(motors, Config.LIFT_UP_RAMP_UP_TIME_MS);
 
