@@ -22,37 +22,48 @@ public abstract class AutoPlay {
 	private Iterator<RobotOperations> nextOperation;
 
 	public AutoPlay(String fileName, boolean isResource) {
-		System.out.println("AutoPlay fileName " + fileName);
-		if(isResource) {
+		System.out.println("AutoPlay fileName " + fileName + isResource);
+		if (isResource) {
 			loadFromResource(fileName);
 		}
-		
+
 		else {
 			loadFromFile(fileName);
 		}
 	}
 
 	private void loadFromFile(String fileName) {
+		System.out.println("loadFromFile " + fileName);
 		try {
 			loadFromStream(new FileInputStream(fileName));
 		} catch (FileNotFoundException e) {
-			System.out.println("Failed to Open File"+ e.toString());
+			System.out.println("Failed to Open File" + e.toString());
 		}
 	}
-	
+
+	private void loadFromResource(String fileName) {
+		System.out.println("Resource 0" + fileName);
+		try {
+			System.out.println("Resource 1");
+			InputStream stream = AutoPlay.class.getResourceAsStream(fileName);
+			//loadFromStream(stream);
+			System.out.println(fileName + " " + stream);
+			System.out.println("Resource 2");
+		} catch (Exception ex) {
+			System.out.println("Failed to read resource " + ex.toString());
+		}
+	}
+
 	@SuppressWarnings("unchecked")
 	private void loadFromStream(InputStream stream) {
+		System.out.println("load from strem ois +" + stream);
 		try (ObjectInputStream ois = new ObjectInputStream(stream)) {
-			System.out.println("Post ois");
+			System.out.println("Post ois" + ois);
 			robotOperations = (List<RobotOperations>) ois.readObject();
-			System.out.println("Post ois2"+ robotOperations.size());
+			System.out.println("Post ois2" + robotOperations.size());
 		} catch (Exception ex) {
-			System.out.println("Failed to read fileName" + ex.toString());
+			System.out.println("Failed to read stream" + stream + " " + ex.toString());
 		}
-	}
-	
-	private void loadFromResource(String fileName) {
-		loadFromStream(getClass().getResourceAsStream(fileName));
 	}
 
 	public void init() {
