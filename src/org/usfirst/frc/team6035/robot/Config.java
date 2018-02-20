@@ -36,8 +36,8 @@ public class Config {
 	// Speeds
 	public static double LIFT_UP_SPEED = 0.55;
 	public static double LIFT_DOWN_SPEED = -0.5;
-	public static double GRABBER_ARM_UP_SPEED = 0.2;
-	public static double GRABBER_ARM_DOWN_SPEED = -0.2;
+	public static double GRABBER_ARM_UP_SPEED = -0.2;
+	public static double GRABBER_ARM_DOWN_SPEED = 0.2;
 	public static double GRABBER_GRAB_SPEED = 0.75;
 	public static double GRABBER_LET_GO_SPEED = -0.75;
 	public static double GRABBER_HOLD_SPEED = 0.1;
