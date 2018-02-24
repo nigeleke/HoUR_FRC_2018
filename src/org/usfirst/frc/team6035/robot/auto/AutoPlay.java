@@ -22,7 +22,6 @@ public abstract class AutoPlay {
 	private Iterator<RobotOperations> nextOperation;
 
 	public AutoPlay(String fileName, boolean isResource) {
-		System.out.println("AutoPlay::ctor fileName: " + fileName + " isResource: " + isResource);
 		if (isResource) {
 			loadFromResource(fileName);
 		} else {
@@ -31,7 +30,6 @@ public abstract class AutoPlay {
 	}
 
 	private void loadFromFile(String fileName) {
-		System.out.println("AutoPlay::loadFromFile " + fileName);
 		try (InputStream stream = new FileInputStream(fileName)) {
 			loadFromStream(stream);
 		} catch (IOException e) {
@@ -40,11 +38,8 @@ public abstract class AutoPlay {
 	}
 
 	private void loadFromResource(String fileName) {
-		System.out.println("AutoPlay::loadFromResource 0 " + fileName);
-		try (InputStream stream = getClass().getResourceAsStream(fileName)) {
-			System.out.println("AutoPlay::loadFromResource 1 " + fileName + " stream: " + stream);
+		try (InputStream stream = this.getClass().getResourceAsStream(fileName)) {
 			loadFromStream(stream);
-			System.out.println("AutoPlay::loadFromResource 2 " + fileName + " stream: " + stream);
 		} catch (IOException ex) {
 			System.out.println("Failed to loadFromResource " + ex.toString());
 		}
@@ -52,11 +47,8 @@ public abstract class AutoPlay {
 
 	@SuppressWarnings("unchecked")
 	private void loadFromStream(InputStream stream) {
-		System.out.println("AutoPlay::loadFromStream 0 " + stream);
 		try (ObjectInputStream ois = new ObjectInputStream(stream)) {
-			System.out.println("AutoPlay::loadFromStream 1 " + ois);
 			robotOperations = (List<RobotOperations>) ois.readObject();
-			System.out.println("AutoPlay::loadFromStream 2 " + ois);
 		} catch (Exception ex) {
 			System.out.println("Failed to loadFromStream: " + ex.toString());
 		}

@@ -4,6 +4,6 @@ import org.usfirst.frc.team6035.robot.auto.AutoPlay;
 
 public class LeftToLeftScale extends AutoPlay {
 	public LeftToLeftScale() {
-		super("/home/lvuser/LeftToLeftScale.dat", false);
+		super("/LeftToLeftScale.dat", true);
 	}
 }

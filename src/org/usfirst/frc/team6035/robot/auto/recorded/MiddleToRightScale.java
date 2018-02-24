@@ -4,6 +4,6 @@ import org.usfirst.frc.team6035.robot.auto.AutoPlay;
 
 public class MiddleToRightScale extends AutoPlay {
 	public MiddleToRightScale() {
-		super("/home/lvuser/MiddleToRightScale.dat", false);
+		super("/MiddleToRightScale.dat", true);
 	}
 }

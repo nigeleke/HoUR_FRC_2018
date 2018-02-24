@@ -4,6 +4,6 @@ import org.usfirst.frc.team6035.robot.auto.AutoPlay;
 
 public class RightToRightSwitch extends AutoPlay {
 	public RightToRightSwitch() {
-		super("/home/lvuser/RightToRightSwitch.dat", false);
+		super("/RightToRightSwitch.dat", true);
 	}
 }
