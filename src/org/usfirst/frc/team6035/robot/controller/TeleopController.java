@@ -1,6 +1,6 @@
 package org.usfirst.frc.team6035.robot.controller;
 
-import edu.wpi.first.wpilibj.DigitalInput;
+//import edu.wpi.first.wpilibj.DigitalInput;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
@@ -21,9 +21,9 @@ public class TeleopController implements Controller {
 
 	private Joystick stick = new Joystick(Config.JOYSTICK_PORT);
 	private XboxController xbox = new XboxController(Config.XBOX_PORT);
-	private DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL_DIO);
-	private DigitalInput liftUpLimitSwitch = new DigitalInput(Config.LIFT_UP_TRAVEL_DIO);
-	private DigitalInput liftDownLimitSwitch = new DigitalInput(Config.LIFT_DOWN_TRAVEL_DIO);
+	//private DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL_DIO);
+	//private DigitalInput liftUpLimitSwitch = new DigitalInput(Config.LIFT_UP_TRAVEL_DIO);
+	//private DigitalInput liftDownLimitSwitch = new DigitalInput(Config.LIFT_DOWN_TRAVEL_DIO);
 	private boolean twist = true;
 	private Timer timer = null;
 	private List<RobotOperations> recordedOperations = new ArrayList<>();
@@ -75,14 +75,14 @@ public class TeleopController implements Controller {
 	public GrabberOperation getGrabberOperation() {
 		boolean leftButtonPressed = xbox.getXButton();
 		boolean rightButtonPressed = xbox.getBButton();
-		boolean grabberMicroSwitchClosed = grabberLimitSwitch.get();
+		//boolean grabberMicroSwitchClosed = grabberLimitSwitch.get();
 		GrabberOperation op = GrabberOperation.STOP;
 		if (leftButtonPressed) {
-			if (grabberMicroSwitchClosed) {
+			//if (grabberMicroSwitchClosed) {
 				op = GrabberOperation.GRAB;
-			} else if (!grabberMicroSwitchClosed) {
-				op = GrabberOperation.HOLD;
-			}
+			//} else if (!grabberMicroSwitchClosed) {
+				//op = GrabberOperation.HOLD;
+			//}
 		} else if (rightButtonPressed) {
 			op = GrabberOperation.LET_GO;
 		}
@@ -124,17 +124,24 @@ public class TeleopController implements Controller {
 		LiftOperation op = LiftOperation.STOP;
 
 		if (goUp && !goDown) {
-			if (!liftUpLimitSwitch.get()) {
+			/*if (!liftUpLimitSwitch.get()) {
 				op = LiftOperation.STOP;
 			} else {
 				op = LiftOperation.UP;
 			}
+			*/
+			op = LiftOperation.UP;
 		} else if (goDown && !goUp) {
-			if (liftDownLimitSwitch.get()) {
+			/* if (liftDownLimitSwitch.get()) {
 				op = LiftOperation.DOWN;
 			} else {
 				op = LiftOperation.STOP;
 			}
+			*/
+			op = LiftOperation.DOWN;
+		}
+		else {
+			op = LiftOperation.STOP;
 		}
 		currentOperations.liftOperation = op;
 		return op;

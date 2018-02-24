@@ -8,12 +8,22 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  * @author Gabriel Love Class for operating the drive base
  */
 public class DriveBase {
-	// Sparks
+	/**
+	 * Sparks for Competition Robot DriveBase
+	 */
+	/*
 	private Spark Backleft = new Spark(Config.DB_LEFT_BACK_CHANNEL);
 	private Spark Frontleft = new Spark(Config.DB_LEFT_FRONT_CHANNEL);
 	private Spark Backright = new Spark(Config.DB_RIGHT_BACK_CHANNEL);
 	private Spark Frontright = new Spark(Config.DB_RIGHT_FRONT_CHANNEL);
-
+	*/
+	/**
+	 * Victors for Test Robot DriveBase
+	 */
+	private VictorSP Backleft = new VictorSP(Config.DB_LEFT_BACK_CHANNEL);
+	private VictorSP Frontleft = new VictorSP(Config.DB_LEFT_FRONT_CHANNEL);
+	private VictorSP Backright = new VictorSP(Config.DB_RIGHT_BACK_CHANNEL);
+	private VictorSP Frontright = new VictorSP(Config.DB_RIGHT_FRONT_CHANNEL);
 	/**
 	 * Motor group for left side
 	 */
