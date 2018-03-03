@@ -11,6 +11,7 @@ public class DriveBase {
 	/**
 	 * Sparks for Competition Robot DriveBase
 	 */
+	//TODO Uncomment Sparks on competition robot, and comment out Victors
 	/*
 	private Spark Backleft = new Spark(Config.DB_LEFT_BACK_CHANNEL);
 	private Spark Frontleft = new Spark(Config.DB_LEFT_FRONT_CHANNEL);
@@ -28,22 +29,15 @@ public class DriveBase {
 	 * Motor group for left side
 	 */
 	private SpeedController left = new SpeedControllerGroup(Backleft, Frontleft);
-	// private SpeedController autoLeft = new SpeedControllerGroup(Backleft,
-	// Frontleft);
 
 	/**
 	 * Motor group for right side
 	 */
 	private SpeedController right = new SpeedControllerGroup(Backright, Frontright);
-	// private SpeedController autoRight = new SpeedControllerGroup(Backright,
-	// Frontright);
-
 	/**
 	 * Calling the differential drive from this method
 	 */
 	private DifferentialDrive drive = new DifferentialDrive(left, right);
-	// private DifferentialDrive autoDrive = new DifferentialDrive(autoLeft,
-	// autoRight);
 
 	/**
 	 * @author Gabriel Love
