@@ -1,0 +1,10 @@
+
+1. Understand how the Game Data will be communicated to the Drive Station. Will the entries in the Drive Station be ignored.?
+
+2. Check Grabber direction for Grab/Release go in direction expected by operator - as per Gabe's last minute change pre-packaged robot.
+
+3. Do DriveStraight autonomous to check distance - re-record if not far enough, then overwrite DriveStraight.dat file in src folder - and rebuild.
+
+4. Record a PushCube (only) autonomous sequence - then overwrite PushCube.dat file in src folder - and rebuild.
+
+5. Record a RaiseLift (only) autonomous sequence - then overwrite RaiseLift.dat file in src folder - and rebuild.
