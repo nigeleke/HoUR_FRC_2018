@@ -17,6 +17,7 @@ public class Dashboard {
 	private DriverStation driverStation = DriverStation.getInstance();
 	private SendableChooser<RobotPosition> robotPosition = new SendableChooser<>();
 	private SendableChooser<Goal> goal = new SendableChooser<>();
+	private SendableChooser<RobotType> driveBase = new SendableChooser<>();
 
 	public void dashboardInit() {
 		robotPosition.addDefault("Left", RobotPosition.LEFT);
@@ -28,8 +29,12 @@ public class Dashboard {
 		goal.addObject("Base Line", Goal.BASE_LINE);
 		goal.addDefault("Test", Goal.TEST);
 
+		driveBase.addDefault("Competition", RobotType.COMPETITION);
+		driveBase.addObject("Test", RobotType.TEST);
+		
 		SmartDashboard.putData("Robot Position", robotPosition);
 		SmartDashboard.putData("Drive Goal", goal);
+		SmartDashboard.putData("Robot Type", driveBase);
 	}
 
 	public AutoPlayGroup getAutoSequence() {
@@ -115,6 +120,10 @@ public class Dashboard {
 		}
 
 		return null;
+	}
+	
+	public RobotType getRobotType() {
+		return driveBase.getSelected();
 	}
 
 }
