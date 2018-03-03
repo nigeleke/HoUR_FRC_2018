@@ -32,17 +32,20 @@ public class Dashboard {
 		SmartDashboard.putData("Drive Goal", goal);
 	}
 
-	public AutoPlayGroup getPath() {
+	public AutoPlayGroup getAutoSequence() {
+		Goal selectedGoal = goal.getSelected();
 		AutoPlayGroup apGroup = new AutoPlayGroup();
-		//apGroup.add(new GrabCube());
-		apGroup.add(getAutoPath()); //TODO
-		//apGroup.add(new PushCube());
+		apGroup.add(getAutoPath(selectedGoal));
+		if(selectedGoal == Goal.SCALE) {
+			apGroup.add(new RaiseLift());
+		}
+		if(selectedGoal != Goal.BASE_LINE) {
+			apGroup.add(new PushCube());
+		}
 		return apGroup;
 	}
 
-	private AutoPlay getAutoPath() {
-		Goal selectedGoal = goal.getSelected();
-
+	private AutoPlay getAutoPath(Goal selectedGoal) {
 		switch(selectedGoal) {
 			case BASE_LINE:	return new DriveStraight();
 			case SWITCH:		return getPathForSwitch();

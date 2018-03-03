@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void autonomousInit() {
-		controller = new AutonomousController(dashboard.getPath());
+		controller = new AutonomousController(dashboard.getAutoSequence());
 	}
 
 	@Override
