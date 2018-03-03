@@ -38,7 +38,7 @@ public abstract class AutoPlay {
 	}
 
 	private void loadFromResource(String fileName) {
-		try (InputStream stream = this.getClass().getResourceAsStream(fileName)) {
+		try (InputStream stream = this.getClass().getResourceAsStream("data/" + fileName)) {
 			loadFromStream(stream);
 		} catch (IOException ex) {
 			System.out.println("Failed to loadFromResource " + ex.toString());

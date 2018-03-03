@@ -98,9 +98,11 @@ public class Dashboard {
 		} else if (robotPos == RobotPosition.LEFT && scalePos.equals("R")) {
 			return new LeftToRightScale();
 		} else if (robotPos == RobotPosition.MIDDLE && scalePos.equals("L")) {
-			return new MiddleToLeftScale();
+			System.out.println("Autonomous combination not available");
+			return null;
 		} else if (robotPos == RobotPosition.MIDDLE && scalePos.equals("R")) {
-			return new MiddleToRightScale();
+			System.out.println("Autonomous combination not available");
+			return null;
 		} else if (robotPos == RobotPosition.RIGHT && scalePos.equals("L")) {
 			return new RightToLeftScale();
 		} else if (robotPos == RobotPosition.RIGHT && scalePos.equals("R")) {
