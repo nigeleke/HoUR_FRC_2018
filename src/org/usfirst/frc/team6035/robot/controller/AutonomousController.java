@@ -13,9 +13,7 @@ public class AutonomousController implements Controller {
 	public AutonomousController(AutoPlayGroup autoPlayGroup) {
 		this.autoPlayGroup = autoPlayGroup;
 		currentAutoPlay = autoPlayGroup.get(0);
-		System.out.println("cAP1: "+ currentAutoPlay);
 		currentAutoPlay.init();
-		System.out.println("cAP2: "+ currentAutoPlay);
 		currentOperation = currentAutoPlay.next();
 	}
 
@@ -81,9 +79,7 @@ public class AutonomousController implements Controller {
 	@Override
 	public void nextCycle() {
 		if (!currentAutoPlay.isFinished()) {
-			System.out.println("NextCycle1");
 			currentOperation = currentAutoPlay.next();
-			System.out.println("NextCycle2");
 		} else {
 			currentIndex++;
 			if (currentIndex >= autoPlayGroup.size()) {
@@ -91,9 +87,7 @@ public class AutonomousController implements Controller {
 			} else {
 				currentAutoPlay = autoPlayGroup.get(currentIndex);
 				currentAutoPlay.init();
-				System.out.println("NextCycle3");
 				currentOperation = currentAutoPlay.next();
-				System.out.println("NextCycle4");
 			}
 		}
 	}

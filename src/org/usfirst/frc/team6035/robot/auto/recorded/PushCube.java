@@ -5,7 +5,7 @@ import org.usfirst.frc.team6035.robot.auto.AutoPlay;
 public class PushCube extends AutoPlay {
 
 	public PushCube() {
-		super("/home/lvuser/PushCube.dat", false);
+		super("PushCube.dat", true);
 	}
 
 }

@@ -1,0 +1,4 @@
+
+1. Amend Lift game component (and Config) so one controller only is used.
+
+2. Make limit switch usage dependent on RobotType - if COMP then use limit switches, it TEST then don't - rather than comment out code.

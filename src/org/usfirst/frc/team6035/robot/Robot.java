@@ -12,6 +12,7 @@ import org.usfirst.frc.team6035.robot.controller.operations.GrabberOperation;
 import org.usfirst.frc.team6035.robot.controller.operations.LiftOperation;
 import org.usfirst.frc.team6035.robot.controller.operations.PushOperation;
 import org.usfirst.frc.team6035.robot.dashboard.Dashboard;
+import org.usfirst.frc.team6035.robot.dashboard.RobotType;
 import org.usfirst.frc.team6035.robot.gamecomponents.*;
 
 /**
@@ -25,7 +26,7 @@ public class Robot extends IterativeRobot {
 	private Lift lift = new Lift();
 	private Grabber grabber = new Grabber();
 	private GrabberArm grabberArm = new GrabberArm();
-	private DriveBase driveBase = new DriveBase();
+	private DriveBase driveBase = null;
 	private Climber climber = new Climber();
 	private Pusher pusher = new Pusher();
 	private Dashboard dashboard = new Dashboard();
@@ -35,9 +36,17 @@ public class Robot extends IterativeRobot {
 		dashboard.dashboardInit();
 	}
 
+	private void driveBaseInit() {
+		RobotType type = dashboard.getRobotType();
+		driveBase = new DriveBase(type);
+	}
+
 	@Override
 	public void autonomousInit() {
-		controller = new AutonomousController(dashboard.getPath());
+		controller = new AutonomousController(dashboard.getAutoSequence());
+		if(driveBase == null) {
+			driveBaseInit();
+		}
 	}
 
 	@Override
@@ -48,6 +57,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() {
 		controller = new TeleopController();
+		if(driveBase == null) {
+			driveBaseInit();
+		}
 	}
 
 	@Override

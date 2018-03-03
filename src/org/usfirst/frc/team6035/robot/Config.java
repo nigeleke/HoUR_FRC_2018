@@ -50,14 +50,6 @@ public class Config {
 	public static int DEFAULT_RAMP_UP_TIME_MS = 500;
 	public static int LIFT_UP_RAMP_UP_TIME_MS = 3000;
 
-	// Autonomous Steps
-	public static int DROP_CUBE_STEPS = 50;
-	public static int GRAB_CUBE_STEPS = 50;
-	public static int LIFT_TO_SWITCH_POSITION_STEPS = 100;
-	public static int LOWER_GRABBER_ARM_STEPS = 75;
-	public static int LOWER_GRABBER_ARM_TO_DROP_POSITION_STEPS = 75;
-	public static int RAISE_GRABBER_ARM_TO_DRIVE_POSITION = 225;
-
 	// Misc.
 	public static double DIRECTION_SENSITIVITY = 0.8;
 

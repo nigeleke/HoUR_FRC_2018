@@ -3,7 +3,9 @@ package org.usfirst.frc.team6035.robot.dashboard;
 import edu.wpi.first.wpilibj.DriverStation;
 
 import edu.wpi.first.wpilibj.smartdashboard.*;
-import org.usfirst.frc.team6035.robot.auto.*;
+
+import org.usfirst.frc.team6035.robot.auto.AutoPlay;
+import org.usfirst.frc.team6035.robot.auto.AutoPlayGroup;
 import org.usfirst.frc.team6035.robot.auto.recorded.*;
 
 /**
@@ -15,6 +17,7 @@ public class Dashboard {
 	private DriverStation driverStation = DriverStation.getInstance();
 	private SendableChooser<RobotPosition> robotPosition = new SendableChooser<>();
 	private SendableChooser<Goal> goal = new SendableChooser<>();
+	private SendableChooser<RobotType> driveBase = new SendableChooser<>();
 
 	public void dashboardInit() {
 		robotPosition.addDefault("Left", RobotPosition.LEFT);
@@ -26,21 +29,28 @@ public class Dashboard {
 		goal.addObject("Base Line", Goal.BASE_LINE);
 		goal.addDefault("Test", Goal.TEST);
 
+		driveBase.addDefault("Competition", RobotType.COMPETITION);
+		driveBase.addObject("Test", RobotType.TEST);
+		
 		SmartDashboard.putData("Robot Position", robotPosition);
 		SmartDashboard.putData("Drive Goal", goal);
+		SmartDashboard.putData("Robot Type", driveBase);
 	}
 
-	public AutoPlayGroup getPath() {
+	public AutoPlayGroup getAutoSequence() {
+		Goal selectedGoal = goal.getSelected();
 		AutoPlayGroup apGroup = new AutoPlayGroup();
-		//apGroup.add(new GrabCube());
-		apGroup.add(getAutoPath()); //TODO
-		//apGroup.add(new PushCube());
+		apGroup.add(getAutoPath(selectedGoal));
+		if(selectedGoal == Goal.SCALE) {
+			apGroup.add(new RaiseLift());
+		}
+		if(selectedGoal != Goal.BASE_LINE) {
+			apGroup.add(new PushCube());
+		}
 		return apGroup;
 	}
 
-	private AutoPlay getAutoPath() {
-		Goal selectedGoal = goal.getSelected();
-
+	private AutoPlay getAutoPath(Goal selectedGoal) {
 		switch(selectedGoal) {
 			case BASE_LINE:	return new DriveStraight();
 			case SWITCH:		return getPathForSwitch();
@@ -96,9 +106,11 @@ public class Dashboard {
 		} else if (robotPos == RobotPosition.LEFT && scalePos.equals("R")) {
 			return new LeftToRightScale();
 		} else if (robotPos == RobotPosition.MIDDLE && scalePos.equals("L")) {
-			return new MiddleToLeftScale();
+			System.out.println("Autonomous combination not available");
+			return null;
 		} else if (robotPos == RobotPosition.MIDDLE && scalePos.equals("R")) {
-			return new MiddleToRightScale();
+			System.out.println("Autonomous combination not available");
+			return null;
 		} else if (robotPos == RobotPosition.RIGHT && scalePos.equals("L")) {
 			return new RightToLeftScale();
 		} else if (robotPos == RobotPosition.RIGHT && scalePos.equals("R")) {
@@ -108,6 +120,10 @@ public class Dashboard {
 		}
 
 		return null;
+	}
+	
+	public RobotType getRobotType() {
+		return driveBase.getSelected();
 	}
 
 }
