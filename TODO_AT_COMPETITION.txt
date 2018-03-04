@@ -10,3 +10,5 @@
 5. Record a RaiseLift (only) autonomous sequence - then overwrite RaiseLift.dat file in src folder - and rebuild.
 
 6. Check that the limit switch code works.
+
+7. Ensure Lift does not have to be raised for any Switch sequences
