@@ -56,7 +56,8 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-		controller = new TeleopController();
+		RobotType type = dashboard.getRobotType();
+		controller = new TeleopController(type);
 		if(driveBase == null) {
 			driveBaseInit();
 		}

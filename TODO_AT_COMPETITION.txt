@@ -8,3 +8,5 @@
 4. Record a PushCube (only) autonomous sequence - then overwrite PushCube.dat file in src folder - and rebuild.
 
 5. Record a RaiseLift (only) autonomous sequence - then overwrite RaiseLift.dat file in src folder - and rebuild.
+
+6. Check that the limit switch code works.
