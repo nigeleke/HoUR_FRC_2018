@@ -12,3 +12,5 @@
 6. Check that the limit switch code works.
 
 7. Ensure Lift does not have to be raised for any Switch sequences
+
+8. Ensure the Competition Robot's DriveBase are set to the Sparks, not the Victors!!!
