@@ -42,8 +42,8 @@ public class Config {
 	public static double GRABBER_HOLD_SPEED = 0.1;
 	public static double CLIMBER_UP_SPEED = 0.615;
 	public static double LIFT_COMPENSATE_SPEED = -0.2;
-	public static double PUSHER_PUSH_SPEED = 1;
-	public static double PUSHER_REWIND_SPEED = 0.7;
+	public static double PUSHER_PUSH_SPEED = 0.25;
+	public static double PUSHER_REWIND_SPEED = -0.25;
 
 	// Times
 	public static int DEFAULT_RAMP_UP_TIME_MS = 500;
