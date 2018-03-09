@@ -1,5 +1,7 @@
 package org.usfirst.frc.team6035.robot;
 
+import org.usfirst.frc.team6035.robot.dashboard.RobotType;
+
 /**
  * Provides hardware configuration for the RoboRio channels
  * 
@@ -29,8 +31,8 @@ public class Config {
 	public static int PUSHER_CHANNEL = 8;
 	// ...
 	public static int GRABBER_SWITCH_CHANNEL_DIO = 7;
-	public static int LIFT_UP_TRAVEL_DIO = 0;
-	public static int LIFT_DOWN_TRAVEL_DIO = 3;
+	public static int LIFT_UP_TRAVEL_DIO = 8;
+	public static int LIFT_DOWN_TRAVEL_DIO = 9;
 
 	// Speeds
 	public static double LIFT_UP_SPEED = 0.55;
@@ -51,5 +53,6 @@ public class Config {
 
 	// Misc.
 	public static double DIRECTION_SENSITIVITY = 0.8;
+	public static RobotType ROBOT_TYPE = RobotType.TEST;
 
 }

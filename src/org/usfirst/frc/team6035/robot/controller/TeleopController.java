@@ -20,9 +20,9 @@ public class TeleopController implements Controller {
 
 	private Joystick stick = new Joystick(Config.JOYSTICK_PORT);
 	private XboxController xbox = new XboxController(Config.XBOX_PORT);
-	private DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL_DIO);
-	private DigitalInput liftUpLimitSwitch = new DigitalInput(Config.LIFT_UP_TRAVEL_DIO);
-	private DigitalInput liftDownLimitSwitch = new DigitalInput(Config.LIFT_DOWN_TRAVEL_DIO);
+	private static DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL_DIO);
+	private static DigitalInput liftUpLimitSwitch = new DigitalInput(Config.LIFT_UP_TRAVEL_DIO);
+	private static DigitalInput liftDownLimitSwitch = new DigitalInput(Config.LIFT_DOWN_TRAVEL_DIO);
 	private boolean twist = true;
 	private Timer timer = null;
 	private List<RobotOperations> recordedOperations = new ArrayList<>();
@@ -30,9 +30,6 @@ public class TeleopController implements Controller {
 	private boolean recording = false;
 	private RobotType robotType;
 	
-	public TeleopController(RobotType robotType) {
-		this.robotType = robotType;
-	}
 
 	/*
 	 * (non-Javadoc)
@@ -145,7 +142,6 @@ public class TeleopController implements Controller {
 			else {
 				op = LiftOperation.UP;
 			}
-			
 		} 
 		else if (goDown && !goUp) {
 			if(robotType == RobotType.COMPETITION) {
@@ -163,10 +159,8 @@ public class TeleopController implements Controller {
 		else {
 			op = LiftOperation.STOP;
 		}
-			
-		currentOperations.liftOperation = op;
+		currentOperations.liftOperation = op;			
 		return op;
-
 	}
 
 	/*
