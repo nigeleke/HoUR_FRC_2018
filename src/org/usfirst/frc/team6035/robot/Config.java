@@ -29,7 +29,8 @@ public class Config {
 	public static int LIFT_CHANNEL = 6;
 	public static int CLIMBER_CHANNEL = 5;
 	public static int PUSHER_CHANNEL = 8;
-	// ...
+	
+	// Digital I/O
 	public static int GRABBER_SWITCH_CHANNEL_DIO = 7;
 	public static int LIFT_UP_TRAVEL_DIO = 8;
 	public static int LIFT_DOWN_TRAVEL_DIO = 9;
@@ -43,9 +44,10 @@ public class Config {
 	public static double GRABBER_LET_GO_SPEED = -0.75;
 	public static double GRABBER_HOLD_SPEED = 0.1;
 	public static double CLIMBER_UP_SPEED = 0.615;
+	public static double CLIMBER_DOWN_SPEED = -0.615;
 	public static double LIFT_COMPENSATE_SPEED = -0.2;
-	public static double PUSHER_PUSH_SPEED = 0.25;
-	public static double PUSHER_REWIND_SPEED = -0.25;
+	public static double PUSHER_PUSH_SPEED = 0.35;
+	public static double PUSHER_REWIND_SPEED = -0.35;
 
 	// Times
 	public static int DEFAULT_RAMP_UP_TIME_MS = 500;

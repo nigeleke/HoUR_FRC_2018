@@ -4,5 +4,5 @@ package org.usfirst.frc.team6035.robot.controller.operations;
  * @author Ethan Sigler Describes all operations available to the Climber Class
  */
 public enum ClimberOperation {
-	UP, STOP
+	UP, STOP, DOWN
 }

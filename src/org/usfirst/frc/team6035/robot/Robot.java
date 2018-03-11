@@ -168,6 +168,9 @@ public class Robot extends IterativeRobot {
 		case STOP:
 			climber.stop();
 			break;
+		case DOWN:
+			climber.down();
+			break;
 
 		default:
 			System.out.println("Error in operateClimber Switch");

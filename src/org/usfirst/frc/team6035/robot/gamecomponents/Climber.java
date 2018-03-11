@@ -25,4 +25,9 @@ public class Climber {
 	public void stop() {
 		controller.stopMotor(); // set motor speed at 0 to stop
 	}
+	
+	public void down () {
+		controller.set(Config.CLIMBER_DOWN_SPEED);
+	}
+	
 }

@@ -171,20 +171,30 @@ public class TeleopController implements Controller {
 	 */
 	@Override
 	public ClimberOperation getClimberOperation() {
-		if (timer == null) {
+		/*if (timer == null) {
 			timer = new Timer();
 			timer.start();
 		}
+		*/
 
 		double leftTrigger = xbox.getTriggerAxis(GenericHID.Hand.kLeft);
 		double rightTrigger = xbox.getTriggerAxis(GenericHID.Hand.kRight);
+		
+		boolean leftBumper = xbox.getBumper(GenericHID.Hand.kLeft);
+		boolean rightBumper = xbox.getBumper(GenericHID.Hand.kRight);
 
 		boolean bothPressed = leftTrigger >= 0.5 && rightTrigger >= 0.5;
-		boolean inLastPeriod = (timer.get() >= Config.CLIMBER_DISABLED_TIME);
+		boolean bumperBothPressed = leftBumper && rightBumper;
+		
+		//boolean inLastPeriod = (timer.get() >= Config.CLIMBER_DISABLED_TIME);
 		ClimberOperation op = ClimberOperation.STOP;
 
-		if (bothPressed && inLastPeriod) {
+		if (bothPressed) {
 			op = ClimberOperation.UP;
+		}
+		else if (bumperBothPressed) {
+			
+			op = ClimberOperation.DOWN;
 		}
 		// Climber operation is not recorded; this will always be STOP during autonomous.
 		return op;
@@ -198,14 +208,14 @@ public class TeleopController implements Controller {
 	@Override
 	public PushOperation getPushOperation() {
 
-		boolean leftBumper = xbox.getBumper(GenericHID.Hand.kLeft);
-		boolean rightBumper = xbox.getBumper(GenericHID.Hand.kRight);
+		boolean pusherButton = xbox.getRawButton(9);
+		boolean reversePusherButton = xbox.getRawButton(10);
 		PushOperation op = PushOperation.STOP;
 
-		if (leftBumper) {
+		if (pusherButton) {
 			op = PushOperation.REWIND;
 
-		} else if (rightBumper) {
+		} else if (reversePusherButton) {
 			op = PushOperation.PUSH;
 		}
 		currentOperations.pushOperation = op;
