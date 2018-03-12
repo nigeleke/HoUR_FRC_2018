@@ -32,8 +32,8 @@ public class Config {
 	
 	// Digital I/O
 	public static int GRABBER_SWITCH_CHANNEL_DIO = 7;
-	public static int LIFT_UP_TRAVEL_DIO = 8;
-	public static int LIFT_DOWN_TRAVEL_DIO = 9;
+	public static int LIFT_UP_TRAVEL_DIO = 0;
+	public static int LIFT_DOWN_TRAVEL_DIO = 3;
 
 	// Speeds
 	public static double LIFT_UP_SPEED = 0.55;
