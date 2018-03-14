@@ -9,8 +9,12 @@
 
 5. Record a RaiseLift (only) autonomous sequence - then overwrite RaiseLift.dat file in src folder - and rebuild.
 
-6. Check that the limit switch code works.
+6. Check that the limit switch code works (in particular the LiftDown and LiftUp. Ethan's Note: The logic of these Limit Switches make no sense)
 
 7. Ensure Lift does not have to be raised for any Switch sequences
 
 8. Ensure the Competition Robot's DriveBase are set to the Sparks, not the Victors!!!
+
+9. Set robotType in TeleopController to COMPETITION (otherwise Limit Switches won't work!!!)
+
+10. Uncomment Climber timer boolean in TeleopController

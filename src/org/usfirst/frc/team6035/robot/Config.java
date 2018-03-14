@@ -43,8 +43,8 @@ public class Config {
 	public static double GRABBER_GRAB_SPEED = 0.75;
 	public static double GRABBER_LET_GO_SPEED = -0.75;
 	public static double GRABBER_HOLD_SPEED = 0.1;
-	public static double CLIMBER_UP_SPEED = -0.615;
-	public static double CLIMBER_DOWN_SPEED = 0.615;
+	public static double CLIMBER_UP_SPEED = -0.75;
+	public static double CLIMBER_DOWN_SPEED = 0.75;
 	public static double LIFT_COMPENSATE_SPEED = -0.2;
 	public static double PUSHER_PUSH_SPEED = 0.35;
 	public static double PUSHER_REWIND_SPEED = -0.35;

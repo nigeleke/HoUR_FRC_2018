@@ -10,7 +10,6 @@ import org.usfirst.frc.team6035.robot.controller.operations.*;
 import org.usfirst.frc.team6035.robot.dashboard.RobotType;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
 
 /**
@@ -24,7 +23,7 @@ public class TeleopController implements Controller {
 	private static DigitalInput liftUpLimitSwitch = new DigitalInput(Config.LIFT_UP_TRAVEL_DIO);
 	private static DigitalInput liftDownLimitSwitch = new DigitalInput(Config.LIFT_DOWN_TRAVEL_DIO);
 	private boolean twist = true;
-	private Timer timer = null;
+	//private Timer timer;
 	private List<RobotOperations> recordedOperations = new ArrayList<>();
 	private RobotOperations currentOperations = new RobotOperations();
 	private boolean recording = false;
@@ -129,9 +128,12 @@ public class TeleopController implements Controller {
 		int dpadVal = xbox.getPOV();
 		boolean goUp = (325 <= dpadVal && dpadVal < 360) || (0 <= dpadVal && dpadVal <= 45);
 		boolean goDown = (135 <= dpadVal && dpadVal <= 225);
+		boolean separateClimberButton1 = stick.getRawButton(11);
+		boolean separateClimberButton2 = stick.getRawButton(12);
+		boolean separateClimber = false;
 		LiftOperation op = LiftOperation.STOP;
 
-		if (goUp && !goDown) {
+		if (goUp && !goDown && !separateClimber) {
 			if (robotType == RobotType.COMPETITION) {
 				if (!liftUpLimitSwitch.get()) {
 					op = LiftOperation.STOP;
@@ -143,7 +145,7 @@ public class TeleopController implements Controller {
 				op = LiftOperation.UP;
 			}
 		} 
-		else if (goDown && !goUp) {
+		else if (goDown && !goUp && !separateClimber) {
 			if(robotType == RobotType.COMPETITION) {
 				if (liftDownLimitSwitch.get()) {
 					op = LiftOperation.DOWN;
@@ -153,9 +155,21 @@ public class TeleopController implements Controller {
 			}
 			else {
 				op = LiftOperation.DOWN;
-			}
-			
+			}	
 		}
+		
+		else if (separateClimberButton1 && separateClimberButton2) {
+			separateClimber = true;
+		}
+		
+		else if (separateClimber && !goDown && goUp) {
+			op = LiftOperation.UPSELF;
+		}
+		
+		else if (separateClimber && !goUp && goDown) {
+			op = LiftOperation.DOWNSELF;
+		}
+		
 		else {
 			op = LiftOperation.STOP;
 		}

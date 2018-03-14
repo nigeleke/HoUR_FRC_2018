@@ -5,6 +5,6 @@ package org.usfirst.frc.team6035.robot.controller.operations;
  */
 public enum LiftOperation {
 
-	UP, DOWN, STOP, COMPENSATE
+	UP, DOWN, STOP, COMPENSATE, UPSELF, DOWNSELF
 
 }

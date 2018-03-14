@@ -96,8 +96,16 @@ public class Robot extends IterativeRobot {
 
 		case UP:
 			lift.up();
+			climber.down();
 			break;
 		case DOWN:
+			lift.down();
+			climber.up();
+			break;
+		case UPSELF:
+			lift.up();
+			break;
+		case DOWNSELF:
 			lift.down();
 			break;
 		case STOP:
@@ -163,7 +171,6 @@ public class Robot extends IterativeRobot {
 		switch (op) {
 		case UP:
 			climber.up();
-			lift.compensate();
 			break;
 		case STOP:
 			climber.stop();
