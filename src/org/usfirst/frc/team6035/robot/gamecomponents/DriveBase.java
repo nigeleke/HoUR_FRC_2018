@@ -13,19 +13,19 @@ public class DriveBase {
 	/**
 	 * Sparks for Competition
 	 */
-	/*
-	 * Backleft = new Spark(Config.DB_LEFT_BACK_CHANNEL); Frontleft = new
-	 * Spark(Config.DB_LEFT_FRONT_CHANNEL); Backright = new
-	 * Spark(Config.DB_RIGHT_BACK_CHANNEL); Frontright = new
-	 * Spark(Config.DB_RIGHT_FRONT_CHANNEL);
-	 */
+	private SpeedController Backleft = new Spark(Config.DB_LEFT_BACK_CHANNEL); 
+	private SpeedController Frontleft = new Spark(Config.DB_LEFT_FRONT_CHANNEL); 
+	private SpeedController Backright = new Spark(Config.DB_RIGHT_BACK_CHANNEL); 
+	private SpeedController Frontright = new Spark(Config.DB_RIGHT_FRONT_CHANNEL);
 	/**
 	 * Victors For Test Robot
 	 */
+	 /*
 	private SpeedController Backleft = new VictorSP(Config.DB_LEFT_BACK_CHANNEL);
 	private SpeedController Frontleft = new VictorSP(Config.DB_LEFT_FRONT_CHANNEL);
 	private SpeedController Backright = new VictorSP(Config.DB_RIGHT_BACK_CHANNEL);
 	private SpeedController Frontright = new VictorSP(Config.DB_RIGHT_FRONT_CHANNEL);
+	*/
 	/**
 	 * Motor group for left side
 	 */

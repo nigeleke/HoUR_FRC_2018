@@ -10,6 +10,7 @@ import org.usfirst.frc.team6035.robot.controller.operations.*;
 import org.usfirst.frc.team6035.robot.dashboard.RobotType;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
 
 /**
@@ -22,12 +23,13 @@ public class TeleopController implements Controller {
 	private static DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL_DIO);
 	private static DigitalInput liftUpLimitSwitch = new DigitalInput(Config.LIFT_UP_TRAVEL_DIO);
 	private static DigitalInput liftDownLimitSwitch = new DigitalInput(Config.LIFT_DOWN_TRAVEL_DIO);
+	private static DigitalInput grabberArmLimitSwitch = new DigitalInput(Config.GRABBER_ARM_UP_DIO);
 	private boolean twist = true;
-	//private Timer timer;
+	private Timer timer;
 	private List<RobotOperations> recordedOperations = new ArrayList<>();
 	private RobotOperations currentOperations = new RobotOperations();
 	private boolean recording = false;
-	private RobotType robotType;
+	private RobotType robotType = RobotType.COMPETITION;
 	
 
 	/*
@@ -108,9 +110,15 @@ public class TeleopController implements Controller {
 	public GrabberArmOperation getGrabberArmOperation() {
 		boolean topButtonPressed = xbox.getYButton();
 		boolean bottomButtonPressed = xbox.getAButton();
+		boolean grabberArmLimit = grabberArmLimitSwitch.get();
 		GrabberArmOperation op = GrabberArmOperation.STOP;
 		if (topButtonPressed && !bottomButtonPressed) {
+			if(grabberArmLimit){
+				op = GrabberArmOperation.STOP;
+			}
+			else {
 			op = GrabberArmOperation.UP;
+			}
 		} else if (bottomButtonPressed && !topButtonPressed) {
 			op = GrabberArmOperation.DOWN;
 		}
@@ -185,11 +193,10 @@ public class TeleopController implements Controller {
 	 */
 	@Override
 	public ClimberOperation getClimberOperation() {
-		/*if (timer == null) {
+		if (timer == null) {
 			timer = new Timer();
 			timer.start();
 		}
-		*/
 
 		double leftTrigger = xbox.getTriggerAxis(GenericHID.Hand.kLeft);
 		double rightTrigger = xbox.getTriggerAxis(GenericHID.Hand.kRight);
@@ -200,13 +207,13 @@ public class TeleopController implements Controller {
 		boolean bothPressed = leftTrigger >= 0.5 && rightTrigger >= 0.5;
 		boolean bumperBothPressed = leftBumper && rightBumper;
 		
-		//boolean inLastPeriod = (timer.get() >= Config.CLIMBER_DISABLED_TIME);
+		boolean inLastPeriod = (timer.get() >= Config.CLIMBER_DISABLED_TIME);
 		ClimberOperation op = ClimberOperation.STOP;
 
-		if (bothPressed) {
+		if (bothPressed && inLastPeriod) {
 			op = ClimberOperation.UP;
 		}
-		else if (bumperBothPressed) {
+		else if (bumperBothPressed && inLastPeriod) {
 			
 			op = ClimberOperation.DOWN;
 		}
