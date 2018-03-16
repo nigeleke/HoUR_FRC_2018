@@ -20,17 +20,15 @@ public class TeleopController implements Controller {
 
 	private Joystick stick = new Joystick(Config.JOYSTICK_PORT);
 	private XboxController xbox = new XboxController(Config.XBOX_PORT);
-	private static DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL_DIO);
-	private static DigitalInput liftUpLimitSwitch = new DigitalInput(Config.LIFT_UP_TRAVEL_DIO);
-	private static DigitalInput liftDownLimitSwitch = new DigitalInput(Config.LIFT_DOWN_TRAVEL_DIO);
-	private static DigitalInput grabberArmLimitSwitch = new DigitalInput(Config.GRABBER_ARM_UP_DIO);
+	private DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL_DIO);
+	private DigitalInput liftUpLimitSwitch = new DigitalInput(Config.LIFT_UP_TRAVEL_DIO);
+	private DigitalInput liftDownLimitSwitch = new DigitalInput(Config.LIFT_DOWN_TRAVEL_DIO);
+	private DigitalInput grabberArmLimitSwitch = new DigitalInput(Config.GRABBER_ARM_UP_DIO);
 	private boolean twist = true;
 	private Timer timer;
 	private List<RobotOperations> recordedOperations = new ArrayList<>();
 	private RobotOperations currentOperations = new RobotOperations();
 	private boolean recording = false;
-	private RobotType robotType = RobotType.COMPETITION;
-	
 
 	/*
 	 * (non-Javadoc)
@@ -81,13 +79,11 @@ public class TeleopController implements Controller {
 		GrabberOperation op = GrabberOperation.STOP;
 		
 		if (leftButtonPressed) {
-			if (robotType == RobotType.COMPETITION) {
 				if (grabberMicroSwitchClosed) {
 					op = GrabberOperation.GRAB;
 				} else if (!grabberMicroSwitchClosed) {
 					op = GrabberOperation.HOLD;
 				}
-			}
 			else {
 				op = GrabberOperation.GRAB;
 			}
@@ -142,28 +138,18 @@ public class TeleopController implements Controller {
 		LiftOperation op = LiftOperation.STOP;
 
 		if (goUp && !goDown && !separateClimber) {
-			if (robotType == RobotType.COMPETITION) {
 				if (!liftUpLimitSwitch.get()) {
 					op = LiftOperation.STOP;
 				} else {
 					op = LiftOperation.UP;
 				}
-			}
-			else {
-				op = LiftOperation.UP;
-			}
 		} 
 		else if (goDown && !goUp && !separateClimber) {
-			if(robotType == RobotType.COMPETITION) {
 				if (liftDownLimitSwitch.get()) {
 					op = LiftOperation.DOWN;
 				} else {
 					op = LiftOperation.STOP;
 				}
-			}
-			else {
-				op = LiftOperation.DOWN;
-			}	
 		}
 		
 		else if (separateClimberButton1 && separateClimberButton2) {
