@@ -1,6 +1,5 @@
 package org.usfirst.frc.team6035.robot;
 
-import org.usfirst.frc.team6035.robot.dashboard.RobotType;
 
 /**
  * Provides hardware configuration for the RoboRio channels
@@ -39,10 +38,10 @@ public class Config {
 	// Speeds
 	public static double LIFT_UP_SPEED = 0.55;
 	public static double LIFT_DOWN_SPEED = -0.5;
-	public static double GRABBER_ARM_UP_SPEED = -0.2;
-	public static double GRABBER_ARM_DOWN_SPEED = 0.2;
-	public static double GRABBER_GRAB_SPEED = 0.75;
-	public static double GRABBER_LET_GO_SPEED = -0.75;
+	public static double GRABBER_ARM_UP_SPEED = -0.4;
+	public static double GRABBER_ARM_DOWN_SPEED = 0.4;
+	public static double GRABBER_GRAB_SPEED = 0.9;
+	public static double GRABBER_LET_GO_SPEED = -0.9;
 	public static double GRABBER_HOLD_SPEED = 0.1;
 	public static double CLIMBER_UP_SPEED = -0.75;
 	public static double CLIMBER_DOWN_SPEED = 0.75;
@@ -55,7 +54,6 @@ public class Config {
 	public static int LIFT_UP_RAMP_UP_TIME_MS = 3000;
 
 	// Misc.
-	public static double DIRECTION_SENSITIVITY = 0.8;
-	public static RobotType ROBOT_TYPE = RobotType.TEST;
+	public static double DIRECTION_SENSITIVITY = 0.6;
 
 }

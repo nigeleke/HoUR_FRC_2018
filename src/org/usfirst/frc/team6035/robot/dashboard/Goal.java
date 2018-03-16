@@ -1,5 +1,5 @@
 package org.usfirst.frc.team6035.robot.dashboard;
 
 public enum Goal {
-	BASE_LINE, SWITCH, SCALE, TEST
+	BASE_LINE, STRAIGHT_CUBE, SWITCH, SCALE, TEST
 }

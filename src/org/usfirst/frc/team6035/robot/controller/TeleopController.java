@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.usfirst.frc.team6035.robot.*;
 import org.usfirst.frc.team6035.robot.controller.operations.*;
-import org.usfirst.frc.team6035.robot.dashboard.RobotType;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Timer;
@@ -20,10 +19,9 @@ public class TeleopController implements Controller {
 
 	private Joystick stick = new Joystick(Config.JOYSTICK_PORT);
 	private XboxController xbox = new XboxController(Config.XBOX_PORT);
-	private DigitalInput grabberLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_CHANNEL_DIO);
-	private DigitalInput liftUpLimitSwitch = new DigitalInput(Config.LIFT_UP_TRAVEL_DIO);
-	private DigitalInput liftDownLimitSwitch = new DigitalInput(Config.LIFT_DOWN_TRAVEL_DIO);
-	private DigitalInput grabberArmLimitSwitch = new DigitalInput(Config.GRABBER_ARM_UP_DIO);
+	private static DigitalInput liftUpLimitSwitch = new DigitalInput(Config.LIFT_UP_TRAVEL_DIO);
+	private static DigitalInput liftDownLimitSwitch = new DigitalInput(Config.LIFT_DOWN_TRAVEL_DIO);
+	private static DigitalInput grabberArmLimitSwitch = new DigitalInput(Config.GRABBER_ARM_UP_DIO);
 	private boolean twist = true;
 	private Timer timer;
 	private List<RobotOperations> recordedOperations = new ArrayList<>();
@@ -75,18 +73,10 @@ public class TeleopController implements Controller {
 	public GrabberOperation getGrabberOperation() {
 		boolean leftButtonPressed = xbox.getXButton();
 		boolean rightButtonPressed = xbox.getBButton();
-		boolean grabberMicroSwitchClosed = grabberLimitSwitch.get();
 		GrabberOperation op = GrabberOperation.STOP;
 		
 		if (leftButtonPressed) {
-				if (grabberMicroSwitchClosed) {
-					op = GrabberOperation.GRAB;
-				} else if (!grabberMicroSwitchClosed) {
-					op = GrabberOperation.HOLD;
-				}
-			else {
 				op = GrabberOperation.GRAB;
-			}
 			
 		} else if (rightButtonPressed) {
 			op = GrabberOperation.LET_GO;
@@ -109,7 +99,7 @@ public class TeleopController implements Controller {
 		boolean grabberArmLimit = grabberArmLimitSwitch.get();
 		GrabberArmOperation op = GrabberArmOperation.STOP;
 		if (topButtonPressed && !bottomButtonPressed) {
-			if(grabberArmLimit){
+			if(!grabberArmLimit){
 				op = GrabberArmOperation.STOP;
 			}
 			else {
@@ -199,7 +189,7 @@ public class TeleopController implements Controller {
 		if (bothPressed && inLastPeriod) {
 			op = ClimberOperation.UP;
 		}
-		else if (bumperBothPressed && inLastPeriod) {
+		else if (bumperBothPressed && inLastPeriod ) {
 			
 			op = ClimberOperation.DOWN;
 		}

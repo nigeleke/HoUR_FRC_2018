@@ -26,6 +26,7 @@ public class Dashboard {
 		goal.addObject("Switch", Goal.SWITCH);
 		goal.addObject("Scale", Goal.SCALE);
 		goal.addObject("Base Line", Goal.BASE_LINE);
+		goal.addObject("StraightCube", Goal.STRAIGHT_CUBE);
 		goal.addDefault("Test", Goal.TEST);
 		
 		SmartDashboard.putData("Robot Position", robotPosition);
@@ -48,6 +49,7 @@ public class Dashboard {
 	private AutoPlay getAutoPath(Goal selectedGoal) {
 		switch(selectedGoal) {
 			case BASE_LINE:	return new DriveStraight();
+			case STRAIGHT_CUBE: return new DriveStraight();
 			case SWITCH:		return getPathForSwitch();
 			case SCALE:		return getPathForScale();
 			case TEST: 		return new TestAuto();
