@@ -22,7 +22,6 @@ public class TeleopController implements Controller {
 	private static DigitalInput liftUpLimitSwitch = new DigitalInput(Config.LIFT_UP_TRAVEL_DIO);
 	private static DigitalInput liftDownLimitSwitch = new DigitalInput(Config.LIFT_DOWN_TRAVEL_DIO);
 	private static DigitalInput grabberArmLimitSwitch = new DigitalInput(Config.GRABBER_ARM_UP_DIO);
-	private boolean twist = true;
 	private Timer timer;
 	private List<RobotOperations> recordedOperations = new ArrayList<>();
 	private RobotOperations currentOperations = new RobotOperations();
@@ -55,10 +54,7 @@ public class TeleopController implements Controller {
 	 */
 	@Override
 	public double getDriveDirection() {
-		if (stick.getRawButtonPressed(2)) {
-			twist = !twist;
-		}
-		double direction = (twist ? stick.getZ() : stick.getX());
+		double direction = stick.getZ();
 		currentOperations.driveDirection = direction;
 		return direction;
 	}

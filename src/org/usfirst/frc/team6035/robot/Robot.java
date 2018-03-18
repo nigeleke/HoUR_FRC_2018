@@ -29,7 +29,6 @@ public class Robot extends IterativeRobot {
 	private Climber climber = new Climber();
 	private Pusher pusher = new Pusher();
 	private Dashboard dashboard = new Dashboard();
-
 	@Override
 	public void robotInit() {
 		dashboard.dashboardInit();

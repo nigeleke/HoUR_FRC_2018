@@ -34,13 +34,18 @@ public class Dashboard {
 	}
 
 	public AutoPlayGroup getAutoSequence() {
+		RobotPosition robotPos = robotPosition.getSelected();
+		String switchPos = getGameSpecificMessage(0);
 		Goal selectedGoal = goal.getSelected();
 		AutoPlayGroup apGroup = new AutoPlayGroup();
 		apGroup.add(getAutoPath(selectedGoal));
 		if(selectedGoal == Goal.SCALE) {
 			apGroup.add(new RaiseLift());
 		}
-		if(selectedGoal != Goal.BASE_LINE) {
+		if(selectedGoal == Goal.SWITCH && robotPos == RobotPosition.LEFT && switchPos.equals("L")){
+			apGroup.add(new PushCube());
+		}
+		else if(selectedGoal == Goal.SWITCH && robotPos == RobotPosition.RIGHT && switchPos.equals("R")){
 			apGroup.add(new PushCube());
 		}
 		return apGroup;
@@ -64,17 +69,17 @@ public class Dashboard {
 		String switchPos = getGameSpecificMessage(0);
 
 		if (robotPos == RobotPosition.LEFT && switchPos.equals("L")) {
-			return new LeftToLeftSwitch();
+			return new DriveStraight();
 		} else if (robotPos == RobotPosition.LEFT && switchPos.equals("R")) {
-			return new LeftToRightSwitch();
+			return new DriveStraight();
 		} else if (robotPos == RobotPosition.MIDDLE && switchPos.equals("L")) {
-			return new MiddleToLeftSwitch();
+			return new DriveStraight();
 		} else if (robotPos == RobotPosition.MIDDLE && switchPos.equals("R")) {
-			return new MiddleToRightSwitch();
+			return new DriveStraight();
 		} else if (robotPos == RobotPosition.RIGHT && switchPos.equals("L")) {
-			return new RightToLeftSwitch();
+			return new DriveStraight();
 		} else if (robotPos == RobotPosition.RIGHT && switchPos.equals("R")) {
-			return new RightToRightSwitch();
+			return new DriveStraight();
 		} else {
 			System.out.println("Error, couldn't determine Switch Path");
 		}

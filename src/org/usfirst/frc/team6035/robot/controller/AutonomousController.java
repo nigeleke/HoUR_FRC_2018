@@ -8,7 +8,7 @@ public class AutonomousController implements Controller {
 	private AutoPlayGroup autoPlayGroup;
 	private int currentIndex = 0;
 	private AutoPlay currentAutoPlay;
-	private RobotOperations currentOperation;
+	public RobotOperations currentOperation;
 
 	public AutonomousController(AutoPlayGroup autoPlayGroup) {
 		this.autoPlayGroup = autoPlayGroup;
