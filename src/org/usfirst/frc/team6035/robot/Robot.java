@@ -6,10 +6,8 @@ import edu.wpi.first.wpilibj.*;
 
 //import org.usfirst.frc.team6035.robot.gamecomponents.auto.*;
 import org.usfirst.frc.team6035.robot.controller.*;
-import org.usfirst.frc.team6035.robot.controller.operations.ClimberOperation;
 import org.usfirst.frc.team6035.robot.controller.operations.GrabberArmOperation;
 import org.usfirst.frc.team6035.robot.controller.operations.GrabberOperation;
-import org.usfirst.frc.team6035.robot.controller.operations.LiftOperation;
 import org.usfirst.frc.team6035.robot.controller.operations.PushOperation;
 import org.usfirst.frc.team6035.robot.dashboard.Dashboard;
 import org.usfirst.frc.team6035.robot.gamecomponents.*;
@@ -22,11 +20,9 @@ import org.usfirst.frc.team6035.robot.gamecomponents.*;
 public class Robot extends IterativeRobot {
 
 	private Controller controller = null;
-	private Lift lift = new Lift();
 	private Grabber grabber = new Grabber();
 	private GrabberArm grabberArm = new GrabberArm();
 	private DriveBase driveBase = null;
-	private Climber climber = new Climber();
 	private Pusher pusher = new Pusher();
 	private Dashboard dashboard = new Dashboard();
 	@Override
@@ -66,10 +62,8 @@ public class Robot extends IterativeRobot {
 
 	private void operateRobot() {
 		driveDriveBase();
-		operateLift();
 		operateGrabberArm();
 		operateGrabber();
-		operateClimber();
 		operatePusher();
 		controller.nextCycle();
 	}
@@ -85,37 +79,6 @@ public class Robot extends IterativeRobot {
 
 	}
 
-	/**
-	 * Getting instructions from controller as to which direction to operate the
-	 * lift
-	 */
-	private void operateLift() {
-		LiftOperation op = controller.getLiftOperation();
-		switch (op) {
-
-		case UP:
-			lift.up();
-			climber.down();
-			break;
-		case DOWN:
-			lift.down();
-			climber.up();
-			break;
-		case UPSELF:
-			lift.up();
-			break;
-		case DOWNSELF:
-			lift.down();
-			break;
-		case STOP:
-			lift.stop();
-			break;
-
-		default:
-			System.out.println("Error in operateLift Switch");
-			break;
-		}
-	}
 
 	/**
 	 * Get instructions from controller to as which direction to operate the grabber
@@ -161,25 +124,6 @@ public class Robot extends IterativeRobot {
 
 		default:
 			System.out.println("Error in operateGrabber Switch");
-			break;
-		}
-	}
-
-	private void operateClimber() {
-		ClimberOperation op = controller.getClimberOperation();
-		switch (op) {
-		case UP:
-			climber.up();
-			break;
-		case STOP:
-			climber.stop();
-			break;
-		case DOWN:
-			climber.down();
-			break;
-
-		default:
-			System.out.println("Error in operateClimber Switch");
 			break;
 		}
 	}

@@ -1,15 +1,12 @@
 package org.usfirst.frc.team6035.robot.controller;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import org.usfirst.frc.team6035.robot.*;
 import org.usfirst.frc.team6035.robot.controller.operations.*;
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
 
 /**
@@ -19,10 +16,6 @@ public class TeleopController implements Controller {
 
 	private Joystick stick = new Joystick(Config.JOYSTICK_PORT);
 	private XboxController xbox = new XboxController(Config.XBOX_PORT);
-	private static DigitalInput liftUpLimitSwitch = new DigitalInput(Config.LIFT_UP_TRAVEL_DIO);
-	private static DigitalInput liftDownLimitSwitch = new DigitalInput(Config.LIFT_DOWN_TRAVEL_DIO);
-	private static DigitalInput grabberArmLimitSwitch = new DigitalInput(Config.GRABBER_ARM_UP_DIO);
-	private Timer timer;
 	private List<RobotOperations> recordedOperations = new ArrayList<>();
 	private RobotOperations currentOperations = new RobotOperations();
 	private boolean recording = false;
@@ -92,107 +85,16 @@ public class TeleopController implements Controller {
 	public GrabberArmOperation getGrabberArmOperation() {
 		boolean topButtonPressed = xbox.getYButton();
 		boolean bottomButtonPressed = xbox.getAButton();
-		boolean grabberArmLimit = grabberArmLimitSwitch.get();
 		GrabberArmOperation op = GrabberArmOperation.STOP;
 		if (topButtonPressed && !bottomButtonPressed) {
-			if(!grabberArmLimit){
-				op = GrabberArmOperation.STOP;
-			}
-			else {
 			op = GrabberArmOperation.UP;
-			}
 		} else if (bottomButtonPressed && !topButtonPressed) {
 			op = GrabberArmOperation.DOWN;
 		}
 		currentOperations.grabberArmOperation = op;
 		return op;
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.usfirst.frc.team6035.robot.controller.IController#getLiftOperation()
-	 */
-	@Override
-	public LiftOperation getLiftOperation() {
-		int dpadVal = xbox.getPOV();
-		boolean goUp = (325 <= dpadVal && dpadVal < 360) || (0 <= dpadVal && dpadVal <= 45);
-		boolean goDown = (135 <= dpadVal && dpadVal <= 225);
-		boolean separateClimberButton1 = stick.getRawButton(11);
-		boolean separateClimberButton2 = stick.getRawButton(12);
-		boolean separateClimber = false;
-		LiftOperation op = LiftOperation.STOP;
-
-		if (goUp && !goDown && !separateClimber) {
-				if (!liftUpLimitSwitch.get()) {
-					op = LiftOperation.STOP;
-				} else {
-					op = LiftOperation.UP;
-				}
-		} 
-		else if (goDown && !goUp && !separateClimber) {
-				if (liftDownLimitSwitch.get()) {
-					op = LiftOperation.DOWN;
-				} else {
-					op = LiftOperation.STOP;
-				}
-		}
-		
-		else if (separateClimberButton1 && separateClimberButton2) {
-			separateClimber = true;
-		}
-		
-		else if (separateClimber && !goDown && goUp) {
-			op = LiftOperation.UPSELF;
-		}
-		
-		else if (separateClimber && !goUp && goDown) {
-			op = LiftOperation.DOWNSELF;
-		}
-		
-		else {
-			op = LiftOperation.STOP;
-		}
-		currentOperations.liftOperation = op;			
-		return op;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.usfirst.frc.team6035.robot.controller.IController#getClimberOperation()
-	 */
-	@Override
-	public ClimberOperation getClimberOperation() {
-		if (timer == null) {
-			timer = new Timer();
-			timer.start();
-		}
-
-		double leftTrigger = xbox.getTriggerAxis(GenericHID.Hand.kLeft);
-		double rightTrigger = xbox.getTriggerAxis(GenericHID.Hand.kRight);
-		
-		boolean leftBumper = xbox.getBumper(GenericHID.Hand.kLeft);
-		boolean rightBumper = xbox.getBumper(GenericHID.Hand.kRight);
-
-		boolean bothPressed = leftTrigger >= 0.5 && rightTrigger >= 0.5;
-		boolean bumperBothPressed = leftBumper && rightBumper;
-		
-		boolean inLastPeriod = (timer.get() >= Config.CLIMBER_DISABLED_TIME);
-		ClimberOperation op = ClimberOperation.STOP;
-
-		if (bothPressed && inLastPeriod) {
-			op = ClimberOperation.UP;
-		}
-		else if (bumperBothPressed && inLastPeriod ) {
-			
-			op = ClimberOperation.DOWN;
-		}
-		// Climber operation is not recorded; this will always be STOP during autonomous.
-		return op;
-	}
-
+	
 	/*
 	 * (non-Javadoc)
 	 * 

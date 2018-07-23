@@ -54,20 +54,6 @@ public class AutonomousController implements Controller {
 	}
 
 	@Override
-	public LiftOperation getLiftOperation() {
-		if (currentOperation == null) {
-			return LiftOperation.STOP;
-		} else {
-			return currentOperation.liftOperation;
-		}
-	}
-
-	@Override
-	public ClimberOperation getClimberOperation() {
-		return ClimberOperation.STOP;
-	}
-
-	@Override
 	public PushOperation getPushOperation() {
 		if (currentOperation == null) {
 			return PushOperation.STOP;
