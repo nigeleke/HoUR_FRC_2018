@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.usfirst.frc.team6035.robot.*;
 import org.usfirst.frc.team6035.robot.controller.operations.*;
+
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 
@@ -16,6 +18,8 @@ public class TeleopController implements Controller {
 
 	private Joystick stick = new Joystick(Config.JOYSTICK_PORT);
 	private XboxController xbox = new XboxController(Config.XBOX_PORT);
+	private DigitalInput grabberOutLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_OUT_DIO);
+	private DigitalInput grabberInLimitSwitch = new DigitalInput(Config.GRABBER_SWITCH_IN_DIO);
 	private List<RobotOperations> recordedOperations = new ArrayList<>();
 	private RobotOperations currentOperations = new RobotOperations();
 	private boolean recording = false;
@@ -54,7 +58,7 @@ public class TeleopController implements Controller {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+;	 * 
 	 * @see
 	 * org.usfirst.frc.team6035.robot.controller.IController#getGrabberOperation()
 	 */
@@ -62,13 +66,24 @@ public class TeleopController implements Controller {
 	public GrabberOperation getGrabberOperation() {
 		boolean leftButtonPressed = xbox.getXButton();
 		boolean rightButtonPressed = xbox.getBButton();
+		boolean grabberInSwitchNotEngaged = grabberInLimitSwitch.get();
+		boolean grabberOutSwitchNotEngaged = grabberOutLimitSwitch.get();
 		GrabberOperation op = GrabberOperation.STOP;
 		
 		if (leftButtonPressed) {
+			if (grabberInSwitchNotEngaged) {
 				op = GrabberOperation.GRAB;
+			} else if (!grabberInSwitchNotEngaged) {
+				op = GrabberOperation.HOLD;
+			}
+				
 			
 		} else if (rightButtonPressed) {
-			op = GrabberOperation.LET_GO;
+			if (grabberOutSwitchNotEngaged){
+				op = GrabberOperation.LET_GO;
+			} else if (!grabberOutSwitchNotEngaged) {
+				op = GrabberOperation.HOLD;
+			}
 		}
 		currentOperations.grabberOperation = op;
 		return op;
