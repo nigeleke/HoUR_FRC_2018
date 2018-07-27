@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.usfirst.frc.team6035.robot.*;
 import org.usfirst.frc.team6035.robot.controller.operations.*;
-
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;

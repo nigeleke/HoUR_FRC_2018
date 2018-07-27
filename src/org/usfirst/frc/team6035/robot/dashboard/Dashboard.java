@@ -48,6 +48,12 @@ public class Dashboard {
 		else if(selectedGoal == Goal.SWITCH && robotPos == RobotPosition.RIGHT && switchPos.equals("R")){
 			apGroup.add(new PushCube());
 		}
+		if(selectedGoal == Goal.STRAIGHT_CUBE && robotPos == RobotPosition.LEFT && switchPos.equals("L")) {
+			apGroup.add(new PushCube());
+		}
+		else if(selectedGoal == Goal.STRAIGHT_CUBE && robotPos == RobotPosition.RIGHT && switchPos.equals("R")) {
+			apGroup.add(new PushCube());
+		}
 		return apGroup;
 	}
 
